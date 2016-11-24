@@ -1,0 +1,37 @@
+<dribehance-header title="'充值'" back-action="'on'"></dribehance-header>
+<div class="wrap">
+    <div class="me-section">
+        <div class="me-section-header">
+            <span class="block">账号收款二维码</span>
+            <span class="block">请先转账后提交</span>
+            <div class="qrcode">
+                <imageview data-rate="1" src="'../images/qrcode.png'"></imageview>
+            </div>
+            <span class="block">收款账号：xxx</span>
+            <span class="block">账号名称：xxx</span>
+        </div>
+        <div class="list-group">
+            <div class="list-group-item">
+                需充值账号
+                <div class="game-list-input pull-right">
+                    <input type="text" name="account" ng-model="input.account" placeholder="请输入">
+                </div>
+            </div>
+            <div class="list-group-item">
+                支付账号
+                <div class="game-list-input pull-right">
+                    <input type="text" name="pay_account" ng-model="input.pay_account" placeholder="请输入">
+                </div>
+            </div>
+            <div class="list-group-item">
+                支付金额
+                <div class="game-list-input pull-right">
+                    <input type="tel" name="money" ng-model="input.money" placeholder="请输入">
+                </div>
+            </div>
+            <div class="logout-btn">
+                提交申请
+            </div>
+        </div>
+    </div>
+</div>

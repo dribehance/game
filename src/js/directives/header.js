@@ -1,5 +1,5 @@
 // by dribehance <dribehance.kksdapp.com>
-angular.module("Game").directive('dribehanceHeader', function() {
+angular.module("Game").directive('dribehanceHeader', function($rootScope) {
 	return {
 		restrict: 'E',
 		templateUrl: "templates/header.html",
@@ -9,6 +9,9 @@ angular.module("Game").directive('dribehanceHeader', function() {
 		},
 		link: function(scope, element, attrs) {
 			// function body
+			scope.back = function() {
+				$rootScope.back()
+			}
 		}
 	};
 });

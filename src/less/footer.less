@@ -11,13 +11,33 @@
 }
 
 .footer {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	border-top: 1px solid @gray-light;
-	font-size: @font-size-small;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 480px;
+    margin:auto auto;
+    // border-top: 1px solid @gray-light;
+    font-size: @font-size-small;
+    padding-top: 2px;
     padding-bottom: 2px;
-    color: white;
-    background-color: @brand-primary;
+    color: #808080;
+    background-color: #42241f;
+}
+
+.detail-footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    .reset-btn {
+        padding: 15px;
+        color: white;
+        background-color: @brand-primary;
+    }
+    .submit-btn {
+        padding: 15px;
+        color: white;
+        background-color: @brand-danger;
+    }
 }

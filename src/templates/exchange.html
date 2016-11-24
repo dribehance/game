@@ -1,0 +1,53 @@
+<dribehance-header title="'填写兑换信息'" back-action="'on'"></dribehance-header>
+<div>
+    <imageview data-rate="750/256" src="'../images/example_1.png'" center-only></imageview>
+</div>
+<div class="wrap bg-white">
+    <div class="product-meta clearfix">
+        <span class="text-danger pull-right">$490</span>
+        <span class="block">宝马X4 进口</span>
+    </div>
+</div>
+<div class="address-section bg-white">
+    <div class="address-title">
+        请填写收件地址
+    </div>
+    <div class="game-select">
+        <select name="province" ng-model="input.province">
+            <option value="广东省">广东省</option>
+        </select>
+    </div>
+    <div class="two-grid">
+        <div>
+            <div class="game-select">
+                <select name="city" ng-model="input.city">
+                    <option value="深圳市">深圳市</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <div class="game-select">
+                <select name="district" ng-model="input.district">
+                    <option value="宝安区">宝安区</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="game-input">
+        <input type="text" ng-model="username" ng-model="input.username" placeholder="请输入收件人姓名">
+    </div>
+    <div class="game-input">
+        <input type="tel" ng-model="telephone" ng-model="input.telephone" placeholder="请输入收件人联系电话">
+    </div>
+    <div class="address-title">
+        邮箱地址，如果是购买电话卡，邮箱必填
+    </div>
+    <div class="game-input">
+        <input type="email" ng-model="telephone" ng-model="input.telephone" placeholder="邮箱地址，如果是购买电话卡，邮箱必填">
+    </div>
+</div>
+<div style="height:48px;" class="bg-white"></div>
+<div class="detail-footer justified" ng-click="go('exchange')">
+    <span class="reset-btn">兑换奖品</span>
+</div>
+<div style="position: fixed;top:0;left: 0;right:0;bottom: 0;background-color: white;z-index: -1"></div>

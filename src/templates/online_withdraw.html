@@ -1,0 +1,40 @@
+<dribehance-header title="'取款'" back-action="'on'"></dribehance-header>
+<div class="wrap">
+    <div class="me-section">
+        <div class="me-section-header">
+            <span class="block">账户余额</span>
+            <span class="balance">5000.00</span>
+            <span>提现的时候，请确提款账号正确无误，如果因账
+号填写错误导致的提现失败，平台不负任何责任。</span>
+        </div>
+        <div class="list-group">
+            <div class="list-group-item">
+                提款账号
+                <div class="game-list-input pull-right">
+                    <input type="text" name="account" ng-model="input.account" placeholder="请输入">
+                </div>
+            </div>
+            <div class="list-group-item">
+                账号对应真实姓名
+                <div class="game-list-input pull-right">
+                    <input type="text" name="pay_account" ng-model="input.pay_account" placeholder="请输入">
+                </div>
+            </div>
+            <div class="list-group-item">
+                提款金额
+                <div class="game-list-input pull-right">
+                    <input type="tel" name="money" ng-model="input.money" placeholder="请输入">
+                </div>
+            </div>
+            <div class="list-group-item">
+                提款密码
+                <div class="game-list-input pull-right">
+                    <input type="password" name="password" ng-model="input.password" placeholder="请输入">
+                </div>
+            </div>
+            <div class="logout-btn">
+                提交申请
+            </div>
+        </div>
+    </div>
+</div>

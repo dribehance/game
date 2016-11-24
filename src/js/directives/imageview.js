@@ -90,9 +90,9 @@ angular.module("Game")
 				}
 			},
 			template: function(element, attrs) {
-				var template = "<img ng-src='{{src}}' show-center-on-loaded err-src='../images/banner.png'>";
+				var template = "<img ng-src='{{src}}' show-center-on-loaded err-src='../images/default.png'>";
 				if ($(element).attr('center-only') == undefined) {
-					template = "<img ng-src='{{src}}' show-on-loaded err-src='../images/banner.png'>"
+					template = "<img ng-src='{{src}}' show-on-loaded err-src='../images/default.png'>"
 				}
 				return template;
 			},

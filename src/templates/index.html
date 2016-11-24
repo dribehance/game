@@ -1,1 +1,52 @@
-首页
+<dribehance-header title="'娱乐中心'"></dribehance-header>
+<div>
+    <banner>
+        <imageview data-rate="750/267" src="banner" ng-repeat="banner in banners track by $index" on-repeat-done></imageview>
+    </banner>
+</div>
+<div class="four-grid">
+    <div>
+        <span class="game-link"></span>
+        <span class="block">游戏1</span>
+    </div>
+    <div>
+        <span class="game-link"></span>
+        <span class="block">游戏1</span>
+    </div>
+    <div>
+        <span class="game-link"></span>
+        <span class="block">游戏1</span>
+    </div>
+    <div>
+        <span class="game-link"></span>
+        <span class="block">游戏1</span>
+    </div>
+</div>
+<div class="three-grid">
+    <div ng-click="go('feiting')">
+        <span class="icon icon-ft"></span>
+        <span class="block">幸运飞艇</span>
+    </div>
+    <div ng-click="go('saiche')">
+        <span class="icon icon-bj"></span>
+        <span class="block">北京赛车</span>
+    </div>
+    <div ng-click="go('kuaile')">
+        <span class="icon icon-gd"></span>
+        <span class="block">广东快乐10分</span>
+    </div>
+    <div ng-click="go('liuhecai')">
+        <span class="icon icon-lhc"></span>
+        <span class="block">六合彩</span>
+    </div>
+    <div ng-click="go('jiangpin')">
+        <span class="icon icon-jp"></span>
+        <span class="block">兑换奖品</span>
+    </div>
+    <div ng-click="go('contact')">
+        <span class="icon icon-kf"></span>
+        <span class="block">联系客服</span>
+    </div>
+</div>
+<div style="height:48px;"></div>
+<dribehance-footer active="'index'"></dribehance-footer>

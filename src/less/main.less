@@ -1,0 +1,463 @@
+.two-grid {
+    font-size: 0.1px;
+    text-align: justify;
+    > * {
+        display: inline-block;
+        width: 48%;
+        margin-bottom: 15px;
+        .box-sizing(border-box);
+        font-size: 16px;
+        border-radius: 5px;
+        background-color: white;
+        color: #3e231f;
+    }
+    &:after {
+        content: "";
+        width: 100%;
+        display: inline-block;
+    }
+    .product-meta {
+        padding: 5px;
+        span:first-child {
+            margin-bottom: 5px;
+        }
+    }
+}
+
+.three-grid {
+    padding: 15px 15px 15px 15px;
+    font-size: 0.1px;
+    text-align: justify;
+    > * {
+        display: inline-block;
+        width: 31%;
+        padding: 15px 2px;
+        margin-bottom: 15px;
+        .box-sizing(border-box);
+        text-align: center;
+        font-size: 12px;
+        background-color: @brand-primary;
+        color: #3e231f;
+    }
+    &:after {
+        content: "";
+        width: 100%;
+        display: inline-block;
+    }
+}
+
+.four-grid {
+    padding: 15px 15px 0 15px;
+    font-size: 0.1px;
+    text-align: justify;
+    > * {
+        display: inline-block;
+        text-align: center;
+        color: white;
+        font-size: 12px;
+    }
+    &:after {
+        content: "";
+        width: 100%;
+        display: inline-block;
+    }
+    .game-link {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        border-radius: 5px;
+        background-color: @brand-primary;
+    }
+}
+
+.me-section {
+    border-radius: 5px;
+    background-color: #cda462;
+    overflow: hidden;
+    .me-section-header {
+        padding: 15px;
+        text-align: center;
+        .balance {
+            display: block;
+            padding: 10px;
+            font-size: 24px;
+        }
+    }
+    .list-group {
+        margin-bottom: 0;
+        .list-group-item {
+            color: #634239;
+            background-color: @brand-primary;
+            border-color: fade(black, 20%);
+            border-radius: 0;
+        }
+    }
+    .logout-btn {
+        display: block;
+        padding: 10px 15px;
+        margin: 15px;
+        border-radius: 5px;
+        text-align: center;
+        background-color: #634239;
+        color: #3e231f;
+    }
+}
+
+.qrcode {
+    display: block;
+    width: 150px;
+    height: 150px;
+    margin: 30px auto;
+}
+
+.message-section {
+    padding: 15px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    background-color: @brand-primary;
+    .message-section-content {
+        margin-top: 5px;
+        color: fade(#3e231f, 50%);
+    }
+}
+
+.game-header {
+    .game-balance {
+        float: right;
+        width: 65px;
+        padding: 6px 0;
+        border-left: 1px solid #3e231f;
+        text-align: center;
+    }
+    .game-select {
+        float: right;
+        width: 110px;
+        position: relative;
+        border-bottom: 1px solid fade(black, 10%);
+        background-color: white;
+        &:before {
+            content: "\f107";
+            font-family: FontAwesome;
+            position: absolute;
+            right: 8px;
+            top: 15px;
+        }
+        select {
+            width: 100%;
+            padding: 15px;
+            -webkit-appearance: none;
+            border: none;
+            .box-shadow(none);
+            .box-sizing(border-box);
+        }
+    }
+}
+
+.game-code {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    margin-right: 1px;
+    margin-bottom: 5px;
+    font-size: 12px;
+    border-radius: 100%;
+    background-color: #cda462;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    @media (min-width: 360px) {
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        font-size: 14px;
+    }
+}
+
+.game-section {
+    margin-bottom: 5px;
+    .game-section-header {
+        background-color: @brand-primary;
+        padding: 10px;
+        text-align: center;
+    }
+    .game-section-content {
+        overflow: hidden;
+        > div {
+            background-color: white;
+            float: left;
+            width: 33.33%;
+            padding: 8px 0;
+            border-left: 1px solid @brand-primary;
+            border-bottom: 1px solid @brand-primary;
+            font-size: 12px;
+            text-align: center;
+            .box-sizing(border-box);
+            &:nth-child(3n+1) {
+                border-left: 0;
+            }
+        }
+    }
+    .buy-btn {
+        padding: 10px;
+        margin-top: 5px;
+        text-align: center;
+        border-radius: 5px;
+        background-color: @brand-primary;
+    }
+}
+
+.trend-line {
+    display: block;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        height: 1px;
+        background-color: #3e231f;
+    }
+    span {
+        position: relative;
+        z-index: 1;
+        padding: 5px;
+        background-color: #634239;
+    }
+}
+
+.trend-list {
+    background-color: @brand-primary;
+    .trend-time {
+        font-size: 12px;
+    }
+    .trend-item-header {
+        padding: 5px;
+        text-align: center;
+        border-bottom: 1px solid fade(black, 20%);
+        font-size: 12px;
+        background-color: fade(white, 6%);
+    }
+    .trend-item-content {
+        padding: 8px 5px;
+        font-size: 12px;
+        border-bottom: 1px solid fade(black, 20%);
+        vertical-align: middle;
+    }
+    @media (min-width: 360px) {
+        .trend-item-content {
+            font-size: 14px;
+            padding: 8px;
+        }
+    }
+}
+
+.address-section {
+    .address-title {
+        padding: 15px;
+        border-bottom: 1px solid fade(black, 10%);
+        background-color: fade(black, 6%);
+    }
+    .game-select {
+        position: relative;
+        border-bottom: 1px solid fade(black, 10%);
+        &:before {
+            content: "\f107";
+            font-family: FontAwesome;
+            position: absolute;
+            right: 8px;
+            top: 15px;
+        }
+        select {
+            width: 100%;
+            padding: 15px;
+            -webkit-appearance: none;
+            border: none;
+            .box-shadow(none);
+            .box-sizing(border-box);
+        }
+    }
+    .game-input {
+        border-bottom: 1px solid fade(black, 10%);
+        input {
+            width: 100%;
+            padding: 15px;
+            -webkit-appearance: none;
+            border: none;
+            .box-shadow(none);
+            .box-sizing(border-box);
+        }
+    }
+    .two-grid >* {
+        margin-bottom: 0;
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: fade(black, 50%);
+}
+
+.popup {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    right: 0;
+    width: 80%;
+    padding: 15px;
+    margin: auto auto;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+    .title {
+        font-size: 24px;
+    }
+    .close {
+        position: absolute;
+        right: -17px;
+        top: -17px;
+        display: block;
+        width: 35px;
+        height: 35px;
+        background-image: url("../images/close.png");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: center center;
+    }
+    input {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        margin: 15px 0;
+        .box-sizing(border-box);
+        -webkit-appearance: none;
+        text-align: center;
+        background-color: #f7f7f7;
+        border: 1px solid fade(black, 10%);
+    }
+    button {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        .box-sizing(border-box);
+        .box-shadow(none);
+        border: none;
+        -webkit-appearance: none;
+        border-radius: 5px;
+        color: white;
+        background-color: #634239;
+    }
+}
+
+.order-popup {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    right: 0;
+    width: 80%;
+    margin: auto auto;
+    border-radius: 5px;
+    background-color: @brand-primary;
+    .order-popup-header {
+        padding: 15px;
+        text-align: center;
+        background-color: #cda462;
+    }
+    .order-popup-item {
+        padding:10px;
+        border-bottom: 1px solid fade(black, 20%);
+        .left {
+            float: left;
+            width:85px;
+        }
+    }
+    .close {
+        position: absolute;
+        right: -17px;
+        top: -17px;
+        display: block;
+        width: 35px;
+        height: 35px;
+        background-image: url("../images/close.png");
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: center center;
+    }
+}
+.game-list-input {
+    width: 50%;
+    input {
+        width: 100%;
+        position: relative;
+        top: -10px;
+        padding: 10px;
+        -webkit-appearance: none;
+        border: none;
+        border: none;
+        background-color: transparent;
+        .box-shadow(none);
+        .box-sizing(border-box);
+        text-align: right;
+        &:focus {
+            outline: 0;
+        }
+    }
+}
+
+.bill-table {
+    font-size: 12px;
+    background-color: @brand-primary;
+    text-align: center;
+    .table-header {
+        overflow: hidden;
+        background-color: #cda462;
+    }
+    .table-cell {
+        float: left;
+        width: 25%;
+        min-height: 100%;
+        padding: 5px;
+        border-right: 1px solid fade(black, 20%);
+        border-bottom: 1px solid fade(black, 20%);
+        .box-sizing(border-box);
+        &:last-child {
+            border-right: 0;
+        }
+    }
+    .table-row {
+        height: 40px;
+        overflow: hidden;
+    }
+}
+
+.recommandors {
+    font-size: 12px;
+    text-align: center;
+    background-color: @brand-primary;
+    .recommandor-header {
+        overflow: hidden;
+        background-color: #cda462;
+        border-top: 1px solid fade(black, 20%);
+    }
+    .recommandor-cell {
+        float: left;
+        width: 50%;
+        padding: 10px 5px;
+        border-right: 1px solid fade(black, 20%);
+        border-bottom: 1px solid fade(black, 20%);
+        .box-sizing(border-box);
+        &:last-child {
+            border-right: 0;
+        }
+    }
+    .recommandor-row {
+        overflow: hidden;
+    }
+}

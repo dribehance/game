@@ -10,6 +10,26 @@ angular.module("Game").constant("config", {
 	},
 	common_params: {},
 	interceptor: [
-		"index"
+		"index",
+		"feiting",
+		"saiche",
+		"kuaile",
+		"liuhecai",
+		"jiangpin",
+		"contact",
+		"charge",
+		"me",
+		"bills",
+		"recommandors",
+		"recommand_income",
+		"my_code",
+		"modify_password",
+		"messages",
+		"online_charge",
+		"online_withdraw",
+		"fillinorder",
+		"detail",
+		"exchange",
+		"orders"
 	]
 });
