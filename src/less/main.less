@@ -155,8 +155,12 @@
         }
     }
     .refresh-btn{
+        position: absolute;
         display: block;
-        padding-bottom: 10px;
+        padding: 15px;
+        left: 15px;
+        right: 15px;
+        background-color: fade(white, 80%);
     }
 }
 
@@ -194,10 +198,12 @@
         content:"";
         position: absolute;
         display: inline-block;
-        bottom: 2px;
-        right:2px;
-        width:6px;
-        height: 6px;
+        top:50%;
+        left: 50%;
+        margin-left: -5px;
+        margin-top: -5px;
+        width:12px;
+        height: 12px;
         border-radius: 100%;
         background-color: fade(white, 10%);
         .box-shadow(2px 2px 0px fade(black, 10%));
@@ -259,13 +265,17 @@
     .game-section-content {
         overflow: hidden;
         > div {
-            background-color: white;
             float: left;
             width: 33.33%;
-            padding: 8px 0;
+            // padding: 12px 0;
+            height: 50px;
+            line-height: 50px;
+            overflow: hidden;
+            vertical-align: middle;
             border-left: 1px solid @brand-primary;
             border-bottom: 1px solid @brand-primary;
-            font-size: 12px;
+            font-size: 13px;
+            background-color: white;
             text-align: center;
             .box-sizing(border-box);
             &:nth-child(3n+1) {
@@ -277,13 +287,13 @@
                 color: white;
                 span:first-child{
                     position: absolute;
-                    left: 0;
-                    top:0;
+                    left: 2px;
+                    top:-15px;
                 }
                 span:nth-child(2){
                     position: absolute;
-                    left: 0;
-                    bottom:0;
+                    left: 2px;
+                    bottom:-15px;
                 }
                 // span:last-child{
                 //     position: absolute;

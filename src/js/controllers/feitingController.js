@@ -36,6 +36,10 @@ angular.module("Game").controller("feitingController", function($scope, $route, 
 		userServices.query_feiting_history($scope.page).then(function(data) {
 			toastServices.hide();
 			$scope.page.message = "点击加载更多";
+			if ($scope.is_reload) {
+				$scope.feiting_historys = [];
+				$scope.is_reload = false;
+			}
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
 				$scope.feiting_historys = $scope.feiting_historys.concat(data.Result.XyftDataList.list);
 				$scope.no_more = $scope.feiting_historys.length == data.Result.XyftDataList.totalRow ? true : false;
@@ -56,7 +60,7 @@ angular.module("Game").controller("feitingController", function($scope, $route, 
 			page_size: 10,
 			message: "点击加载更多"
 		}
-		$scope.feiting_historys = [];
+		$scope.is_reload = true;
 		$scope.no_more = false;
 		$scope.loadMore();
 	};

@@ -79,6 +79,11 @@ angular.module("Game").controller("fillinorderFeitingController", function($scop
 		$scope.input.selected_game_cell.betted = true;
 		$scope.popup_state = "close";
 	};
+	// timer callback
+	$scope.callbackTimer = {};
+	$scope.callbackTimer.finished = function() {
+		$scope.query_feiting();
+	};
 	$scope.refresh = function() {
 		$route.reload();
 	};
@@ -116,7 +121,7 @@ angular.module("Game").controller("fillinorderFeitingController", function($scop
 			"game_type": 1,
 			"o_type": $scope.input.game_type.value,
 			"total_money": total_money,
-			"n_periods_next": $scope.feiting.qishu_next,
+			"n_periods_next": $scope.feiting.qishu_str,
 			"buy_infos": buy_infos,
 		}).then(function(data) {
 			toastServices.hide()
@@ -124,7 +129,7 @@ angular.module("Game").controller("fillinorderFeitingController", function($scop
 				errorServices.autoHide(data.message);
 				$timeout(function() {
 					$route.reload();
-				}, 3000)
+				}, 500)
 			} else {
 				errorServices.autoHide(data.message);
 			}

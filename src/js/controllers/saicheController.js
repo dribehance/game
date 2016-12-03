@@ -36,6 +36,10 @@ angular.module("Game").controller("saicheController", function($scope, $route, $
 		userServices.query_saiche_history($scope.page).then(function(data) {
 			toastServices.hide();
 			$scope.page.message = "点击加载更多";
+			if ($scope.is_reload) {
+				$scope.saiche_historys = [];
+				$scope.is_reload = false;
+			}
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
 				$scope.saiche_historys = $scope.saiche_historys.concat(data.Result.BjpksDataList.list);
 				$scope.no_more = $scope.saiche_historys.length == data.Result.BjpksDataList.totalRow ? true : false;
@@ -56,7 +60,7 @@ angular.module("Game").controller("saicheController", function($scope, $route, $
 			page_size: 10,
 			message: "点击加载更多"
 		}
-		$scope.saiche_historys = [];
+		$scope.is_reload = true;
 		$scope.no_more = false;
 		$scope.loadMore();
 	};

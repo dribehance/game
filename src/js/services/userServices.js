@@ -126,5 +126,10 @@ angular.module("Game").factory("userServices", function($rootScope, $http, apiSe
 			url: config.url + "/app/UserCenter/recommendList",
 			token: localStorageService.get("token")
 		})),
+		// 注单查询
+		query_orders: apiServices._get(angular.extend({}, config.common_params, {
+			url: config.url + "/app/UserCenter/buyGameLogList",
+			token: localStorageService.get("token")
+		})),
 	}
 });

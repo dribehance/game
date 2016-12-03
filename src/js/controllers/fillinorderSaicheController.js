@@ -79,6 +79,14 @@ angular.module("Game").controller("fillinorderSaicheController", function($scope
 		$scope.input.selected_game_cell.betted = true;
 		$scope.popup_state = "close";
 	};
+	// timer callback
+	$scope.callbackTimer = {};
+	$scope.callbackTimer.finished = function() {
+		$scope.query_feiting();
+	};
+	$scope.refresh = function() {
+		$route.reload();
+	}
 	// reset form
 	$scope.resetForm = function() {
 		if ($scope.saiche.waiting) {
