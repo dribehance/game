@@ -3,8 +3,8 @@
 	<div class="me-section">
 		<div class="me-section-header">
 			<span class="block">账户余额</span>
-			<span class="balance">5000.00</span>
-			<span class="block">账户:13768132373</span>
+			<span class="balance">{{user.balance_money|currency:"￥"||"0"}}</span>
+			<span class="block">账户:{{user.nickname}}</span>
 		</div>
 		<div class="list-group">
 			<div class="list-group-item" ng-click="go('bills')">
@@ -31,7 +31,7 @@
 				修改密码
 				<i class="fa fa-angle-right pull-right" aria-hidden="true"></i>
 			</div>
-			<div class="list-group-item" ng-click="go('modify_password')">
+			<div class="list-group-item" ng-click="go('modify_trade_password')">
 				修改提现密码
 				<i class="fa fa-angle-right pull-right" aria-hidden="true"></i>
 			</div>
@@ -40,7 +40,7 @@
 				<i class="fa fa-angle-right pull-right" aria-hidden="true"></i>
 			</div>
 		</div>
-		<div class="logout-btn">
+		<div class="logout-btn" ng-click="logout()">
 			退出登录
 		</div>
 	</div>

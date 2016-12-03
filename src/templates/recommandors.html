@@ -3,7 +3,7 @@
     <div class="me-section">
         <div class="me-section-header">
             <span class="block">累计推荐获利</span>
-            <span class="balance">5000.00</span>
+            <span class="balance">{{user.balance_money|currency:"￥"||"0"}}</span>
         </div>
         <div class="recommandors">
             <div class="recommandor-header">
@@ -14,86 +14,15 @@
                     推荐人
                 </div>
             </div>
-            <div class="recommandor-row">
+            <div class="recommandor-row" ng-repeat="recommandor in recommandors">
                 <div class="recommandor-cell">
-                    2016-03-06 15:30:20
+                    {{recommandor.post_time}}
                 </div>
                 <div class="recommandor-cell">
-                    186****1152
-                </div>
-            </div>
-            <div class="recommandor-row">
-                <div class="recommandor-cell">
-                    2016-03-06 15:30:20
-                </div>
-                <div class="recommandor-cell">
-                    186****1152
+                    {{recommandor.recommend_telephone}}
                 </div>
             </div>
-            <div class="recommandor-row">
-                <div class="recommandor-cell">
-                    2016-03-06 15:30:20
-                </div>
-                <div class="recommandor-cell">
-                    186****1152
-                </div>
-            </div>
-            <div class="recommandor-row">
-                <div class="recommandor-cell">
-                    2016-03-06 15:30:20
-                </div>
-                <div class="recommandor-cell">
-                    186****1152
-                </div>
-            </div>
-            <div class="recommandor-row">
-                <div class="recommandor-cell">
-                    2016-03-06 15:30:20
-                </div>
-                <div class="recommandor-cell">
-                    186****1152
-                </div>
-            </div>
-            <div class="recommandor-row">
-                <div class="recommandor-cell">
-                    2016-03-06 15:30:20
-                </div>
-                <div class="recommandor-cell">
-                    186****1152
-                </div>
-            </div>
-            <div class="recommandor-row">
-                <div class="recommandor-cell">
-                    2016-03-06 15:30:20
-                </div>
-                <div class="recommandor-cell">
-                    186****1152
-                </div>
-            </div>
-            <div class="recommandor-row">
-                <div class="recommandor-cell">
-                    2016-03-06 15:30:20
-                </div>
-                <div class="recommandor-cell">
-                    186****1152
-                </div>
-            </div>
-            <div class="recommandor-row">
-                <div class="recommandor-cell">
-                    2016-03-06 15:30:20
-                </div>
-                <div class="recommandor-cell">
-                    186****1152
-                </div>
-            </div>
-            <div class="recommandor-row">
-                <div class="recommandor-cell">
-                    2016-03-06 15:30:20
-                </div>
-                <div class="recommandor-cell">
-                    186****1152
-                </div>
-            </div>
+            <div class="wrap text-center" ng-click="loadMore()">{{page.message}}</div>
         </div>
     </div>
 </div>

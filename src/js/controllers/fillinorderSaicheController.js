@@ -1,24 +1,26 @@
 // by dribehance <dribehance.kksdapp.com>
-angular.module("Game").controller("fillinorderController", function($scope, $timeout, $route, $routeParams, userServices, $interval, errorServices, toastServices, localStorageService, config) {
+angular.module("Game").controller("fillinorderSaicheController", function($scope, $timeout, $route, userServices, $interval, errorServices, toastServices, localStorageService, config) {
 	$scope.input = {};
-	$scope.query_feiting = function() {
-		userServices.query_feiting().then(function(data) {
+	$scope.saiche = {}
+	$scope.saiche.waiting = false;
+	$scope.query_saiche = function() {
+		userServices.query_saiche().then(function(data) {
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
-				$scope.feiting = data;
+				$scope.saiche = data;
 			} else {
 				errorServices.autoHide(data.message);
 			}
 			// interval call
-			if ($scope.feiting.waiting) {
+			if ($scope.saiche.waiting) {
 				$timeout(function() {
-					$scope.feiting.day_seconds = "";
-					$scope.query_feiting();
+					$scope.saiche.day_seconds = "";
+					$scope.query_saiche();
 				}, 5000)
 				return;
 			}
 		})
 	}
-	$scope.query_feiting();
+	$scope.query_saiche();
 	$scope.game_type = [{
 		"label": "双面",
 		"value": "1",
@@ -30,7 +32,7 @@ angular.module("Game").controller("fillinorderController", function($scope, $tim
 	$scope.$watch("input.game_type", function(n, o) {
 		if (n) {
 			// 1幸运飞艇 2北京赛车
-			$scope.query_peilv($routeParams.type || 1);
+			$scope.query_peilv(2);
 		}
 	}, true);
 	$scope.query_peilv = function(type) {
@@ -79,6 +81,9 @@ angular.module("Game").controller("fillinorderController", function($scope, $tim
 	};
 	// reset form
 	$scope.resetForm = function() {
+		if ($scope.saiche.waiting) {
+			return;
+		}
 		angular.forEach($scope.games, function(game, index) {
 			angular.forEach(game.oIndexBeans, function(g, i) {
 				g.betting_money = 0;
@@ -88,6 +93,9 @@ angular.module("Game").controller("fillinorderController", function($scope, $tim
 	};
 	// ajax form
 	$scope.ajaxForm = function() {
+		if ($scope.saiche.waiting) {
+			return;
+		}
 		var buy_infos = "",
 			total_money = 0;
 		angular.forEach($scope.games, function(game, index) {
@@ -102,10 +110,10 @@ angular.module("Game").controller("fillinorderController", function($scope, $tim
 		buy_infos = buy_infos.substring(0, buy_infos.length - 1);
 		toastServices.show();
 		userServices.betting({
-			"game_type": $routeParams.type || 1,
+			"game_type": 2,
 			"o_type": $scope.input.game_type.value,
 			"total_money": total_money,
-			"n_periods_next": $scope.feiting.qishu_next,
+			"n_periods_next": $scope.saiche.qishu_next,
 			"buy_infos": buy_infos,
 		}).then(function(data) {
 			toastServices.hide()

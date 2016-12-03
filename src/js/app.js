@@ -4,7 +4,7 @@ angular.module("Game", [
 		// "ngSanitize",
 		"LocalStorageModule",
 		// "flow",
-		// "timer"
+		"timer"
 	])
 	.config(function($routeProvider, $httpProvider, $locationProvider, localStorageServiceProvider, config) {
 		angular.forEach(config.interceptor, function(path) {

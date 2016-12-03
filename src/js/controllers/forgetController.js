@@ -1,5 +1,5 @@
 // by dribehance <dribehance.kksdapp.com>
-angular.module("Game").controller("modifyPasswordController", function($scope, $rootScope, $location, $timeout, userServices, errorServices, toastServices, localStorageService, config) {
+angular.module("Game").controller("forgetController", function($scope, $location, $timeout, userServices, errorServices, toastServices, localStorageService, config) {
 	$scope.input = {};
 	$scope.ajaxForm = function() {
 		if ($scope.password_1 != $scope.password_2) {
@@ -7,19 +7,20 @@ angular.module("Game").controller("modifyPasswordController", function($scope, $
 			return;
 		}
 		toastServices.show();
-		userServices.modify_password({
-			"old_password": $scope.input.password,
-			"new_password": $scope.input.password_1,
+		userServices.forget({
+			"nickname": $scope.input.nickname,
+			"telephone": $scope.input.telephone,
+			"password": $scope.input.password_1,
 		}).then(function(data) {
 			toastServices.hide()
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
 				errorServices.autoHide(data.message);
 				$timeout(function() {
-					// $location.path("signin").replace();
-					$rootScope.back();
+					$location.path("signin").replace();
 				}, 3000)
 			} else {
-				$scope.input.password = "";
+				$scope.input.nickname = "";
+				$scope.input.telephone = "";
 				$scope.input.password_1 = "";
 				$scope.input.password_2 = "";
 				errorServices.autoHide(data.message);

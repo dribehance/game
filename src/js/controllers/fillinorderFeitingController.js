@@ -1,6 +1,8 @@
 // by dribehance <dribehance.kksdapp.com>
-angular.module("Game").controller("fillinorderController", function($scope, $timeout, $route, $routeParams, userServices, $interval, errorServices, toastServices, localStorageService, config) {
+angular.module("Game").controller("fillinorderFeitingController", function($scope, $route, $timeout, $route, userServices, $interval, errorServices, toastServices, localStorageService, config) {
 	$scope.input = {};
+	$scope.feiting = {}
+	$scope.feiting.waiting = false;
 	$scope.query_feiting = function() {
 		userServices.query_feiting().then(function(data) {
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
@@ -30,7 +32,7 @@ angular.module("Game").controller("fillinorderController", function($scope, $tim
 	$scope.$watch("input.game_type", function(n, o) {
 		if (n) {
 			// 1幸运飞艇 2北京赛车
-			$scope.query_peilv($routeParams.type || 1);
+			$scope.query_peilv(1);
 		}
 	}, true);
 	$scope.query_peilv = function(type) {
@@ -77,8 +79,14 @@ angular.module("Game").controller("fillinorderController", function($scope, $tim
 		$scope.input.selected_game_cell.betted = true;
 		$scope.popup_state = "close";
 	};
+	$scope.refresh = function() {
+		$route.reload();
+	};
 	// reset form
 	$scope.resetForm = function() {
+		if ($scope.feiting.waiting) {
+			return;
+		}
 		angular.forEach($scope.games, function(game, index) {
 			angular.forEach(game.oIndexBeans, function(g, i) {
 				g.betting_money = 0;
@@ -88,6 +96,9 @@ angular.module("Game").controller("fillinorderController", function($scope, $tim
 	};
 	// ajax form
 	$scope.ajaxForm = function() {
+		if ($scope.feiting.waiting) {
+			return;
+		}
 		var buy_infos = "",
 			total_money = 0;
 		angular.forEach($scope.games, function(game, index) {
@@ -102,7 +113,7 @@ angular.module("Game").controller("fillinorderController", function($scope, $tim
 		buy_infos = buy_infos.substring(0, buy_infos.length - 1);
 		toastServices.show();
 		userServices.betting({
-			"game_type": $routeParams.type || 1,
+			"game_type": 1,
 			"o_type": $scope.input.game_type.value,
 			"total_money": total_money,
 			"n_periods_next": $scope.feiting.qishu_next,

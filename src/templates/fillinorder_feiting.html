@@ -1,10 +1,11 @@
-<dribehance-header title="'投注'" back-action="'on'"></dribehance-header>
+<dribehance-header title="'幸运飞艇投注'" back-action="'on'"></dribehance-header>
 <div class="wrap">
     <div class="game-header">
         <div class="game-select">
             <select name="game" ng-model="input.game_type" ng-options="type.label for type in game_type"></select>
         </div>
         <p>
+            <span ng-if="!feiting.day_seconds" class="block refresh-btn" ng-click="refresh()"><i class="fa fa-refresh" aria-hidden="true"></i> 点击刷新，看看开奖没有</span>
             <span class="text-white">第 </span>
             <span class="text-primary"> {{feiting.qishu_next}}</span>
             <span class="text-white">期，距离开奖时间</span>

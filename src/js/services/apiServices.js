@@ -1,5 +1,5 @@
 // by dribehance <dribehance.kksdapp.com>
-angular.module("Game").factory("apiServices", function($http) {
+angular.module("Game").factory("apiServices", function($http, localStorageService) {
 	return {
 		_get: function(request) {
 			return function(input) {

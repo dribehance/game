@@ -95,7 +95,10 @@
     .logout-btn {
         display: block;
         padding: 10px 15px;
-        margin: 15px;
+        margin: 15px auto;
+        width: 80%;
+        .box-sizing(border-box);
+        .reset-input;
         border-radius: 5px;
         text-align: center;
         background-color: #634239;
@@ -151,10 +154,15 @@
             .box-sizing(border-box);
         }
     }
+    .refresh-btn{
+        display: block;
+        padding-bottom: 10px;
+    }
 }
 
 .game-code {
     display: inline-block;
+    position: relative;
     width: 20px;
     height: 20px;
     line-height: 20px;
@@ -164,16 +172,83 @@
     border-radius: 100%;
     background-color: #cda462;
     color: white;
+    border-top: 1px solid fade(white, 20%);
+    border-left: 1px solid fade(white, 20%);
     text-align: center;
     vertical-align: middle;
+    .box-shadow(2px 2px 0px fade(black, 50%));
+    .box-sizing(border-box);
+    &:before {
+        content:"";
+        position: absolute;
+        display: inline-block;
+        left: 2px;
+        top:2px;
+        width:5px;
+        height: 5px;
+        border-radius: 100%;
+        background-color: fade(white, 10%);
+        .box-shadow(2px 2px 0px fade(black, 10%));
+    }
+    &:after {
+        content:"";
+        position: absolute;
+        display: inline-block;
+        bottom: 2px;
+        right:2px;
+        width:6px;
+        height: 6px;
+        border-radius: 100%;
+        background-color: fade(white, 10%);
+        .box-shadow(2px 2px 0px fade(black, 10%));
+    }
     @media (min-width: 360px) {
         width: 24px;
         height: 24px;
         line-height: 24px;
         font-size: 14px;
     }
+    // .make-feting-code();
+    // .make-saiche-code();
+    // .make-kuaile-code();
+    // .make-liuhecai-code();
+    .make-game-code();
 }
+.make-game-code() {
+    // feiting code
+    @feiting-code-list:01,02,03,04,05,06,07,08,09,10;
+    .loop(feiting-code,@feiting-code-list,length(@feiting-code-list),red,true);
+    // saiche code
+    @saiche-code-list:01,02,03,04,05,06,07,08,09,10;
+    .loop(saiche-code,@saiche-code-list,length(@saiche-code-list),red,true);
+    // kuaile code
+    @kuaile-code-list:01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20;
+    .loop(kuaile-code,@kuaile-code-list,length(@kuaile-code-list),red,true);
+    // liuhecai code
+    @red-code-list:01,02,07,08,12,13,18,19,23,24,29,30,34,35,40,45,46;
+    @blue-code-list:03,04,09,10,14,15,20,25,26,31,36,37,41,42,47,48;
+    @green-code-list:05,06,11,16,17,21,22,27,28,32,33,38,39,43,44,49;
+    .loop(liuhecai-code,@red-code-list,length(@red-code-list),red);
+    .loop(liuhecai-code,@blue-code-list,length(@blue-code-list),blue);
+    .loop(liuhecai-code,@green-code-list,length(@green-code-list),green);
+    .loop (@name,@list,@counter,@color,@random:false) when(@counter > 0) and (@random =  false){
+        @var:extract(@list,@counter);
+        &.@{name}-@{var} {
+            background-color: @color;
+        }
+        .loop(@name,@list,@counter - 1,@color);
+    }
+    .loop (@name,@list,@counter,@color,@random:false) when(@counter > 0) and (@random =  true){
+        @var:extract(@list,@counter);
+        @divide: 360 / length(@list);
+        @hue: @counter * @divide; 
+        &.@{name}-@{var} {
+            background-color: hsl(@hue,50%,50%);
+        }
+        .loop(@name,@list,@counter - 1,@color,@random);
+    }
 
+}
 .game-section {
     margin-bottom: 5px;
     .game-section-header {
@@ -196,9 +271,31 @@
             &:nth-child(3n+1) {
                 border-left: 0;
             }
+            &.selected {
+                position: relative;
+                background-color: #59bf40;
+                color: white;
+                span:first-child{
+                    position: absolute;
+                    left: 0;
+                    top:0;
+                }
+                span:nth-child(2){
+                    position: absolute;
+                    left: 0;
+                    bottom:0;
+                }
+                // span:last-child{
+                //     position: absolute;
+                //     right: 0;
+                //     top:0;
+                // }
+                
+            }
         }
     }
     .buy-btn {
+        display: block;
         padding: 10px;
         margin-top: 5px;
         text-align: center;
@@ -229,8 +326,19 @@
     }
 }
 
+.waiting {
+    padding:10px;
+    color:white;
+    border-radius: 5px;
+    background-color:#f2385a;
+    // opacity: 0.5;
+}
+.opacity_05 {
+    opacity: 0.5;
+}
 .trend-list {
     background-color: @brand-primary;
+    border-radius: 5px;
     .trend-time {
         font-size: 12px;
     }
@@ -303,8 +411,8 @@
     right: 0;
     bottom: 0;
     background-color: fade(black, 50%);
+    z-index: 1000;
 }
-
 .popup {
     position: absolute;
     top: 20%;
@@ -392,11 +500,11 @@
     }
 }
 .game-list-input {
-    width: 50%;
+    // width: 50%;
     input {
         width: 100%;
         position: relative;
-        top: -10px;
+        // top: -10px;
         padding: 10px;
         -webkit-appearance: none;
         border: none;
@@ -404,7 +512,7 @@
         background-color: transparent;
         .box-shadow(none);
         .box-sizing(border-box);
-        text-align: right;
+        // text-align: right;
         &:focus {
             outline: 0;
         }

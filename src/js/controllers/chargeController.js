@@ -1,4 +1,4 @@
 // by dribehance <dribehance.kksdapp.com>
-angular.module("Game").controller("chargeController", function($scope, errorServices, toastServices, localStorageService, config) {
-
+angular.module("Game").controller("chargeController", function($scope, $rootScope, userServices, errorServices, toastServices, localStorageService, config) {
+	userServices.sync();
 })

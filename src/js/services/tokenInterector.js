@@ -1,5 +1,5 @@
 // by dribehance <dribehance.kksdapp.com>
-angular.module("Game").factory("tokenInterceptor", function($location, $q, localStorageService, errorServices, config) {
+angular.module("Game").factory("tokenInterceptor", function($location, $q, $timeout, localStorageService, errorServices, config) {
 	return {
 		// optional method
 		'request': function(config) {
@@ -27,7 +27,10 @@ angular.module("Game").factory("tokenInterceptor", function($location, $q, local
 			if (response.data.code == config.request.TOKEN_INVALID) {
 				console.log("TOKEN_INVALID")
 				localStorageService.remove("token");
-				$location.path("/signIn").replace();
+				errorServices.autoHide("请先登录");
+				$timeout(function() {
+					$location.path("/signin").replace();
+				}, 500)
 				return defer.promise;
 			} else {
 				return response;
