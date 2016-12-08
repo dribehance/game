@@ -14,7 +14,7 @@
                 <timer ng-if="saiche.day_seconds" max-time-unit="'minute'" interval="1000" countdown="saiche.day_seconds" finish-callback="callbackTimer.finished()">
                     {{mminutes}}:{{sseconds}}
                 </timer>
-                <span ng-if="!saiche.day_seconds">00:00</span>
+                <span ng-if="!saiche.day_seconds">--:--</span>
             </span>
         </p>
         <p ng-if="!saiche.waiting">

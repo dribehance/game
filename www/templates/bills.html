@@ -14,158 +14,20 @@
             类型
         </div>
     </div>
-    <div class="table-row">
+    <div class="table-row" ng-repeat="bill in bills">
         <div class="table-cell">
-            2016-03-06 15:30:20
+            {{bill.post_time}}
+        </div>
+        <div class="table-cell" ng-class="{'text-success':bill.type=='2' || bill.type == '3'}">
+            {{bill.money|currency:"￥"||"0"}}
+            <div>{{bill.c_mssage}}</div>
         </div>
         <div class="table-cell">
-            100.77
+            {{bill.balance_money|currency:"￥"||"0"}}
         </div>
         <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell">
-            存款
-        </div>
-    </div>
-    <div class="table-row">
-        <div class="table-cell">
-            2016-03-06 15:30:20
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell">
-            存款
+            {{get_type(bill.type)}}
         </div>
     </div>
-    <div class="table-row">
-        <div class="table-cell">
-            2016-03-06 15:30:20
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell">
-            存款
-        </div>
-    </div>
-    <div class="table-row">
-        <div class="table-cell">
-            2016-03-06 15:30:20
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell">
-            存款
-        </div>
-    </div>
-    <div class="table-row">
-        <div class="table-cell">
-            2016-03-06 15:30:20
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell">
-            存款
-        </div>
-    </div>
-    <div class="table-row">
-        <div class="table-cell">
-            2016-03-06 15:30:20
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell">
-            存款
-        </div>
-    </div>
-    <div class="table-row">
-        <div class="table-cell">
-            2016-03-06 15:30:20
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell">
-            存款
-        </div>
-    </div>
-    <div class="table-row">
-        <div class="table-cell">
-            2016-03-06 15:30:20
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell">
-            存款
-        </div>
-    </div>
-    <div class="table-row">
-        <div class="table-cell">
-            2016-03-06 15:30:20
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell">
-            存款
-        </div>
-    </div>
-    <div class="table-row">
-        <div class="table-cell">
-            2016-03-06 15:30:20
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell">
-            存款
-        </div>
-    </div>
-    <div class="table-row">
-        <div class="table-cell">
-            2016-03-06 15:30:20
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell">
-            存款
-        </div>
-    </div>
+    <div class="wrap text-center" ng-click="loadMore()">{{page.message}}</div>
 </div>

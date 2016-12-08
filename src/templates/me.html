@@ -5,6 +5,7 @@
 			<span class="block">账户余额</span>
 			<span class="balance">{{user.balance_money|currency:"￥"||"0"}}</span>
 			<span class="block">账户:{{user.nickname}}</span>
+			<span class="block">我的邀请码(长按可复制) - {{user.invite_code}}</span>
 		</div>
 		<div class="list-group">
 			<div class="list-group-item" ng-click="go('bills')">
@@ -23,10 +24,10 @@
 				推荐获利列表
 				<i class="fa fa-angle-right pull-right" aria-hidden="true"></i>
 			</div>
-			<div class="list-group-item" ng-click="go('my_code')">
+			<!-- <div class="list-group-item" ng-click="go('my_code')">
 				我的推荐码
 				<i class="fa fa-angle-right pull-right" aria-hidden="true"></i>
-			</div>
+			</div> -->
 			<div class="list-group-item" ng-click="go('modify_password')">
 				修改密码
 				<i class="fa fa-angle-right pull-right" aria-hidden="true"></i>

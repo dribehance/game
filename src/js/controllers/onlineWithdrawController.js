@@ -1,5 +1,6 @@
 // by dribehance <dribehance.kksdapp.com>
 angular.module("Game").controller("onlineWithdrawController", function($scope, $rootScope, userServices, errorServices, toastServices, localStorageService, config) {
+	$scope.input = {};
 	toastServices.show();
 	userServices.query_basicinfo().then(function(data) {
 		toastServices.hide()
@@ -14,6 +15,7 @@ angular.module("Game").controller("onlineWithdrawController", function($scope, $
 		userServices.withdraw({
 			"charge_account": $scope.input.account,
 			"account_name": $scope.input.pay_account,
+			"bank_name": $scope.input.bank_name,
 			"money": $scope.input.money,
 			"trade_password": $scope.input.password,
 		}).then(function(data) {

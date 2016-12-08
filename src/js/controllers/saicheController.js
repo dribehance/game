@@ -24,7 +24,7 @@ angular.module("Game").controller("saicheController", function($scope, $route, $
 	$scope.saiche_historys = [];
 	$scope.page = {
 		pn: 1,
-		page_size: 10,
+		page_size: 20,
 		message: "点击加载更多"
 	}
 	$scope.loadMore = function() {
@@ -57,7 +57,7 @@ angular.module("Game").controller("saicheController", function($scope, $route, $
 	$scope.reload_saiche_history = function() {
 		$scope.page = {
 			pn: 1,
-			page_size: 10,
+			page_size: 20,
 			message: "点击加载更多"
 		}
 		$scope.is_reload = true;

@@ -1,10 +1,10 @@
 <dribehance-header title="'娱乐中心'"></dribehance-header>
 <div>
-    <banner>
-        <imageview data-rate="750/267" src="banner" ng-repeat="banner in banners track by $index" on-repeat-done></imageview>
+    <banner data-rate="750/267">
+        <imageview data-rate="750/267" src="staticImageUrl + banner.image_01" ng-repeat="banner in banners track by $index" on-repeat-done></imageview>
     </banner>
 </div>
-<div class="four-grid">
+<!-- <div class="four-grid">
     <div>
         <span class="game-link"></span>
         <span class="block">游戏1</span>
@@ -21,7 +21,7 @@
         <span class="game-link"></span>
         <span class="block">游戏1</span>
     </div>
-</div>
+</div> -->
 <div class="three-grid">
     <div ng-click="go('feiting')">
         <span class="icon icon-ft"></span>
@@ -39,9 +39,9 @@
         <span class="icon icon-lhc"></span>
         <span class="block">六合彩</span>
     </div>
-    <div ng-click="go('jiangpin')">
+    <div>
         <span class="icon icon-jp"></span>
-        <span class="block">兑换奖品</span>
+        <span class="block">彩色图库</span>
     </div>
     <div ng-click="go('contact')">
         <span class="icon icon-kf"></span>

@@ -71,11 +71,11 @@ angular.module("Game").factory("userServices", function($rootScope, $http, apiSe
 			url: config.url + "/app/XyftManage/xyftList",
 			token: localStorageService.get("token")
 		})),
-		// 获取赔率接口
+		// 获取北京赛车、幸运飞艇赔率接口
 		query_peilv: apiServices._get(angular.extend({}, config.common_params, {
 			url: config.url + "/app/XyftManage/oddsList",
 		})),
-		// 下注
+		// 幸运飞艇，北京赛车下注
 		betting: apiServices._get(angular.extend({}, config.common_params, {
 			url: config.url + "/app/XyftManage/buyGame",
 			token: localStorageService.get("token")
@@ -90,7 +90,32 @@ angular.module("Game").factory("userServices", function($rootScope, $http, apiSe
 			token: localStorageService.get("token")
 		})),
 		// 广东快乐10分
+		query_kuaile: apiServices._get(angular.extend({}, config.common_params, {
+			url: config.url + "/app/Gdkl10Manage/gdkl10Out",
+			token: localStorageService.get("token")
+		})),
+		query_kuaile_history: apiServices._get(angular.extend({}, config.common_params, {
+			url: config.url + "/app/Gdkl10Manage/gdkl10List",
+			token: localStorageService.get("token")
+		})),
+		// 获取快乐10分赔率接口
+		query_kuaile_peilv: apiServices._get(angular.extend({}, config.common_params, {
+			url: config.url + "/app/Gdkl10Manage/oddsGdkl10List",
+		})),
+		// 快乐10分下注
+		betting_kuaile: apiServices._get(angular.extend({}, config.common_params, {
+			url: config.url + "/app/Gdkl10Manage/buyGdkl10Game",
+			token: localStorageService.get("token")
+		})),
 		// 六合彩
+		query_liuhecai: apiServices._get(angular.extend({}, config.common_params, {
+			url: config.url + "/app/XglhcManage/xglhcOut",
+			token: localStorageService.get("token")
+		})),
+		query_liuhecai_history: apiServices._get(angular.extend({}, config.common_params, {
+			url: config.url + "/app/XglhcManage/xglhcList",
+			token: localStorageService.get("token")
+		})),
 		// 消息列表
 		query_messages: apiServices._get(angular.extend({}, config.common_params, {
 			url: config.url + "api_url",

@@ -1,5 +1,6 @@
 // by dribehance <dribehance.kksdapp.com>
 angular.module("Game").controller("onlineChargeController", function($scope, userServices, errorServices, toastServices, localStorageService, config) {
+	$scope.input = {};
 	toastServices.show();
 	userServices.query_constant_info().then(function(data) {
 		toastServices.hide()

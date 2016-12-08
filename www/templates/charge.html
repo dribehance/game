@@ -3,7 +3,7 @@
 	<div class="me-section">
 		<div class="me-section-header">
 			<span class="block">账户余额</span>
-			<span class="balance">5000.00</span>
+			<span class="balance">{{user.balance_money|currency:"￥"||"0"}}</span>
 		</div>
 		<div class="list-group">
 			<div class="list-group-item" ng-click="go('online_charge')">

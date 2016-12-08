@@ -14,7 +14,7 @@
                 <timer ng-if="feiting.day_seconds" max-time-unit="'minute'" interval="1000" countdown="feiting.day_seconds" finish-callback="callbackTimer.finished()">
                     {{mminutes}}:{{sseconds}}
                 </timer>
-                <span ng-if="!feiting.day_seconds">00:00</span>
+                <span ng-if="!feiting.day_seconds">--:--</span>
             </span>
         </p>
         <p ng-if="!feiting.waiting">

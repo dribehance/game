@@ -57,6 +57,9 @@ angular.module("Game").controller("fillinorderFeitingController", function($scop
 	};
 	// open popup
 	$scope.show = function(cell, game) {
+		if ($scope.feiting.waiting) {
+			return;
+		}
 		if (cell.betted) {
 			cell.betting_money = 0;
 			cell.betted = false;

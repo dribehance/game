@@ -1,0 +1,69 @@
+<dribehance-header title="'广东快乐10分投注'" back-action="'on'"></dribehance-header>
+<div class="wrap">
+    <div class="game-header">
+        <div class="game-select">
+            <select name="game" ng-model="input.game_type" ng-options="type.label for type in game_type"></select>
+        </div>
+        <p>
+            <span ng-if="!kuaile.day_seconds" class="block refresh-btn" ng-click="refresh()"><i class="fa fa-refresh" aria-hidden="true"></i> 点击刷新，看看开奖没有</span>
+            <span class="text-white">第 </span>
+            <span class="text-primary"> {{kuaile.qishu_next}}</span>
+            <span class="text-white">期，距离开奖时间</span>
+            <span class="text-primary">
+                <timer ng-if="kuaile.day_seconds" max-time-unit="'minute'" interval="1000" countdown="kuaile.day_seconds" finish-callback="callbackTimer.finished()">
+                    {{mminutes}}:{{sseconds}}
+                </timer>
+                <span ng-if="!kuaile.day_seconds">--:--</span>
+            </span>
+        </p>
+        <p>
+            <span class="text-white">{{kuaile.Result.GdklsfData.datelinedate}} 第 {{kuaile.Result.GdklsfData.qishu}} 期开奖号码</span>
+        </p>
+        <p ng-if="kuaile.waiting" class="waiting"><i class="fa fa-clock-o" aria-hidden="true"></i> 第 {{kuaile.qishu_next}} 期正在开奖，请耐心等候...</p>
+        <p ng-if="!kuaile.waiting">
+            <span class="game-code kuaile-code-{{kuaile.Result.GdklsfData.n_01}}">{{kuaile.Result.GdklsfData.n_01}}</span>
+            <span class="game-code kuaile-code-{{kuaile.Result.GdklsfData.n_02}}">{{kuaile.Result.GdklsfData.n_02}}</span>
+            <span class="game-code kuaile-code-{{kuaile.Result.GdklsfData.n_03}}">{{kuaile.Result.GdklsfData.n_03}}</span>
+            <span class="game-code kuaile-code-{{kuaile.Result.GdklsfData.n_04}}">{{kuaile.Result.GdklsfData.n_04}}</span>
+            <span class="game-code kuaile-code-{{kuaile.Result.GdklsfData.n_05}}">{{kuaile.Result.GdklsfData.n_05}}</span>
+            <span class="game-code kuaile-code-{{kuaile.Result.GdklsfData.n_06}}">{{kuaile.Result.GdklsfData.n_06}}</span>
+            <span class="game-code kuaile-code-{{kuaile.Result.GdklsfData.n_07}}">{{kuaile.Result.GdklsfData.n_07}}</span>
+            <span class="game-code kuaile-code-{{kuaile.Result.GdklsfData.n_08}}">{{kuaile.Result.GdklsfData.n_08}}</span>
+        </p>
+    </div>
+    <!-- <div class="overlay" ng-if="kuaile.waiting">
+        <div class="waiting-btn" ng-click="back()">当前正在开奖，请耐心等候...,点击返回</div>
+    </div> -->
+    <div class="game-section" ng-repeat="game in games">
+        <div class="game-section-header">
+            {{game.name}}
+        </div>
+        <div class="game-section-content" ng-class="{'opacity_05':kuaile.waiting}">
+            <div ng-repeat="g in game.oIndexBeans" ng-click="show(g,game)" ng-class="{'selected':g.betted}" ng-if="input.game_type.value == '1'">
+                <span>{{g.name}} </span>
+                <span class="text-danger"> {{g.rate}}</span>
+                <span ng-if="g.betted">{{g.betting_money}}元</span>
+            </div>
+            <div ng-repeat="g in game.oIndexBeans" ng-click="show(g,game)" class="numberic" ng-class="{'selected':g.betted}" ng-if="input.game_type.value == '2'">
+                <span class="game-code kuaile-code-{{g.name}}">{{g.name}} </span>
+                <span class="text-danger"> {{g.rate}}</span>
+                <span ng-if="g.betted">{{g.betting_money}}元</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height:48px;"></div>
+<div class="detail-footer justified">
+    <span class="reset-btn" ng-click="resetForm()">重置</span>
+    <span class="submit-btn" ng-click="ajaxForm()">提交</span>
+</div>
+<div class="overlay" ng-if="popup_state == 'open'">
+    <div class="popup">
+        <div class="close" ng-click="close()"></div>
+        <div class="popup-header">
+            <span>投注</span><span class="title">{{input.selected_game.name}} {{input.selected_game_cell.name}}</span>
+        </div>
+        <input type="tel" ng-model="input.betting_money" name="betting_money" placeholder="请输入投注金额">
+        <button ng-click="betting()">投注</button>
+    </div>
+</div>

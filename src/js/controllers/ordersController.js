@@ -11,7 +11,7 @@ angular.module("Game").controller("ordersController", function($scope, userServi
 	$scope.orders = [];
 	$scope.page = {
 		pn: 1,
-		page_size: 10,
+		page_size: 20,
 		message: "点击加载更多"
 	}
 	$scope.loadMore = function() {

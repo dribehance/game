@@ -3,7 +3,7 @@ angular.module("Game").controller("billsController", function($scope, userServic
 	$scope.bills = [];
 	$scope.page = {
 		pn: 1,
-		page_size: 10,
+		page_size: 20,
 		message: "点击加载更多"
 	}
 	$scope.loadMore = function() {

@@ -1,6 +1,6 @@
  // by dribehance <dribehance.kksdapp.com>
  // EventHandle
- angular.module("Game").factory("appServices", function($rootScope, $window, $location, errorServices, toastServices, config) {
+ angular.module("Game").factory("appServices", function($rootScope, $window, $location, userServices, localStorageService, errorServices, toastServices, config) {
  	var routeChangeStart = function(e) {
  		// do something white routechangestart,eg:
  		// toastServices.show();
@@ -35,6 +35,9 @@
  				$window.history.back();
  			}
  			$rootScope.staticImageUrl = config.imageUrl;
+ 			if (localStorageService.get("token")) {
+ 				userServices.sync();
+ 			}
  		}
  	}
  });

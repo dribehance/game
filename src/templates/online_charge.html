@@ -7,6 +7,8 @@
             <div class="qrcode">
                 <imageview data-rate="1" src="staticImageUrl + charge_info.getmoney_code"></imageview>
             </div>
+            <span class="block">长按保存图中二维码进行转账</span>
+            <p></p>
             <span class="block">收款账号：{{charge_info.getmoney_account_number}}</span>
             <span class="block">账号名称：{{charge_info.getmoney_account_name}}</span>
         </div>
@@ -29,6 +31,9 @@
             <div class="logout-btn" ng-click="ajaxForm()">
                 提交申请
             </div>
+            <p style="padding:5px;">
+                温馨提示：充值转账会在5分钟内到达账户，请注意到个人中心中查看；如果五分钟后仍未到账，请尽快联系客服。
+            </p>
         </div>
     </div>
 </div>

@@ -14,171 +14,22 @@
             结果
         </div>
     </div>
-    <div class="table-row">
+    <div class="table-row" ng-repeat="order in orders">
         <div class="table-cell">
-            广东快乐10分
+            {{order.game_name}}
         </div>
         <div class="table-cell">
-            第一球
+            {{order.type_name_01}}
         </div>
         <div class="table-cell">
-            100.77
+            {{order.money}}
         </div>
-        <div class="table-cell" ng-click="show()">
-            0.98
+        <div class="table-cell" ng-click="show(order)" ng-class="{'text-success':order.backmoney<0}">
+            {{order.backmoney|currency:"￥"}}
             <i class="fa fa-search" aria-hidden="true"></i>
         </div>
     </div>
-    <div class="table-row">
-        <div class="table-cell">
-            广东快乐10分
-        </div>
-        <div class="table-cell">
-            第一球
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell" ng-click="show()">
-            0.98
-            <i class="fa fa-search" aria-hidden="true"></i>
-        </div>
-    </div>
-    <div class="table-row">
-        <div class="table-cell">
-            广东快乐10分
-        </div>
-        <div class="table-cell">
-            第一球
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell" ng-click="show()">
-            0.98
-            <i class="fa fa-search" aria-hidden="true"></i>
-        </div>
-    </div>
-    <div class="table-row">
-        <div class="table-cell">
-            广东快乐10分
-        </div>
-        <div class="table-cell">
-            第一球
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell" ng-click="show()">
-            0.98
-            <i class="fa fa-search" aria-hidden="true"></i>
-        </div>
-    </div>
-    <div class="table-row">
-        <div class="table-cell">
-            广东快乐10分
-        </div>
-        <div class="table-cell">
-            第一球
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell" ng-click="show()">
-            0.98
-            <i class="fa fa-search" aria-hidden="true"></i>
-        </div>
-    </div>
-    <div class="table-row">
-        <div class="table-cell">
-            广东快乐10分
-        </div>
-        <div class="table-cell">
-            第一球
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell" ng-click="show()">
-            0.98
-            <i class="fa fa-search" aria-hidden="true"></i>
-        </div>
-    </div>
-    <div class="table-row">
-        <div class="table-cell">
-            广东快乐10分
-        </div>
-        <div class="table-cell">
-            第一球
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell" ng-click="show()">
-            0.98
-            <i class="fa fa-search" aria-hidden="true"></i>
-        </div>
-    </div>
-    <div class="table-row">
-        <div class="table-cell">
-            广东快乐10分
-        </div>
-        <div class="table-cell">
-            第一球
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell" ng-click="show()">
-            0.98
-            <i class="fa fa-search" aria-hidden="true"></i>
-        </div>
-    </div>
-    <div class="table-row">
-        <div class="table-cell">
-            广东快乐10分
-        </div>
-        <div class="table-cell">
-            第一球
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell" ng-click="show()">
-            0.98
-            <i class="fa fa-search" aria-hidden="true"></i>
-        </div>
-    </div>
-    <div class="table-row">
-        <div class="table-cell">
-            广东快乐10分
-        </div>
-        <div class="table-cell">
-            第一球
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell" ng-click="show()">
-            0.98
-            <i class="fa fa-search" aria-hidden="true"></i>
-        </div>
-    </div>
-    <div class="table-row">
-        <div class="table-cell">
-            广东快乐10分
-        </div>
-        <div class="table-cell">
-            第一球
-        </div>
-        <div class="table-cell">
-            100.77
-        </div>
-        <div class="table-cell" ng-click="show()">
-            0.98
-            <i class="fa fa-search" aria-hidden="true"></i>
-        </div>
-    </div>
+    <div class="wrap text-center" ng-click="loadMore()">{{page.message}}</div>
 </div>
 <div class="overlay" ng-if="popup_state == 'open'">
     <div class="order-popup">
@@ -186,31 +37,23 @@
         <div class="order-popup-header">注单详情</div>
         <div class="order-popup-item">
             <span class="left">注单时间</span>
-            <span>2016-11-08 21:25:58</span>
+            <span>{{show_order.post_time}}</span>
         </div>
         <div class="order-popup-item">
             <span class="left">彩种</span>
-            <span>六合彩</span>
+            <span>{{show_order.game_name}}</span>
         </div>
         <div class="order-popup-item">
             <span class="left">内容</span>
-            <span>特码 24</span>
+            <span>{{show_order.type_name_01}} {{show_order.type_name_02}}</span>
         </div>
         <div class="order-popup-item">
             <span class="left">期数</span>
-            <span>2.00</span>
+            <span>{{show_order.game_qishu}}</span>
         </div>
         <div class="order-popup-item">
             <span class="left">净利润</span>
-            <span>-2.00</span>
-        </div>
-        <div class="order-popup-item">
-            <span class="left">反水金额</span>
-            <span>0.00</span>
-        </div>
-        <div class="order-popup-item">
-            <span class="left">有效投注</span>
-            <span>2.00</span>
+            <span ng-class="{'text-success':show_order.backmoney<0}">{{show_order.backmoney|currency:"￥"}}</span>
         </div>
     </div>
 </div>

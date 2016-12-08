@@ -110,7 +110,7 @@
     display: block;
     width: 150px;
     height: 150px;
-    margin: 30px auto;
+    margin: 15px auto;
 }
 
 .message-section {
@@ -131,6 +131,9 @@
         padding: 6px 0;
         border-left: 1px solid #3e231f;
         text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     .game-select {
         float: right;
@@ -234,9 +237,9 @@
     @red-code-list:01,02,07,08,12,13,18,19,23,24,29,30,34,35,40,45,46;
     @blue-code-list:03,04,09,10,14,15,20,25,26,31,36,37,41,42,47,48;
     @green-code-list:05,06,11,16,17,21,22,27,28,32,33,38,39,43,44,49;
-    .loop(liuhecai-code,@red-code-list,length(@red-code-list),red);
-    .loop(liuhecai-code,@blue-code-list,length(@blue-code-list),blue);
-    .loop(liuhecai-code,@green-code-list,length(@green-code-list),green);
+    .loop(liuhecai-code,@red-code-list,length(@red-code-list),#f2385a);
+    .loop(liuhecai-code,@blue-code-list,length(@blue-code-list),#00b8ff);
+    .loop(liuhecai-code,@green-code-list,length(@green-code-list),#20d00b);
     .loop (@name,@list,@counter,@color,@random:false) when(@counter > 0) and (@random =  false){
         @var:extract(@list,@counter);
         &.@{name}-@{var} {
@@ -248,7 +251,13 @@
         @var:extract(@list,@counter);
         @divide: 360 / length(@list);
         @hue: @counter * @divide; 
-        &.@{name}-@{var} {
+        &.@{name}-0@{var} when(@var<10) {
+            background-color: hsl(@hue,50%,50%);
+        }
+        &.@{name}-@{var} when(@var<10) {
+            background-color: hsl(@hue,50%,50%);
+        }
+        &.@{name}-@{var} when(@var>=10) {
             background-color: hsl(@hue,50%,50%);
         }
         .loop(@name,@list,@counter - 1,@color,@random);
@@ -301,6 +310,30 @@
                 //     top:0;
                 // }
                 
+            }
+            &.numberic {
+                padding:5px 0;
+                height: auto;
+                line-height: normal;
+                overflow: hidden;
+                text-overflow:ellipsis;
+                white-space: nowrap;
+                .text-danger {
+                    font-size: 12px;
+                }
+                >span:first-child {
+                    display: block;
+                    margin: auto auto;
+                }
+                &.selected {
+                    >span:first-child{
+                        position: static;
+                    }
+                    >span:nth-child(2){
+                        position: static;
+                    }
+                }
+
             }
         }
     }
