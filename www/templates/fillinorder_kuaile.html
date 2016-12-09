@@ -39,12 +39,12 @@
             {{game.name}}
         </div>
         <div class="game-section-content" ng-class="{'opacity_05':kuaile.waiting}">
-            <div ng-repeat="g in game.oIndexBeans" ng-click="show(g,game)" ng-class="{'selected':g.betted}" ng-if="input.game_type.value == '1'">
+            <div ng-repeat="g in game.oIndexBeans" ng-click="show(g,game)" class="layout-2" ng-class="{'selected':g.betted}" ng-if="input.game_type.value == '1'">
                 <span>{{g.name}} </span>
                 <span class="text-danger"> {{g.rate}}</span>
                 <span ng-if="g.betted">{{g.betting_money}}元</span>
             </div>
-            <div ng-repeat="g in game.oIndexBeans" ng-click="show(g,game)" class="numberic" ng-class="{'selected':g.betted}" ng-if="input.game_type.value == '2'">
+            <div ng-repeat="g in game.oIndexBeans" ng-click="show(g,game)" class="layout-1" ng-class="{'selected':g.betted}" ng-if="input.game_type.value == '2'">
                 <span class="game-code kuaile-code-{{g.name}}">{{g.name}} </span>
                 <span class="text-danger"> {{g.rate}}</span>
                 <span ng-if="g.betted">{{g.betting_money}}元</span>

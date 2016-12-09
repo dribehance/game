@@ -10,6 +10,7 @@ angular.module("Game").factory("apiServices", function($http, localStorageServic
 					// by dribehance <dribehance.kksdapp.com>
 					url: request.url,
 					method: "GET",
+					cache: request.cache || false,
 					params: angular.extend({}, request, input)
 				}).then(function(data) {
 					return data.data;

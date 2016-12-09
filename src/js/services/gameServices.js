@@ -4,6 +4,7 @@ angular.module("Game").factory("gameServices", function($rootScope, $http, apiSe
 		// rsa encrypt
 		query_banner: apiServices._get(angular.extend({}, config.common_params, {
 			url: config.url + "/app/IndexBannerManage/homeBanner",
+			cache: true
 		}))
 	}
 });

@@ -74,6 +74,7 @@ angular.module("Game").factory("userServices", function($rootScope, $http, apiSe
 		// 获取北京赛车、幸运飞艇赔率接口
 		query_peilv: apiServices._get(angular.extend({}, config.common_params, {
 			url: config.url + "/app/XyftManage/oddsList",
+			cache: true,
 		})),
 		// 幸运飞艇，北京赛车下注
 		betting: apiServices._get(angular.extend({}, config.common_params, {
@@ -101,6 +102,7 @@ angular.module("Game").factory("userServices", function($rootScope, $http, apiSe
 		// 获取快乐10分赔率接口
 		query_kuaile_peilv: apiServices._get(angular.extend({}, config.common_params, {
 			url: config.url + "/app/Gdkl10Manage/oddsGdkl10List",
+			cache: true,
 		})),
 		// 快乐10分下注
 		betting_kuaile: apiServices._get(angular.extend({}, config.common_params, {
@@ -115,6 +117,11 @@ angular.module("Game").factory("userServices", function($rootScope, $http, apiSe
 		query_liuhecai_history: apiServices._get(angular.extend({}, config.common_params, {
 			url: config.url + "/app/XglhcManage/xglhcList",
 			token: localStorageService.get("token")
+		})),
+		// 获取六合彩赔率接口
+		query_liuhecai_peilv: apiServices._get(angular.extend({}, config.common_params, {
+			url: config.url + "/app/XglhcManage/oddsXglhcList",
+			cache: true,
 		})),
 		// 消息列表
 		query_messages: apiServices._get(angular.extend({}, config.common_params, {

@@ -242,7 +242,13 @@
     .loop(liuhecai-code,@green-code-list,length(@green-code-list),#20d00b);
     .loop (@name,@list,@counter,@color,@random:false) when(@counter > 0) and (@random =  false){
         @var:extract(@list,@counter);
-        &.@{name}-@{var} {
+        &.@{name}-0@{var} when(@var<10) {
+            background-color: @color;
+        }
+        &.@{name}-@{var} when(@var<10) {
+            background-color: @color;
+        }
+        &.@{name}-@{var} when(@var>=10) {
             background-color: @color;
         }
         .loop(@name,@list,@counter - 1,@color);
@@ -275,65 +281,93 @@
         overflow: hidden;
         > div {
             float: left;
-            width: 33.33%;
-            // padding: 12px 0;
-            height: 50px;
-            line-height: 50px;
-            overflow: hidden;
-            vertical-align: middle;
-            border-left: 1px solid @brand-primary;
-            border-bottom: 1px solid @brand-primary;
             font-size: 13px;
-            background-color: white;
+            overflow: hidden;
             text-align: center;
+            vertical-align: middle;
+            background-color: white;
+            overflow: hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
             .box-sizing(border-box);
-            &:nth-child(3n+1) {
-                border-left: 0;
-            }
-            &.selected {
-                position: relative;
-                background-color: #59bf40;
-                color: white;
-                span:first-child{
-                    position: absolute;
-                    left: 2px;
-                    top:-15px;
-                }
-                span:nth-child(2){
-                    position: absolute;
-                    left: 2px;
-                    bottom:-15px;
-                }
-                // span:last-child{
-                //     position: absolute;
-                //     right: 0;
-                //     top:0;
-                // }
-                
-            }
-            &.numberic {
-                padding:5px 0;
-                height: auto;
-                line-height: normal;
-                overflow: hidden;
-                text-overflow:ellipsis;
-                white-space: nowrap;
-                .text-danger {
-                    font-size: 12px;
+            &.layout-1 {
+                width: 33.33%;
+                height: 50px;
+                padding: 5px 0;
+                border-left: 1px solid @brand-primary;
+                border-bottom: 1px solid @brand-primary;
+                &:nth-child(3n+1) {
+                    border-left: 0;
                 }
                 >span:first-child {
                     display: block;
-                    margin: auto auto;
+                    margin: 0 auto 5px;
                 }
                 &.selected {
+                    position: relative;
+                    background-color: #59bf40;
+                    color: white;
+                    
+                }
+            }
+            &.layout-2 {
+                height: 50px;
+                width:33.33%;
+                line-height: 50px;
+                border-left: 1px solid @brand-primary;
+                border-bottom: 1px solid @brand-primary;
+                .text-danger {
+                    font-size: 12px;
+                }
+                &:nth-child(3n+1) {
+                    border-left: 0;
+                }
+                &.selected {
+                    position: relative;
+                    background-color: #59bf40;
+                    color: white;
                     >span:first-child{
-                        position: static;
+                        position: absolute;
+                            left: 2px;
+                            top: -14px;
                     }
                     >span:nth-child(2){
-                        position: static;
+                        position: absolute;
+                        left: 2px;
+                        bottom: -14px;
                     }
                 }
-
+            }
+            &.layout-3 {
+                width:100%;
+                padding:5px;
+                border-bottom: 1px solid @brand-primary;
+                text-align: left;
+                .game-code {
+                    margin: 5px 2px;
+                }
+                &.selected {
+                    position: relative;
+                    background-color: #59bf40;
+                    color: white;
+                }
+            }
+            &.layout-4 {
+                width:50%;
+                padding: 5px;
+                border-left: 1px solid @brand-primary;
+                border-bottom: 1px solid @brand-primary;
+                .game-code {
+                    margin: 5px 2px;
+                }
+                &:nth-child(2n+1) {
+                    border-left: 0;
+                }
+                &.selected {
+                    position: relative;
+                    background-color: #59bf40;
+                    color: white;
+                }
             }
         }
     }
