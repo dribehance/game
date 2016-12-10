@@ -1,26 +1,58 @@
 // by dribehance <dribehance.kksdapp.com>
-angular.module("Game").factory("gameExternalServices", function($http, userServices, apiServices, localStorageService, config) {
+angular.module("Game").factory("gameExternalServices", function($rootScope, $q, $http, userServices, apiServices, localStorageService, config) {
 	return {
 		// 配置 获取最佳投注游戏
-		config: function() {
+		config: function(repeat_time) {
 			var self = this;
 			var games = ["北京赛车", "幸运飞艇"],
 				types = ["冠军", "亚军", "季军"],
-				betting_types = ["单", "双", "大", "小"];
+				betting_types = ["单", "双", "大", "小"],
+				result = [],
+				flag = 0;
+			var defer = $q.defer();
 			angular.forEach(games, function(g, g_index) {
 				angular.forEach(types, function(t, t_index) {
 					angular.forEach(betting_types, function(bt, bt_index) {
-						self.query_trend_by_type();
+						++flag;
+						self.query_trend_by_type(g, t, bt, repeat_time).then(function(data) {
+							result.push({
+								game: g,
+								type: t,
+								betting_type: bt,
+								repeat_time: repeat_time,
+								data: data
+							});
+							--flag;
+							console.log("config...")
+							if (flag == 0) {
+								console.log("config ok")
+								$rootScope.$emit("config:ok", result);
+							}
+						});
 					})
 				})
 			});
+			$rootScope.$on("config:ok", function(event, data) {
+				var sort_data = data.sort(function(a, b) {
+					console.log(a.data.length < b.data.length)
+					if (a.data.length < b.data.length) {
+						return 1;
+					}
+					if (a.data.length > b.data.length) {
+						return -1;
+					}
+					return 0;
+				})
+				defer.resolve(sort_data)
+			})
+			return defer.promise;
 		},
 		// 自动下单 从某一期开始的自动投注
-		auto_betting: function(time, game, type, betting_type) {
+		auto_betting: function(game, type, betting_type, time) {
 
 		},
 		// 查询从某一期开始,同一种游戏的收益,某一投注类型
-		query_gains_from_time: function(time, game, type, betting_type) {
+		query_gains_from_time: function(game, type, betting_type, time) {
 
 			return userServices.query_orders({
 				pn: 1,

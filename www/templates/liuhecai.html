@@ -11,8 +11,8 @@
             <span class="text-primary"> {{liuhecai.qishu_next}}</span>
             <span class="text-white">期，距离开奖时间</span>
             <span class="text-primary">
-                <timer ng-if="liuhecai.day_seconds" max-time-unit="'minute'" interval="1000" countdown="liuhecai.day_seconds" finish-callback="callbackTimer.finished()">
-                    {{mminutes}}:{{sseconds}}
+                <timer ng-if="liuhecai.day_seconds" interval="1000" countdown="liuhecai.day_seconds" finish-callback="callbackTimer.finished()">
+                    {{days}}天{{hours}}:{{mminutes}}:{{sseconds}}
                 </timer>
                 <span ng-if="!liuhecai.day_seconds">--:--</span>
             </span>
@@ -40,7 +40,7 @@
             已投
         </div>
         <div class="game-section-content">
-            <div ng-repeat="log in liuhecai.Result.XyftBjpkLogs">
+            <div ng-repeat="log in liuhecai.Result.XyftBjpkLogs" class="layout-2">
                 <span>{{log.mingci}} {{log.haoma}} </span>
                 <span class="text-danger"> {{log.money}}</span>
             </div>
@@ -66,7 +66,7 @@
                     <span class="game-code liuhecai-code-{{liuhecai_history.n_07}}">{{liuhecai_history.n_07}}</span>
                 </div>
                 <div>
-                    {{liuhecai_history.XglhcData_info}}
+                    {{liuhecai_history.xglhcdata_info}}
                 </div>
             </div>
         </div>

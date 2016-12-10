@@ -65,7 +65,7 @@ angular.module("Game").factory("userServices", function($rootScope, $http, apiSe
 		// 幸运飞艇
 		query_feiting: apiServices._get(angular.extend({}, config.common_params, {
 			url: config.url + "/app/XyftManage/xyftOut",
-			token: localStorageService.get("token")
+			token: localStorageService.get("token"),
 		})),
 		query_feiting_history: apiServices._get(angular.extend({}, config.common_params, {
 			url: config.url + "/app/XyftManage/xyftList",
@@ -84,7 +84,7 @@ angular.module("Game").factory("userServices", function($rootScope, $http, apiSe
 		// 北京赛车
 		query_saiche: apiServices._get(angular.extend({}, config.common_params, {
 			url: config.url + "/app/BjpksManage/bjpksOut",
-			token: localStorageService.get("token")
+			token: localStorageService.get("token"),
 		})),
 		query_saiche_history: apiServices._get(angular.extend({}, config.common_params, {
 			url: config.url + "/app/BjpksManage/bjpksList",

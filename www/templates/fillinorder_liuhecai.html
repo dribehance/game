@@ -10,8 +10,8 @@
             <span class="text-primary"> {{liuhecai.qishu_next}}</span>
             <span class="text-white">期，距离开奖时间</span>
             <span class="text-primary">
-                <timer ng-if="liuhecai.day_seconds" max-time-unit="'minute'" interval="1000" countdown="liuhecai.day_seconds" finish-callback="callbackTimer.finished()">
-                    {{mminutes}}:{{sseconds}}
+                <timer ng-if="liuhecai.day_seconds" interval="1000" countdown="liuhecai.day_seconds" finish-callback="callbackTimer.finished()">
+                    {{days}}天{{hours}}:{{mminutes}}:{{sseconds}}
                 </timer>
                 <span ng-if="!liuhecai.day_seconds">--:--</span>
             </span>

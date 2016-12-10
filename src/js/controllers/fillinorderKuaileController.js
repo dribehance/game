@@ -108,11 +108,12 @@ angular.module("Game").controller("fillinorderKuaileController", function($scope
 			return;
 		}
 		var buy_infos = "",
-			total_money = 0;
+			total_money = 0,
+			delta = $scope.input.game_type.value == "1" ? "0" : "1";
 		angular.forEach($scope.games, function(game, index) {
 			angular.forEach(game.oIndexBeans, function(g, i) {
 				if (g.betted) {
-					var _index = index;
+					var _index = parseFloat(index) + parseFloat(delta);
 					total_money += parseFloat(g.betting_money);
 					buy_infos += _index + "A" + g.name + "A" + g.betting_money + "A" + g.rate + "#";
 				}

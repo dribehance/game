@@ -1,5 +1,5 @@
 .two-grid {
-    font-size: 0.1px;
+    font-size: 0px;
     text-align: justify;
     > * {
         display: inline-block;
@@ -25,17 +25,20 @@
 }
 
 .three-grid {
-    padding: 15px 15px 15px 15px;
-    font-size: 0.1px;
+    padding: 8px;
+    font-size: 0px;
     text-align: justify;
     > * {
         display: inline-block;
-        width: 31%;
-        padding: 15px 2px;
-        margin-bottom: 15px;
+        width: 32%;
+        padding: 20px 2px;
+        margin-bottom: 8px;
+        // overflow: hidden;
+        // white-space: nowrap;
+        // text-overflow:ellipsis;
         .box-sizing(border-box);
         text-align: center;
-        font-size: 12px;
+        font-size: 18px;
         background-color: @brand-primary;
         color: #3e231f;
     }
