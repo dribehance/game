@@ -11,7 +11,7 @@
             <span class="text-white">期，距离开奖时间</span>
             <span class="text-primary">
                 <timer ng-if="liuhecai.day_seconds" interval="1000" countdown="liuhecai.day_seconds" finish-callback="callbackTimer.finished()">
-                    {{days}}天{{hours}}:{{mminutes}}:{{sseconds}}
+                    {{days}}天{{hhours}}:{{mminutes}}:{{sseconds}}
                 </timer>
                 <span ng-if="!liuhecai.day_seconds">--:--</span>
             </span>

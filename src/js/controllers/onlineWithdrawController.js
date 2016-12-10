@@ -1,5 +1,5 @@
 // by dribehance <dribehance.kksdapp.com>
-angular.module("Game").controller("onlineWithdrawController", function($scope, $rootScope, userServices, errorServices, toastServices, localStorageService, config) {
+angular.module("Game").controller("onlineWithdrawController", function($scope, $rootScope, $timeout, userServices, errorServices, toastServices, localStorageService, config) {
 	$scope.input = {};
 	toastServices.show();
 	userServices.query_basicinfo().then(function(data) {
@@ -22,6 +22,9 @@ angular.module("Game").controller("onlineWithdrawController", function($scope, $
 			toastServices.hide()
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
 				errorServices.autoHide(data.message);
+				$timeout(function() {
+					$rootScope.back();
+				}, 2000)
 			} else {
 				errorServices.autoHide(data.message);
 			}

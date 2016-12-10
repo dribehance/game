@@ -3,14 +3,27 @@
     <div class="me-section">
         <div class="me-section-header">
             <span class="block">账号收款二维码</span>
-            <span class="block">请先转账后提交</span>
-            <div class="qrcode">
-                <imageview data-rate="1" src="staticImageUrl + charge_info.getmoney_code"></imageview>
-            </div>
             <span class="block">长按保存图中二维码进行转账</span>
             <p></p>
-            <span class="block">收款账号：{{charge_info.getmoney_account_number}}</span>
-            <span class="block">账号名称：{{charge_info.getmoney_account_name}}</span>
+            <span class="block">请先转账后提交</span>
+        </div>
+        <div class="payment-qrcode">
+            <div>
+                <div class="qrcode">
+                    <imageview data-rate="1" src="staticImageUrl + charge_info.getmoney_code" center-only></imageview>
+                </div>
+                <p></p>
+                <span class="block">支付宝：{{charge_info.getmoney_account_number}}</span>
+                <span class="block">账号名称：{{charge_info.getmoney_account_name}}</span>
+            </div>
+            <div>
+                <div class="qrcode">
+                    <imageview data-rate="1" src="staticImageUrl + charge_info.getmoney_weixincode" center-only></imageview>
+                </div>
+                <p></p>
+                <span class="block">微信：{{charge_info.getmoney_weixin_account_number}}</span>
+                <span class="block">账号名称：{{charge_info.getmoney_weixin_account_name}}</span>
+            </div>f
         </div>
         <div class="list-group">
             <div class="list-group-item">

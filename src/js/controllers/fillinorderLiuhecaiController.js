@@ -123,16 +123,16 @@ angular.module("Game").controller("fillinorderLiuhecaiController", function($sco
 		angular.forEach($scope.games, function(game, index) {
 			angular.forEach(game.oIndexBeans, function(g, i) {
 				if (g.betted) {
-					var _index = index;
+					// var _index = index + 1;
 					total_money += parseFloat(g.betting_money);
-					buy_infos += _index + "A" + g.name + "A" + g.betting_money + "A" + g.rate + "#";
+					buy_infos += $scope.input.game_type.value + "A" + g.name + "A" + g.betting_money + "A" + g.rate + "#";
 				}
 			})
 		});
 		buy_infos = buy_infos.substring(0, buy_infos.length - 1);
 		toastServices.show();
 		userServices.betting_liuhecai({
-			"game_type": 3,
+			"game_type": 4,
 			"o_type": $scope.input.game_type.value,
 			"total_money": total_money,
 			"n_periods_next": $scope.liuhecai.qishu_str,

@@ -123,6 +123,11 @@ angular.module("Game").factory("userServices", function($rootScope, $http, apiSe
 			url: config.url + "/app/XglhcManage/oddsXglhcList",
 			cache: true,
 		})),
+		// 六合彩下注
+		betting_liuhecai: apiServices._get(angular.extend({}, config.common_params, {
+			url: config.url + "/app/XglhcManage/buyXglhcGame",
+			token: localStorageService.get("token")
+		})),
 		// 消息列表
 		query_messages: apiServices._get(angular.extend({}, config.common_params, {
 			url: config.url + "api_url",
