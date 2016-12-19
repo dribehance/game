@@ -43,9 +43,6 @@ angular.module("Game").controller("fillinorderLiuhecaiController", function($sco
 			$scope.query_liuhecai_peilv(n.value);
 		}
 	}, true);
-	$scope.parse_code = function(codes) {
-		return codes.split("，");
-	}
 	$scope.query_liuhecai_peilv = function(type) {
 		toastServices.show();
 		userServices.query_liuhecai_peilv({
@@ -100,6 +97,14 @@ angular.module("Game").controller("fillinorderLiuhecaiController", function($sco
 	};
 	$scope.refresh = function() {
 		$route.reload();
+	};
+	$scope.parse_code = function(code) {
+		return parseFloat(code) < 10 ? "0" + code : code;
+	};
+	$scope.parse_code_1 = function(codes) {
+		return codes.split("，").filter(function(c) {
+			return c != ''
+		});
 	};
 	// reset form
 	$scope.resetForm = function() {

@@ -128,22 +128,41 @@
 }
 
 .game-header {
+    display: block;
+    text-align: center;
     .game-balance {
-        float: right;
-        width: 65px;
+        // float: right;
+        // width: 65px;
         padding: 6px 0;
-        border-left: 1px solid #3e231f;
         text-align: center;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        .balance {
+            padding-left: 5px;
+            font-weight: bold;
+            border-left: 5px solid #3e231f;
+        }
+        .balance ~ span {
+            padding-right: 5px;
+            font-weight: bold;
+            border-right: 5px solid #3e231f;
+        }
+    }
+    .liuhecai-cell {
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+        font-weight: bold;
+        line-height: 0.7;
     }
     .game-select {
-        float: right;
-        width: 110px;
+        // float: right;
+        // width: 110px;
         position: relative;
-        border-bottom: 1px solid fade(black, 10%);
-        background-color: white;
+        margin-bottom: 15px;
+        // border-bottom: 1px solid fade(black, 10%);
+        // background-color: #d6b577;
         &:before {
             content: "\f107";
             font-family: FontAwesome;
@@ -151,11 +170,20 @@
             right: 8px;
             top: 15px;
         }
+        &:after {
+            content: "请选择游戏类型：";
+            position: absolute;
+            left: 8px;
+            top: 15px;
+            font-weight: bold;
+        }
         select {
             width: 100%;
-            padding: 15px;
+            padding: 15px 15px 15px 140px;
+            text-align: left;
             -webkit-appearance: none;
             border: none;
+            background-color: #d6b577;
             .box-shadow(none);
             .box-sizing(border-box);
         }
@@ -173,9 +201,9 @@
 .game-code {
     display: inline-block;
     position: relative;
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
     margin-right: 1px;
     margin-bottom: 5px;
     font-size: 12px;
@@ -215,15 +243,18 @@
         .box-shadow(2px 2px 0px fade(black, 10%));
     }
     @media (min-width: 360px) {
-        width: 24px;
-        height: 24px;
-        line-height: 24px;
+        width: 28px;
+        height: 28px;
+        line-height: 28px;
         font-size: 14px;
     }
     // .make-feting-code();
     // .make-saiche-code();
     // .make-kuaile-code();
     // .make-liuhecai-code();
+    ~ span.text-danger {
+        font-weight: bold;
+    }
     .make-game-code();
 }
 .make-game-code() {
@@ -240,21 +271,86 @@
     @red-code-list:01,02,07,08,12,13,18,19,23,24,29,30,34,35,40,45,46;
     @blue-code-list:03,04,09,10,14,15,20,25,26,31,36,37,41,42,47,48;
     @green-code-list:05,06,11,16,17,21,22,27,28,32,33,38,39,43,44,49;
-    .loop(liuhecai-code,@red-code-list,length(@red-code-list),#f2385a);
-    .loop(liuhecai-code,@blue-code-list,length(@blue-code-list),#00b8ff);
-    .loop(liuhecai-code,@green-code-list,length(@green-code-list),#20d00b);
-    .loop (@name,@list,@counter,@color,@random:false) when(@counter > 0) and (@random =  false){
+    .loop_liuhe(liuhecai-code,@red-code-list,length(@red-code-list),#f2385a,~'../images/red_code.png');
+    .loop_liuhe(liuhecai-code,@blue-code-list,length(@blue-code-list),#00b8ff,~'../images/blue_code.png');
+    .loop_liuhe(liuhecai-code,@green-code-list,length(@green-code-list),#20d00b,~'../images/green_code.png');
+    .loop_liuhe (@name,@list,@counter,@color,@bg_url,@random:false) when(@counter > 0) and (@random =  false){
         @var:extract(@list,@counter);
         &.@{name}-0@{var} when(@var<10) {
-            background-color: @color;
+            width: 30px;
+            height: 30px;
+            color:#3e231f;
+            font-weight: bold;
+            text-align: left;
+            text-indent: 4px;
+            line-height: 30px;
+            background-color: transparent;
+            background-image: url(@bg_url);
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            border:none;
+            .box-shadow(none);
+            &:before,&:after{
+                content: "";
+                display: none;
+            }
         }
         &.@{name}-@{var} when(@var<10) {
-            background-color: @color;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            color:#3e231f;
+            font-weight: bold;
+            text-align: left;
+            text-indent: 4px;
+            background-color: transparent;
+            background-image: url(@bg_url);
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            border:none;
+            .box-shadow(none);
+            &.small-size {
+                width: 24px;
+                height: 24px;
+                line-height: 24px;
+                margin-top: 8px;
+                font-size: 12px;
+            }
+            &:before,&:after{
+                content: "";
+                display: none;
+            }
         }
         &.@{name}-@{var} when(@var>=10) {
-            background-color: @color;
+            width: 30px;
+            height: 30px;
+            color:#3e231f;
+            font-weight: bold;
+            text-align: left;
+            text-indent: 4px;
+            line-height: 30px;
+            background-color: transparent;
+            background-image: url(@bg_url);
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            border:none;
+            .box-shadow(none);
+            &.small-size {
+                width: 24px;
+                height: 24px;
+                margin-top: 8px !important;
+                line-height: 24px;
+                font-size: 12px;
+            }
+            &:before,&:after{
+                content: "";
+                display: none;
+            }
         }
-        .loop(@name,@list,@counter - 1,@color);
+        .loop_liuhe(@name,@list,@counter - 1,@color,@bg_url,@random);
     }
     .loop (@name,@list,@counter,@color,@random:false) when(@counter > 0) and (@random =  true){
         @var:extract(@list,@counter);
@@ -269,6 +365,25 @@
         &.@{name}-@{var} when(@var>=10) {
             background-color: hsl(@hue,50%,50%);
         }
+
+        &.@{name}-0@{var} when(@var<10) and (@name = kuaile-code) {
+            width: 28px;
+            height: 28px;
+            line-height:28px;
+            background-color: hsl(@hue,50%,50%);
+        }
+        &.@{name}-@{var} when(@var<10) and (@name = kuaile-code) {
+            background-color: hsl(@hue,50%,50%);
+            width: 28px;
+            height: 28px;
+            line-height:28px;
+        }
+        &.@{name}-@{var} when(@var>=10) and (@name = kuaile-code) {
+            background-color: hsl(@hue,50%,50%);
+            width: 28px;
+            height: 28px;
+            line-height:28px;
+        }
         .loop(@name,@list,@counter - 1,@color,@random);
     }
 
@@ -278,24 +393,29 @@
     .game-section-header {
         background-color: @brand-primary;
         padding: 10px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
         text-align: center;
+        font-weight: bold;
     }
     .game-section-content {
         overflow: hidden;
+        background-color: #e8c684;
         > div {
+            position: relative;
             float: left;
             font-size: 13px;
             overflow: hidden;
             text-align: center;
             vertical-align: middle;
-            background-color: white;
+            background-color: #e8c684;
             overflow: hidden;
             text-overflow:ellipsis;
             white-space: nowrap;
             .box-sizing(border-box);
             &.layout-1 {
                 width: 33.33%;
-                height: 50px;
+                height: 58px;
                 padding: 5px 0;
                 border-left: 1px solid @brand-primary;
                 border-bottom: 1px solid @brand-primary;
@@ -305,12 +425,16 @@
                 >span:first-child {
                     display: block;
                     margin: 0 auto 5px;
+                    font-weight: bold;
                 }
                 &.selected {
                     position: relative;
-                    background-color: #59bf40;
-                    color: white;
-                    
+                    background-color: #d6b577;
+                    color: #7b231f;
+                    font-weight: bold;
+                    .game-code {
+                        opacity: 0.5;
+                    }
                 }
             }
             &.layout-2 {
@@ -319,7 +443,11 @@
                 line-height: 50px;
                 border-left: 1px solid @brand-primary;
                 border-bottom: 1px solid @brand-primary;
+                span:first-child {
+                    font-weight: bold;
+                }
                 .text-danger {
+                    font-weight: bold;
                     font-size: 12px;
                 }
                 &:nth-child(3n+1) {
@@ -327,12 +455,13 @@
                 }
                 &.selected {
                     position: relative;
-                    background-color: #59bf40;
-                    color: white;
+                    background-color: #d6b577;
+                    color: #7b231f;
+                    font-weight: bold;
                     >span:first-child{
                         position: absolute;
-                            left: 2px;
-                            top: -14px;
+                        left: 2px;
+                        top: -14px;
                     }
                     >span:nth-child(2){
                         position: absolute;
@@ -346,30 +475,42 @@
                 padding:5px;
                 border-bottom: 1px solid @brand-primary;
                 text-align: left;
+                >div {
+                    white-space: normal;
+                }
+                span:first-child {
+                    font-weight: bold;
+                }
                 .game-code {
                     margin: 5px 2px;
                 }
                 &.selected {
                     position: relative;
-                    background-color: #59bf40;
-                    color: white;
+                    background-color: #d6b577;
+                    color: #7b231f;
+                    font-weight: bold;
                 }
             }
             &.layout-4 {
                 width:50%;
+                height: 60px;
                 padding: 5px;
                 border-left: 1px solid @brand-primary;
                 border-bottom: 1px solid @brand-primary;
                 .game-code {
                     margin: 5px 2px;
                 }
+                span:first-child {
+                    font-weight: bold;
+                }
                 &:nth-child(2n+1) {
                     border-left: 0;
                 }
                 &.selected {
                     position: relative;
-                    background-color: #59bf40;
-                    color: white;
+                    background-color: #d6b577;
+                    color: #7b231f;
+                    font-weight: bold;
                 }
             }
         }
@@ -380,6 +521,7 @@
         margin-top: 5px;
         text-align: center;
         border-radius: 5px;
+        font-weight: bold;
         background-color: @brand-primary;
     }
 }
@@ -420,7 +562,9 @@
     background-color: @brand-primary;
     border-radius: 5px;
     .trend-time {
+        font-weight: bold;
         font-size: 12px;
+        display: block;
     }
     .trend-item-header {
         padding: 5px;
@@ -434,6 +578,14 @@
         font-size: 12px;
         border-bottom: 1px solid fade(black, 20%);
         vertical-align: middle;
+        text-align: center;
+        .liuhecai-cell {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+            font-weight: bold;
+            line-height: 0.7;
+        }
     }
     @media (min-width: 360px) {
         .trend-item-content {

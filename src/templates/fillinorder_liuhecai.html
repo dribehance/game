@@ -21,14 +21,37 @@
         </p>
         <p ng-if="liuhecai.waiting" class="waiting"><i class="fa fa-clock-o" aria-hidden="true"></i> 第 {{liuhecai.qishu_next}} 期正在开奖，请耐心等候...</p>
         <p ng-if="!liuhecai.waiting">
-            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_01}}">{{liuhecai.Result.XglhcData.n_01}}</span>
-            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_02}}">{{liuhecai.Result.XglhcData.n_02}}</span>
-            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_03}}">{{liuhecai.Result.XglhcData.n_03}}</span>
-            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_04}}">{{liuhecai.Result.XglhcData.n_04}}</span>
-            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_05}}">{{liuhecai.Result.XglhcData.n_05}}</span>
-            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_06}}">{{liuhecai.Result.XglhcData.n_06}}</span>
-            <span class="text-white"> + </span>
-            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_07}}">{{liuhecai.Result.XglhcData.n_07}}</span>
+            <div class="liuhecai-cell">
+                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_01}}">{{parse_code(liuhecai.Result.XglhcData.n_01)}}</span>
+                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_01_str)}}</span>
+            </div>
+            <div class="liuhecai-cell">
+                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_02}}">{{parse_code(liuhecai.Result.XglhcData.n_02)}}</span>
+                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_02_str)}}</span>
+            </div>
+            <div class="liuhecai-cell">
+                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_03}}">{{parse_code(liuhecai.Result.XglhcData.n_03)}}</span>
+                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_03_str)}}</span>
+            </div>
+            <div class="liuhecai-cell">
+                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_04}}">{{parse_code(liuhecai.Result.XglhcData.n_04)}}</span>
+                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_04_str)}}</span>
+            </div>
+            <div class="liuhecai-cell">
+                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_05}}">{{parse_code(liuhecai.Result.XglhcData.n_05)}}</span>
+                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_05_str)}}</span>
+            </div>
+            <div class="liuhecai-cell">
+                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_06}}">{{parse_code(liuhecai.Result.XglhcData.n_06)}}</span>
+                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_06_str)}}</span>
+            </div>
+            <div class="liuhecai-cell">
+                <span class="text-white"> + </span>
+            </div>
+            <div class="liuhecai-cell">
+                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_07}}">{{parse_code(liuhecai.Result.XglhcData.n_07)}}</span>
+                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_07_str)}}</span>
+            </div>
         </p>
     </div>
     <!-- <div class="overlay" ng-if="liuhecai.waiting">
@@ -45,7 +68,7 @@
                 <span class="text-danger"> {{g.rate}}</span>
                 <span ng-if="g.betted"> {{g.betting_money}}元</span>
                 <div ng-if="input.game_type.value == '3'||input.game_type.value == '4'||input.game_type.value == '5'">
-                    <span class="game-code liuhecai-code-{{code}}" ng-repeat="code in parse_code(g.number) track by $index">{{code}}</span>
+                    <span class="game-code liuhecai-code-{{code}}" ng-class="{'small-size':parse_code_1(g.number).length == 5}" ng-repeat="code in parse_code_1(g.number) track by $index">{{code}}</span>
                 </div>
             </div>
         </div>

@@ -72,4 +72,7 @@ angular.module("Game").controller("liuhecaiController", function($scope, $route,
 	$scope.refresh = function() {
 		$route.reload();
 	}
+	$scope.parse_code = function(code) {
+		return parseFloat(code) < 10 ? "0" + code : code;
+	}
 })

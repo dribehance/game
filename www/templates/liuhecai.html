@@ -2,7 +2,7 @@
 <div class="wrap">
     <div class="game-header">
         <div class="game-balance">
-            <span class="block">余额</span>
+            <span class="balance">余额</span>
             <span>{{liuhecai.balance_money|currency:"￥"}}</span>
         </div>
         <p>
@@ -25,14 +25,37 @@
         </p>
         <p ng-if="liuhecai.waiting" class="waiting"><i class="fa fa-clock-o" aria-hidden="true"></i> 第 {{liuhecai.qishu_next}} 期正在开奖，请耐心等候...</p>
         <p ng-if="!liuhecai.waiting">
-            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_01}}">{{liuhecai.Result.XglhcData.n_01}}</span>
-            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_02}}">{{liuhecai.Result.XglhcData.n_02}}</span>
-            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_03}}">{{liuhecai.Result.XglhcData.n_03}}</span>
-            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_04}}">{{liuhecai.Result.XglhcData.n_04}}</span>
-            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_05}}">{{liuhecai.Result.XglhcData.n_05}}</span>
-            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_06}}">{{liuhecai.Result.XglhcData.n_06}}</span>
-            <span class="text-white"> + </span>
-            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_07}}">{{liuhecai.Result.XglhcData.n_07}}</span>
+            <div class="liuhecai-cell">
+                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_01}}">{{parse_code(liuhecai.Result.XglhcData.n_01)}}</span>
+                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_01_str)}}</span>
+            </div>
+            <div class="liuhecai-cell">
+                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_02}}">{{parse_code(liuhecai.Result.XglhcData.n_02)}}</span>
+                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_02_str)}}</span>
+            </div>
+            <div class="liuhecai-cell">
+                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_03}}">{{parse_code(liuhecai.Result.XglhcData.n_03)}}</span>
+                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_03_str)}}</span>
+            </div>
+            <div class="liuhecai-cell">
+                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_04}}">{{parse_code(liuhecai.Result.XglhcData.n_04)}}</span>
+                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_04_str)}}</span>
+            </div>
+            <div class="liuhecai-cell">
+                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_05}}">{{parse_code(liuhecai.Result.XglhcData.n_05)}}</span>
+                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_05_str)}}</span>
+            </div>
+            <div class="liuhecai-cell">
+                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_06}}">{{parse_code(liuhecai.Result.XglhcData.n_06)}}</span>
+                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_06_str)}}</span>
+            </div>
+            <div class="liuhecai-cell">
+                <span class="text-white"> + </span>
+            </div>
+            <div class="liuhecai-cell">
+                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_07}}">{{parse_code(liuhecai.Result.XglhcData.n_07)}}</span>
+                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_07_str)}}</span>
+            </div>
         </p>
     </div>
     <div class="game-section">
@@ -56,18 +79,41 @@
             <div class="trend-item-content">
                 <div>
                     <span class="trend-time">{{liuhecai_history.qishu}}期</span>
-                    <span class="game-code liuhecai-code-{{liuhecai_history.n_01}}">{{liuhecai_history.n_01}}</span>
-                    <span class="game-code liuhecai-code-{{liuhecai_history.n_02}}">{{liuhecai_history.n_02}}</span>
-                    <span class="game-code liuhecai-code-{{liuhecai_history.n_03}}">{{liuhecai_history.n_03}}</span>
-                    <span class="game-code liuhecai-code-{{liuhecai_history.n_04}}">{{liuhecai_history.n_04}}</span>
-                    <span class="game-code liuhecai-code-{{liuhecai_history.n_05}}">{{liuhecai_history.n_05}}</span>
-                    <span class="game-code liuhecai-code-{{liuhecai_history.n_06}}">{{liuhecai_history.n_06}}</span>
-                    <span> + </span>
-                    <span class="game-code liuhecai-code-{{liuhecai_history.n_07}}">{{liuhecai_history.n_07}}</span>
+                    <div class="liuhecai-cell">
+                        <span class="game-code liuhecai-code-{{liuhecai_history.n_01}}">{{parse_code(liuhecai_history.n_01)}}</span>
+                        <span class="block">{{liuhecai_history.n_01_str}}</span>
+                    </div>
+                    <div class="liuhecai-cell">
+                        <span class="game-code liuhecai-code-{{liuhecai_history.n_02}}">{{parse_code(liuhecai_history.n_02)}}</span>
+                        <span class="block">{{liuhecai_history.n_02_str}}</span>
+                    </div>
+                    <div class="liuhecai-cell">
+                        <span class="game-code liuhecai-code-{{liuhecai_history.n_03}}">{{parse_code(liuhecai_history.n_03)}}</span>
+                        <span class="block">{{liuhecai_history.n_03_str}}</span>
+                    </div>
+                    <div class="liuhecai-cell">
+                        <span class="game-code liuhecai-code-{{liuhecai_history.n_04}}">{{parse_code(liuhecai_history.n_04)}}</span>
+                        <span class="block">{{liuhecai_history.n_04_str}}</span>
+                    </div>
+                    <div class="liuhecai-cell">
+                        <span class="game-code liuhecai-code-{{liuhecai_history.n_05}}">{{parse_code(liuhecai_history.n_05)}}</span>
+                        <span class="block">{{liuhecai_history.n_05_str}}</span>
+                    </div>
+                    <div class="liuhecai-cell">
+                        <span class="game-code liuhecai-code-{{liuhecai_history.n_06}}">{{parse_code(liuhecai_history.n_06)}}</span>
+                        <span class="block">{{liuhecai_history.n_06_str}}</span>
+                    </div>
+                    <div class="liuhecai-cell">
+                        <span>+</span>
+                    </div>
+                    <div class="liuhecai-cell">
+                        <span class="game-code liuhecai-code-{{liuhecai_history.n_07}}">{{parse_code(liuhecai_history.n_07)}}</span>
+                        <span class="block">{{liuhecai_history.n_07_str}}</span>
+                    </div>
                 </div>
-                <div>
+                <!-- <div>
                     {{liuhecai_history.xglhcdata_info}}
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="wrap text-center" ng-click="loadMore()">{{page.message}}</div>
