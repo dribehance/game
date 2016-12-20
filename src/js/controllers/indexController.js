@@ -9,12 +9,16 @@ angular.module("Game").controller("indexController", function($scope, $rootScope
 			errorServices.autoHide(data.message);
 		}
 	})
+	$scope.preview_banner = function(id) {
+		$location.path("banner_detail").search("id", id);
+	}
 	$scope.go = function(path) {
 		if (!localStorageService.get("token")) {
+			toastServices.show();
 			errorServices.autoHide("请先登录");
 			$timeout(function() {
 				$location.path("signin");
-			}, 3000)
+			}, 1000)
 			return;
 		}
 		$location.path(path);

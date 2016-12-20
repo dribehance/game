@@ -194,7 +194,7 @@
         padding: 15px;
         left: 15px;
         right: 15px;
-        background-color: fade(white, 80%);
+        background-color: fade(#d6b577, 95%);
     }
 }
 
@@ -493,7 +493,7 @@
             }
             &.layout-4 {
                 width:50%;
-                height: 60px;
+                height: 65px;
                 padding: 5px;
                 border-left: 1px solid @brand-primary;
                 border-bottom: 1px solid @brand-primary;
@@ -829,3 +829,49 @@
         margin: auto auto;
     }
 }
+
+.image-group {
+    margin: -8px -8px 0 -8px;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #d6b577;
+    .image-group-item {
+        display: block;
+        border-bottom: 1px solid fade(#42241f, 20%);
+        overflow: hidden;
+        .image {
+            float: left;
+            width: 90px;
+        }
+        .summary {
+            height: 90px; 
+            overflow: hidden;
+            text-indent: 10px;
+            .title {
+                padding: 15px 0;
+                font-size: 20px;
+                overflow: hidden;
+                text-overflow:ellipsis;
+                white-space: nowrap;
+            }
+            .post-time {
+                color:fade(black, 50%);
+            }
+        }
+    }
+}
+
+iframe {
+    position: absolute;
+    top:48px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+iframe p {
+    margin: 0 0 15px 0;
+}
+

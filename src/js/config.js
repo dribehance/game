@@ -41,6 +41,8 @@ angular.module("Game").constant("config", {
 		"fillinorder_saiche",
 		"fillinorder_kuaile",
 		"fillinorder_liuhecai",
-		"config",
+		"banner_detail",
+		"image_group",
+		"image_preview"
 	]
 });

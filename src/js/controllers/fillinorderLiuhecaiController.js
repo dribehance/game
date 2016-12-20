@@ -36,6 +36,15 @@ angular.module("Game").controller("fillinorderLiuhecaiController", function($sco
 	}, {
 		"label": "特码生肖",
 		"value": "5",
+	}, {
+		"label": "三中三",
+		"value": "6",
+	}, {
+		"label": "三中二",
+		"value": "7",
+	}, {
+		"label": "二中二",
+		"value": "8",
 	}];
 	$scope.input.game_type = $scope.game_type[0];
 	$scope.$watch("input.game_type", function(n, o) {

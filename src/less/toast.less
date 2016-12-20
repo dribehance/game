@@ -20,11 +20,12 @@
         margin-top: -25px;
         height: 50px;
         width: 50px;
-        background-color: fade(white, 50%);
+        border-radius: 5px;
+        background-color: fade(black, 50%);
         background-image: url("../images/loader.gif");
         background-repeat: no-repeat;
         background-position: center center;
-        background-size: 70%;
+        background-size: 60%;
     }
 }
 
@@ -41,15 +42,7 @@
     background-color: fade(black, 50%);
     color: white;
     display: none;
-    &:before {
-        content: "";
-        position: fixed;
-        top: 50px;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        background-color: fade(black, 1%);
-    }
+    border-radius: 5px;
 }
 
 .confirm-box {

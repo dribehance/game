@@ -1,10 +1,11 @@
 // by dribehance <dribehance.kksdapp.com>
 angular.module("Game", [
 		"ngRoute",
-		// "ngSanitize",
+		"ngSanitize",
 		"LocalStorageModule",
 		// "flow",
-		"timer"
+		"timer",
+		"ngPinchZoom"
 	])
 	.config(function($routeProvider, $httpProvider, $locationProvider, localStorageServiceProvider, config) {
 		angular.forEach(config.interceptor, function(path) {
