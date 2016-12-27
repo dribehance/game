@@ -130,7 +130,7 @@ angular.module("Game").factory("userServices", function($rootScope, $http, apiSe
 		})),
 		// 消息列表
 		query_messages: apiServices._get(angular.extend({}, config.common_params, {
-			url: config.url + "api_url",
+			url: config.url + "/app/UserCenterApp/myInformationList",
 			token: localStorageService.get("token")
 		})),
 		// 消息详情

@@ -49,6 +49,8 @@ angular.module("Game").controller("fillinorderLiuhecaiController", function($sco
 	$scope.input.game_type = $scope.game_type[0];
 	$scope.$watch("input.game_type", function(n, o) {
 		if (n) {
+			$scope.is_board_open = false;
+			$scope.resetForm();
 			$scope.query_liuhecai_peilv(n.value);
 		}
 	}, true);
@@ -92,10 +94,10 @@ angular.module("Game").controller("fillinorderLiuhecaiController", function($sco
 	// betting
 	$scope.betting = function() {
 		var number_reg = /^[0-9]*$/;
-		if (!$scope.input.betting_money || !number_reg.test($scope.input.betting_money)) {
+		if (!number_reg.test($scope.input.betting_money) || $scope.input.betting_money < 1) {
 			return;
 		}
-		$scope.input.selected_game_cell.betting_money = $scope.input.betting_money;
+		$scope.input.selected_game_cell.betting_money = parseFloat($scope.input.betting_money);
 		$scope.input.selected_game_cell.betted = true;
 		$scope.popup_state = "close";
 	};
@@ -115,23 +117,110 @@ angular.module("Game").controller("fillinorderLiuhecaiController", function($sco
 			return c != ''
 		});
 	};
+	// carom 连中
+	$scope.game_code = [];
+	for (var i = 1; i < 50; i++) {
+		$scope.game_code.push({
+			number: i,
+			check: false
+		});
+	}
+	$scope.toggle_board = function() {
+		$scope.is_board_open = !$scope.is_board_open;
+	}
+	$scope.caroms = [];
+	$scope.check_list = [];
+	$scope.check = function(game) {
+		var size = 3;
+		if ($scope.input.game_type.value == 8) {
+			size = 2;
+		}
+		if (game.check) {
+			game.check = !game.check;
+			$scope.check_list = $scope.check_list.filter(function(g) {
+				return g != game;
+			})
+			return;
+		}
+		game.check = true;
+		$scope.check_list.push(game);
+		if ($scope.check_list.length > size - 1) {
+			$scope.caroms.push({
+				id: new Date().getTime(),
+				numbers: $scope.check_list,
+				money: ""
+			});
+			$scope.check_list = [];
+			$scope.game_code.map(function(code) {
+				code.check = false;
+				return code;
+			})
+			$scope.toggle_board();
+		}
+	}
+	$scope.remove = function(game) {
+		$scope.caroms = $scope.caroms.filter(function(g) {
+			return g.id != game.id;
+		})
+	};
 	// reset form
 	$scope.resetForm = function() {
 		if ($scope.liuhecai.waiting) {
 			return;
 		}
-		angular.forEach($scope.games, function(game, index) {
-			angular.forEach(game.oIndexBeans, function(g, i) {
-				g.betting_money = 0;
-				g.betted = false;
-			})
-		})
+		if ($scope.input.game_type.value < 6) {
+			angular.forEach($scope.games, function(game, index) {
+				angular.forEach(game.oIndexBeans, function(g, i) {
+					g.betting_money = 0;
+					g.betted = false;
+				})
+			});
+			return;
+		}
+		if ($scope.input.game_type.value > 5) {
+			$scope.caroms = [];
+		}
 	};
 	// ajax form
 	$scope.ajaxForm = function() {
 		if ($scope.liuhecai.waiting) {
 			return;
 		}
+		var buy_infos = "",
+			total_money = 0;
+		if ($scope.input.game_type.value < 6) {
+			var _t = $scope.query_1_5_buyinfos();
+			buy_infos = _t.buy_infos;
+			total_money = _t.total_money;
+
+		}
+		if ($scope.input.game_type.value > 5) {
+			var _t = $scope.query_6_8_buyinfos();
+			buy_infos = _t.buy_infos;
+			total_money = _t.total_money;
+		}
+		toastServices.show();
+		userServices.betting_liuhecai({
+			"game_type": 4,
+			"o_type": $scope.input.game_type.value,
+			"total_money": total_money,
+			"n_periods_next": $scope.liuhecai.qishu_next,
+			"buy_infos": buy_infos,
+		}).then(function(data) {
+			toastServices.hide()
+			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
+				errorServices.autoHide(data.message);
+				// $timeout(function() {
+				// 	$route.reload();
+				// }, 500)
+				$scope.resetForm();
+			} else {
+				errorServices.autoHide(data.message);
+			}
+		})
+
+	}
+	$scope.query_1_5_buyinfos = function() {
 		var buy_infos = "",
 			total_money = 0;
 		angular.forEach($scope.games, function(game, index) {
@@ -144,23 +233,29 @@ angular.module("Game").controller("fillinorderLiuhecaiController", function($sco
 			})
 		});
 		buy_infos = buy_infos.substring(0, buy_infos.length - 1);
-		toastServices.show();
-		userServices.betting_liuhecai({
-			"game_type": 4,
-			"o_type": $scope.input.game_type.value,
-			"total_money": total_money,
-			"n_periods_next": $scope.liuhecai.qishu_str,
-			"buy_infos": buy_infos,
-		}).then(function(data) {
-			toastServices.hide()
-			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
-				errorServices.autoHide(data.message);
-				$timeout(function() {
-					$route.reload();
-				}, 500)
-			} else {
-				errorServices.autoHide(data.message);
-			}
-		})
+		return {
+			buy_infos: buy_infos,
+			total_money: total_money
+		}
+	}
+	$scope.query_6_8_buyinfos = function() {
+		var buy_infos = "",
+			total_money = 0;
+		angular.forEach($scope.caroms, function(carom, index) {
+			total_money += parseFloat(carom.money);
+			var carom_str = carom.numbers.map(function(c) {
+				if (c.number < 10) {
+					return "0" + c.number;
+				}
+				return c.number;
+			}).join("B");
+			buy_infos += $scope.input.game_type.value + "A" + carom_str + "A" + carom.money + "A" + $scope.games[0].oIndexBeans[0].rate + "#";
+
+		});
+		buy_infos = buy_infos.substring(0, buy_infos.length - 1);
+		return {
+			buy_infos: buy_infos,
+			total_money: total_money
+		}
 	}
 })

@@ -3,7 +3,7 @@
     <div class="me-section">
         <div class="me-section-header">
             <span class="block">累计推荐获利</span>
-            <span class="balance">{{user.balance_money|currency:"￥"||"0"}}</span>
+            <span class="balance">{{total_money|currency:"￥"||"0"}}</span>
         </div>
         <div class="recommandors">
             <div class="recommandor-header">
@@ -11,12 +11,18 @@
                     时间
                 </div>
                 <div class="recommandor-cell">
+                    推荐码
+                </div>
+                <div class="recommandor-cell">
                     金额
                 </div>
             </div>
-            <div class="recommandor-row" ng-repeat="recommandor in recommandors">
+            <div class="recommandor-row" ng-repeat="recommandor in recommand_incomes">
                 <div class="recommandor-cell">
                     {{recommandor.post_time}}
+                </div>
+                <div class="recommandor-cell">
+                    {{recommandor.invite_code}}
                 </div>
                 <div class="recommandor-cell">
                     {{recommandor.money}}

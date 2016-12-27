@@ -130,9 +130,10 @@ angular.module("Game").controller("fillinorderSaicheController", function($scope
 			toastServices.hide()
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
 				errorServices.autoHide(data.message);
-				$timeout(function() {
-					$route.reload();
-				}, 3000)
+				// $timeout(function() {
+				// 	$route.reload();
+				// }, 3000)
+				$scope.resetForm();
 			} else {
 				errorServices.autoHide(data.message);
 			}

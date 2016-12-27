@@ -23,7 +23,15 @@
                 <p></p>
                 <span class="block">微信：{{charge_info.getmoney_weixin_account_number}}</span>
                 <span class="block">账号名称：{{charge_info.getmoney_weixin_account_name}}</span>
-            </div>f
+            </div>
+            <div style="text-align: center;font-size: 20px" ng-click="check('1')">
+                <i class="fa fa-check-circle" aria-hidden="true" ng-class="{'text-success':input.type=='1'}"></i>
+                支付宝充值
+            </div>
+            <div style="text-align: center;font-size: 20px" ng-click="check('2')">
+                <i class="fa fa-check-circle" aria-hidden="true"  ng-class="{'text-success':input.type=='2'}"></i>
+                微信充值
+            </div>
         </div>
         <div class="list-group">
             <div class="list-group-item">

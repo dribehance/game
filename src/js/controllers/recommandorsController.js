@@ -4,7 +4,7 @@ angular.module("Game").controller("recommandorsController", function($scope, use
 	$scope.recommandors = [];
 	$scope.page = {
 		pn: 1,
-		page_size: 1,
+		page_size: 20,
 		message: "点击加载更多"
 	}
 	$scope.loadMore = function() {
@@ -19,6 +19,7 @@ angular.module("Game").controller("recommandorsController", function($scope, use
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
 				$scope.recommandors = $scope.recommandors.concat(data.Result.RecommendList.list);
 				$scope.no_more = $scope.recommandors.length == data.Result.RecommendList.totalRow ? true : false;
+				$scope.total_user = data.Result.RecommendList.totalRow;
 			} else {
 				errorServices.autoHide("服务器错误");
 			}

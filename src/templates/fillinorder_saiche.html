@@ -4,6 +4,10 @@
         <div class="game-select">
             <select name="game" ng-model="input.game_type" ng-options="type.label for type in game_type"></select>
         </div>
+        <div class="game-balance">
+            <span class="balance">余额</span>
+            <span>{{saiche.balance_money|currency:"￥"}}</span>
+        </div>
         <p>
             <span ng-if="!saiche.day_seconds" class="block refresh-btn" ng-click="refresh()"><i class="fa fa-refresh" aria-hidden="true"></i> 点击刷新，看看开奖没有</span>
             <span class="text-white">第 </span>
