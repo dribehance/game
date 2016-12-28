@@ -160,6 +160,11 @@ angular.module("Game").factory("userServices", function($rootScope, $http, apiSe
 		})),
 		// 推荐人信息列表
 		query_recommandors: apiServices._get(angular.extend({}, config.common_params, {
+			url: config.url + "/app/UserCenter/userInviteList",
+			token: localStorageService.get("token")
+		})),
+		// 推荐人获利
+		query_recommand_income: apiServices._get(angular.extend({}, config.common_params, {
 			url: config.url + "/app/UserCenter/recommendList",
 			token: localStorageService.get("token")
 		})),

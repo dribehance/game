@@ -17,9 +17,9 @@ angular.module("Game").controller("recommandorsController", function($scope, use
 			toastServices.hide();
 			$scope.page.message = "点击加载更多";
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
-				$scope.recommandors = $scope.recommandors.concat(data.Result.RecommendList.list);
-				$scope.no_more = $scope.recommandors.length == data.Result.RecommendList.totalRow ? true : false;
-				$scope.total_user = data.Result.RecommendList.totalRow;
+				$scope.recommandors = $scope.recommandors.concat(data.Result.UserInviteList.list);
+				$scope.no_more = $scope.recommandors.length == data.Result.UserInviteList.totalRow ? true : false;
+				$scope.total_user = data.Result.UserInviteList.totalRow;
 			} else {
 				errorServices.autoHide("服务器错误");
 			}

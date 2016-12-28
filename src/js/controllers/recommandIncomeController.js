@@ -13,7 +13,7 @@ angular.module("Game").controller("recommandIncomeController", function($scope, 
 		}
 		toastServices.show();
 		$scope.page.message = "正在加载...";
-		userServices.query_recommandors($scope.page).then(function(data) {
+		userServices.query_recommand_income($scope.page).then(function(data) {
 			toastServices.hide();
 			$scope.page.message = "点击加载更多";
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {

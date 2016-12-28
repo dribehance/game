@@ -94,6 +94,37 @@
             border-color: fade(black, 20%);
             border-radius: 0;
         }
+        .game-select {
+            // float: right;
+            // width: 110px;
+            position: relative;
+            // border-bottom: 1px solid fade(black, 10%);
+            // background-color: #d6b577;
+            &:before {
+                content: "\f107";
+                font-family: FontAwesome;
+                position: absolute;
+                right: 8px;
+                top: 10px;
+            }
+            &:after {
+                content: "请充值支付方式：";
+                position: absolute;
+                left: 8px;
+                top: 10px;
+                font-weight: bold;
+            }
+            select {
+                width: 100%;
+                padding: 10px 10px 10px 140px;
+                text-align: left;
+                -webkit-appearance: none;
+                border: none;
+                background-color: #d6b577;
+                .box-shadow(none);
+                .box-sizing(border-box);
+            }
+        }
     }
     .logout-btn {
         display: block;
