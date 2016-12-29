@@ -3,7 +3,7 @@ angular.module("Game").controller("messagesController", function($scope, userSer
 	$scope.messages = [];
 	$scope.page = {
 		pn: 1,
-		page_size: 1,
+		page_size: 20,
 		user_type: 1,
 		message: "点击加载更多"
 	}

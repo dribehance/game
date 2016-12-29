@@ -42,7 +42,7 @@
             {{game.name}}
         </div>
         <div class="game-section-content" ng-class="{'opacity_05':feiting.waiting}">
-            <div ng-repeat="g in game.oIndexBeans" ng-click="show(g,game)" class="layout-2" ng-class="{'selected':g.betted}" ng-if="input.game_type.value == '1'">
+            <div ng-repeat="g in game.oIndexBeans track by $index" ng-click="show(g,game)" class="layout-2" ng-class="{'selected':g.betted}" ng-if="input.game_type.value == '1' && !($index+1 > 4 && $parent.$index+1 > 5)">
                 <span>{{g.name}} </span>
                 <span class="text-danger"> {{g.rate}}</span>
                 <span ng-if="g.betted">{{g.betting_money}}元</span>
