@@ -1,67 +1,72 @@
 <dribehance-header title="'幸运飞艇投注'" back-action="'on'"></dribehance-header>
-<div class="wrap">
-    <div class="game-header">
-        <div class="game-select">
+<div class="game-header">
+    <!-- <div class="game-select">
             <select name="game" ng-model="input.game_type" ng-options="type.label for type in game_type"></select>
-        </div>
-        <div class="game-balance">
-            <span class="balance">余额</span>
-            <span>{{feiting.balance_money|currency:"￥"}}</span>
-        </div>
-        <p>
-            <span ng-if="!feiting.day_seconds" class="block refresh-btn" ng-click="refresh()"><i class="fa fa-refresh" aria-hidden="true"></i> 点击刷新，看看开奖没有</span>
-            <span class="text-white">第 </span>
-            <span class="text-primary"> {{feiting.qishu_next}}</span>
-            <span class="text-white">期，距离开奖时间</span>
-            <span class="text-primary">
+        </div> -->
+    <div class="game-balance">
+        <span class="balance">余额</span>
+        <span>{{feiting.balance_money|currency:"￥"}}</span>
+    </div>
+    <p>
+        <span ng-if="!feiting.day_seconds" class="block refresh-btn" ng-click="refresh()"><i class="fa fa-refresh" aria-hidden="true"></i> 点击刷新，看看开奖没有</span>
+        <span class="text-white">第 </span>
+        <span class="text-primary"> {{feiting.qishu_next}}</span>
+        <span class="text-white">期，距离开奖时间</span>
+        <span class="text-primary">
                 <timer ng-if="feiting.day_seconds" max-time-unit="'minute'" interval="1000" countdown="feiting.day_seconds" finish-callback="callbackTimer.finished()">
                     {{mminutes}}:{{sseconds}}
                 </timer>
                 <span ng-if="!feiting.day_seconds">--:--</span>
-            </span>
-        </p>
-        <p>
-            <span class="text-white">{{feiting.Result.XyftData.datelinedate}} 第 {{feiting.Result.XyftData.qishu}} 期开奖号码</span>
-        </p>
-        <p ng-if="feiting.waiting" class="waiting"><i class="fa fa-clock-o" aria-hidden="true"></i> 第 {{feiting.qishu_next}} 期正在开奖，请耐心等候...</p>
-        <p ng-if="!feiting.waiting">
-            <span class="game-code feiting-code-{{feiting.Result.XyftData.n_01}}">{{feiting.Result.XyftData.n_01}}</span>
-            <span class="game-code feiting-code-{{feiting.Result.XyftData.n_02}}">{{feiting.Result.XyftData.n_02}}</span>
-            <span class="game-code feiting-code-{{feiting.Result.XyftData.n_03}}">{{feiting.Result.XyftData.n_03}}</span>
-            <span class="game-code feiting-code-{{feiting.Result.XyftData.n_04}}">{{feiting.Result.XyftData.n_04}}</span>
-            <span class="game-code feiting-code-{{feiting.Result.XyftData.n_05}}">{{feiting.Result.XyftData.n_05}}</span>
-            <span class="game-code feiting-code-{{feiting.Result.XyftData.n_06}}">{{feiting.Result.XyftData.n_06}}</span>
-            <span class="game-code feiting-code-{{feiting.Result.XyftData.n_07}}">{{feiting.Result.XyftData.n_07}}</span>
-            <span class="game-code feiting-code-{{feiting.Result.XyftData.n_08}}">{{feiting.Result.XyftData.n_08}}</span>
-            <span class="game-code feiting-code-{{feiting.Result.XyftData.n_09}}">{{feiting.Result.XyftData.n_09}}</span>
-            <span class="game-code feiting-code-{{feiting.Result.XyftData.n_10}}">{{feiting.Result.XyftData.n_10}}</span>
-        </p>
-    </div>
-    <!-- <div class="overlay" ng-if="feiting.waiting">
+        </span>
+    </p>
+    <p>
+        <span class="text-white">{{feiting.Result.XyftData.datelinedate}} 第 {{feiting.Result.XyftData.qishu}} 期开奖号码</span>
+    </p>
+    <p ng-if="feiting.waiting" class="waiting"><i class="fa fa-clock-o" aria-hidden="true"></i> 第 {{feiting.qishu_next}} 期正在开奖，请耐心等候...</p>
+    <p ng-if="!feiting.waiting">
+        <span class="game-code feiting-code-{{feiting.Result.XyftData.n_01}}">{{feiting.Result.XyftData.n_01}}</span>
+        <span class="game-code feiting-code-{{feiting.Result.XyftData.n_02}}">{{feiting.Result.XyftData.n_02}}</span>
+        <span class="game-code feiting-code-{{feiting.Result.XyftData.n_03}}">{{feiting.Result.XyftData.n_03}}</span>
+        <span class="game-code feiting-code-{{feiting.Result.XyftData.n_04}}">{{feiting.Result.XyftData.n_04}}</span>
+        <span class="game-code feiting-code-{{feiting.Result.XyftData.n_05}}">{{feiting.Result.XyftData.n_05}}</span>
+        <span class="game-code feiting-code-{{feiting.Result.XyftData.n_06}}">{{feiting.Result.XyftData.n_06}}</span>
+        <span class="game-code feiting-code-{{feiting.Result.XyftData.n_07}}">{{feiting.Result.XyftData.n_07}}</span>
+        <span class="game-code feiting-code-{{feiting.Result.XyftData.n_08}}">{{feiting.Result.XyftData.n_08}}</span>
+        <span class="game-code feiting-code-{{feiting.Result.XyftData.n_09}}">{{feiting.Result.XyftData.n_09}}</span>
+        <span class="game-code feiting-code-{{feiting.Result.XyftData.n_10}}">{{feiting.Result.XyftData.n_10}}</span>
+    </p>
+</div>
+<!-- <div class="overlay" ng-if="feiting.waiting">
         <div class="waiting-btn" ng-click="back()">当前正在开奖，请耐心等候...,点击返回</div>
     </div> -->
-    <div class="game-section" ng-repeat="game in games">
-        <div class="game-section-header">
-            {{game.name}}
-        </div>
-        <div class="game-section-content" ng-class="{'opacity_05':feiting.waiting}">
-            <div ng-repeat="g in game.oIndexBeans track by $index" ng-click="show(g,game)" class="layout-2" ng-class="{'selected':g.betted}" ng-if="input.game_type.value == '1' && !($index+1 > 4 && $parent.$index+1 > 5)">
-                <span>{{g.name}} </span>
-                <span class="text-danger"> {{g.rate}}</span>
-                <span ng-if="g.betted">{{g.betting_money}}元</span>
+<div class="scroll-view">
+    <div class="left-panel">
+        <label class="game-type-item" for="game-{{type.value}}" ng-class="{'active':type.label == input.game_type.label}" ng-repeat="type in game_type">{{type.label}} <input type="radio" class="hidden" ng-model="input.game_type" id="game-{{type.value}}" name="game-{{type.value}}" ng-value="{{type}}"></label>
+    </div>
+    <div class="right-panel">
+        <div class="game-section" ng-repeat="game in games">
+            <div class="game-section-header">
+                {{game.name}}
             </div>
-            <div ng-repeat="g in game.oIndexBeans" ng-click="show(g,game)" class="layout-1" ng-class="{'selected':g.betted}" ng-if="input.game_type.value == '2'">
-                <span class="game-code feiting-code-{{g.name}}">{{g.name}} </span>
-                <span class="text-danger"> {{g.rate}}</span>
-                <span ng-if="g.betted">{{g.betting_money}}元</span>
+            <div class="game-section-content" ng-class="{'opacity_05':feiting.waiting}">
+                <div ng-repeat="g in game.oIndexBeans track by $index" ng-click="show(g,game)" class="layout-2" ng-class="{'selected':g.betted}" ng-if="input.game_type.value == '1' && !($index+1 > 4 && $parent.$index+1 > 5)">
+                    <span>{{g.name}} </span>
+                    <span class="text-danger"> {{g.rate}}</span>
+                    <span ng-if="g.betted">{{g.betting_money}}元</span>
+                </div>
+                <div ng-repeat="g in game.oIndexBeans" ng-click="show(g,game)" class="layout-1" ng-class="{'selected':g.betted}" ng-if="input.game_type.value == '2'">
+                    <span class="game-code feiting-code-{{g.name}}">{{g.name}} </span>
+                    <span class="text-danger"> {{g.rate}}</span>
+                    <span ng-if="g.betted">{{g.betting_money}}元</span>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <div style="height:48px;"></div>
 <div class="detail-footer justified">
-    <span class="reset-btn" ng-click="resetForm()">重置</span>
-    <span class="submit-btn" ng-click="ajaxForm()">提交</span>
+    <div><span class="reset-btn" ng-click="resetForm()">重置</span></div>
+    <div><span class="submit-btn" ng-click="ajaxForm()">提交</span></div>
 </div>
 <div class="overlay" ng-if="popup_state == 'open'">
     <div class="popup">

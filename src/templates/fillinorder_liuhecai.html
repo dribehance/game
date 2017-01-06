@@ -1,124 +1,126 @@
 <dribehance-header title="'六合彩投注'" back-action="'on'"></dribehance-header>
-<div class="wrap">
-    <div class="game-header">
-        <div class="game-select">
-            <select name="game" ng-model="input.game_type" ng-options="type.label for type in game_type"></select>
-        </div>
-        <div class="game-balance">
-            <span class="balance">余额</span>
-            <span>{{liuhecai.balance_money|currency:"￥"}}</span>
-        </div>
-        <p>
-            <span ng-if="!liuhecai.day_seconds" class="block refresh-btn" ng-click="refresh()"><i class="fa fa-refresh" aria-hidden="true"></i> 点击刷新，看看开奖没有</span>
-            <span class="text-white">第 </span>
-            <span class="text-primary"> {{liuhecai.qishu_next}}</span>
-            <span class="text-white">期，距离开奖时间</span>
-            <span class="text-primary">
+<div class="game-header">
+    <!-- <div class="game-select">
+        <select name="game" ng-model="input.game_type" ng-options="type.label for type in game_type"></select>
+    </div> -->
+    <div class="game-balance">
+        <span class="balance">余额</span>
+        <span>{{liuhecai.balance_money|currency:"￥"}}</span>
+    </div>
+    <p>
+        <span ng-if="!liuhecai.day_seconds" class="block refresh-btn" ng-click="refresh()"><i class="fa fa-refresh" aria-hidden="true"></i> 点击刷新，看看开奖没有</span>
+        <span class="text-white">第 </span>
+        <span class="text-primary"> {{liuhecai.qishu_next}}</span>
+        <span class="text-white">期，距离开奖时间</span>
+        <span class="text-primary">
                 <timer ng-if="liuhecai.day_seconds" interval="1000" countdown="liuhecai.day_seconds" finish-callback="callbackTimer.finished()">
                     {{days}}天{{hhours}}:{{mminutes}}:{{sseconds}}
                 </timer>
                 <span ng-if="!liuhecai.day_seconds">--:--</span>
-            </span>
-        </p>
-        <p>
-            <span class="text-white">{{liuhecai.Result.XglhcData.datelinedate}} 第 {{liuhecai.Result.XglhcData.qishu}} 期开奖号码</span>
-        </p>
-        <p ng-if="liuhecai.waiting" class="waiting"><i class="fa fa-clock-o" aria-hidden="true"></i> 第 {{liuhecai.qishu_next}} 期正在开奖，请耐心等候...</p>
-        <p ng-if="!liuhecai.waiting">
-            <div class="liuhecai-cell">
-                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_01}}">{{parse_code(liuhecai.Result.XglhcData.n_01)}}</span>
-                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_01_str)}}</span>
-            </div>
-            <div class="liuhecai-cell">
-                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_02}}">{{parse_code(liuhecai.Result.XglhcData.n_02)}}</span>
-                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_02_str)}}</span>
-            </div>
-            <div class="liuhecai-cell">
-                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_03}}">{{parse_code(liuhecai.Result.XglhcData.n_03)}}</span>
-                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_03_str)}}</span>
-            </div>
-            <div class="liuhecai-cell">
-                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_04}}">{{parse_code(liuhecai.Result.XglhcData.n_04)}}</span>
-                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_04_str)}}</span>
-            </div>
-            <div class="liuhecai-cell">
-                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_05}}">{{parse_code(liuhecai.Result.XglhcData.n_05)}}</span>
-                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_05_str)}}</span>
-            </div>
-            <div class="liuhecai-cell">
-                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_06}}">{{parse_code(liuhecai.Result.XglhcData.n_06)}}</span>
-                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_06_str)}}</span>
-            </div>
-            <div class="liuhecai-cell">
-                <span class="text-white"> + </span>
-            </div>
-            <div class="liuhecai-cell">
-                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_07}}">{{parse_code(liuhecai.Result.XglhcData.n_07)}}</span>
-                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_07_str)}}</span>
-            </div>
-        </p>
+        </span>
+    </p>
+    <p>
+        <span class="text-white">{{liuhecai.Result.XglhcData.datelinedate}} 第 {{liuhecai.Result.XglhcData.qishu}} 期开奖号码</span>
+    </p>
+    <p ng-if="liuhecai.waiting" class="waiting"><i class="fa fa-clock-o" aria-hidden="true"></i> 第 {{liuhecai.qishu_next}} 期正在开奖，请耐心等候...</p>
+    <p ng-if="!liuhecai.waiting">
+        <div class="liuhecai-cell">
+            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_01}}">{{parse_code(liuhecai.Result.XglhcData.n_01)}}</span>
+            <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_01_str)}}</span>
+        </div>
+        <div class="liuhecai-cell">
+            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_02}}">{{parse_code(liuhecai.Result.XglhcData.n_02)}}</span>
+            <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_02_str)}}</span>
+        </div>
+        <div class="liuhecai-cell">
+            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_03}}">{{parse_code(liuhecai.Result.XglhcData.n_03)}}</span>
+            <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_03_str)}}</span>
+        </div>
+        <div class="liuhecai-cell">
+            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_04}}">{{parse_code(liuhecai.Result.XglhcData.n_04)}}</span>
+            <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_04_str)}}</span>
+        </div>
+        <div class="liuhecai-cell">
+            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_05}}">{{parse_code(liuhecai.Result.XglhcData.n_05)}}</span>
+            <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_05_str)}}</span>
+        </div>
+        <div class="liuhecai-cell">
+            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_06}}">{{parse_code(liuhecai.Result.XglhcData.n_06)}}</span>
+            <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_06_str)}}</span>
+        </div>
+        <div class="liuhecai-cell">
+            <span class="text-white"> + </span>
+        </div>
+        <div class="liuhecai-cell">
+            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_07}}">{{parse_code(liuhecai.Result.XglhcData.n_07)}}</span>
+            <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_07_str)}}</span>
+        </div>
+    </p>
+</div>
+<div class="scroll-view">
+    <div class="left-panel">
+        <label class="game-type-item" for="game-{{type.value}}" ng-class="{'active':type.label == input.game_type.label}" ng-repeat="type in game_type">{{type.label}} <input type="radio" class="hidden" ng-model="input.game_type" id="game-{{type.value}}" name="game-{{type.value}}" ng-value="{{type}}"></label>
     </div>
-    <!-- <div class="overlay" ng-if="liuhecai.waiting">
-        <div class="waiting-btn" ng-click="back()">当前正在开奖，请耐心等候...,点击返回</div>
-    </div> -->
-    <div class="game-section" ng-repeat="game in games" ng-if="input.game_type.value < 6">
-        <div class="game-section-header">
-            {{game.name}}
-        </div>
-        <div class="game-section-content" ng-class="{'opacity_05':liuhecai.waiting}">
-            <div ng-repeat="g in game.oIndexBeans|filter:{flag:'1'}" ng-click="show(g,game)" ng-class="{'selected':g.betted,'layout-1':input.game_type.value=='1'||input.game_type.value=='2','layout-3':input.game_type.value=='3','layout-4':input.game_type.value=='4'||input.game_type.value=='5'}">
-                <span class="game-code liuhecai-code-{{g.name}}" ng-if="input.game_type.value == '1'||input.game_type.value == '2'">{{g.name}} </span>
-                <span ng-if="input.game_type.value == '3' || input.game_type.value == '4'||input.game_type.value == '5'">{{g.name}}</span>
-                <span class="text-danger"> {{g.rate}}</span>
-                <span ng-if="g.betted"> {{g.betting_money}}元</span>
-                <div ng-if="input.game_type.value == '3'||input.game_type.value == '4'||input.game_type.value == '5'">
-                    <span class="game-code liuhecai-code-{{code}}" ng-class="{'small-size':parse_code_1(g.number).length == 5}" ng-repeat="code in parse_code_1(g.number) track by $index">{{code}}</span>
+    <div class="right-panel">
+        <div class="game-section" ng-repeat="game in games" ng-if="input.game_type.value < 6">
+            <div class="game-section-header">
+                {{game.name}}
+            </div>
+            <div class="game-section-content" ng-class="{'opacity_05':liuhecai.waiting}">
+                <div ng-repeat="g in game.oIndexBeans|filter:{flag:'1'}" ng-click="show(g,game)" ng-class="{'selected':g.betted,'layout-1':input.game_type.value=='1'||input.game_type.value=='2','layout-3':input.game_type.value=='3','layout-4':input.game_type.value=='4'||input.game_type.value=='5'}">
+                    <span class="game-code liuhecai-code-{{g.name}}" ng-if="input.game_type.value == '1'||input.game_type.value == '2'">{{g.name}} </span>
+                    <span ng-if="input.game_type.value == '3' || input.game_type.value == '4'||input.game_type.value == '5'">{{g.name}}</span>
+                    <span class="text-danger"> {{g.rate}}</span>
+                    <span ng-if="g.betted"> {{g.betting_money}}元</span>
+                    <div ng-if="input.game_type.value == '3'||input.game_type.value == '4'||input.game_type.value == '5'">
+                        <span class="game-code liuhecai-code-{{code}}" ng-class="{'small-size':parse_code_1(g.number).length == 5}" ng-repeat="code in parse_code_1(g.number) track by $index">{{code}}</span>
+                    </div>
+                </div>
+            </div>
+            <p></p>
+            <div class="game-section-content" ng-class="{'opacity_05':liuhecai.waiting}">
+                <div ng-repeat="g in game.oIndexBeans|filter:{flag:'2'}" ng-click="show(g,game)" class="layout-2" ng-class="{'selected':g.betted}">
+                    <span>{{g.name}} </span>
+                    <span class="text-danger"> {{g.rate}}</span>
+                    <span ng-if="g.betted">{{g.betting_money}}元</span>
                 </div>
             </div>
         </div>
-        <p></p>
-        <div class="game-section-content" ng-class="{'opacity_05':liuhecai.waiting}">
-            <div ng-repeat="g in game.oIndexBeans|filter:{flag:'2'}" ng-click="show(g,game)" class="layout-2" ng-class="{'selected':g.betted}">
-                <span>{{g.name}} </span>
-                <span class="text-danger"> {{g.rate}}</span>
-                <span ng-if="g.betted">{{g.betting_money}}元</span>
+        <div class="game-section" ng-repeat="game in games" ng-if="input.game_type.value > 5">
+            <div class="game-section-header">
+                {{game.name}} (<span class="text-danger">赔率：{{game.oIndexBeans[0].rate}}</span>)
             </div>
-        </div>
-    </div>
-    <div class="game-section" ng-repeat="game in games" ng-if="input.game_type.value > 5">
-        <div class="game-section-header">
-            {{game.name}} (<span class="text-danger">赔率：{{game.oIndexBeans[0].rate}}</span>)
-        </div>
-        <!-- ng-repeat="betted_game in betted_game_list" -->
-        <div class="game-section-content">
-            <div class="layout-5" ng-repeat="carom in caroms">
-                <div class="remove-icon" ng-click="remove(carom)"></div>
-                <div class="betting-number">
-                    <span class="game-code liuhecai-code-{{code.number}}" ng-repeat="code in carom.numbers">{{parse_code(code.number)}}</span>
+            <!-- ng-repeat="betted_game in betted_game_list" -->
+            <div class="game-section-content">
+                <div class="layout-5" ng-repeat="carom in caroms">
+                    <div class="remove-icon" ng-click="remove(carom)"></div>
+                    <div class="betting-number">
+                        <span class="game-code liuhecai-code-{{code.number}}" ng-repeat="code in carom.numbers">{{parse_code(code.number)}}</span>
+                    </div>
+                    <div class="betting-money">
+                        金额：
+                        <input type="tel" placeholder="金额" ng-model="carom.money">
+                    </div>
                 </div>
-                <div class="betting-money">
-                    金额：
-                    <input type="tel" placeholder="金额" ng-model="carom.money">
+                <div class="layout-6" ng-if="is_board_open">
+                    <div class="title" ng-click="toggle_board()">请选择连中号码</div>
+                    <div class="line"></div>
+                    <div class="code-item" ng-repeat="code in game_code" ng-click="check(code)" ng-class="{'check':code.check}">
+                        <span class="game-code liuhecai-code-{{code.number}}">{{parse_code(code.number)}}</span>
+                    </div>
                 </div>
-            </div>
-            <div class="layout-6" ng-if="is_board_open">
-                <div class="title" ng-click="toggle_board()">请选择连中号码</div>
-                <div class="line"></div>
-                <div class="code-item" ng-repeat="code in game_code" ng-click="check(code)" ng-class="{'check':code.check}">
-                    <span class="game-code liuhecai-code-{{code.number}}">{{parse_code(code.number)}}</span>
+                <div class="layout-5" ng-click="toggle_board()">
+                    <span ng-if="is_board_open">收起号码选择</span>
+                    <span ng-if="!is_board_open">点击选择连中号码</span>
                 </div>
-            </div>
-            <div class="layout-5" ng-click="toggle_board()">
-                <span ng-if="is_board_open">收起号码选择</span>
-                <span ng-if="!is_board_open">点击选择连中号码</span>
             </div>
         </div>
     </div>
 </div>
 <div style="height:48px;"></div>
 <div class="detail-footer justified" ng-if="!is_board_open">
-    <span class="reset-btn" ng-click="resetForm()">重置</span>
-    <span class="submit-btn" ng-click="ajaxForm()">提交</span>
+    <div><span class="reset-btn" ng-click="resetForm()">重置</span></div>
+    <div><span class="submit-btn" ng-click="ajaxForm()">提交</span></div>
 </div>
 <div class="overlay" ng-if="popup_state == 'open'">
     <div class="popup">

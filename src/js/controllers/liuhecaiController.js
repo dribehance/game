@@ -24,7 +24,7 @@ angular.module("Game").controller("liuhecaiController", function($scope, $route,
 	$scope.liuhecai_historys = [];
 	$scope.page = {
 		pn: 1,
-		page_size: 20,
+		page_size: 5,
 		message: "点击加载更多"
 	}
 	$scope.loadMore = function() {
@@ -57,7 +57,7 @@ angular.module("Game").controller("liuhecaiController", function($scope, $route,
 	$scope.reload_liuhecai_history = function() {
 		$scope.page = {
 			pn: 1,
-			page_size: 20,
+			page_size: 5,
 			message: "点击加载更多"
 		}
 		$scope.is_reload = true;

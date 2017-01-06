@@ -9,7 +9,7 @@
         font-size: 16px;
         border-radius: 5px;
         background-color: white;
-        color: #3e231f;
+        // color: #3e231f;
     }
     &:after {
         content: "";
@@ -25,7 +25,7 @@
 }
 
 .three-grid {
-    margin-top: 30px;
+    margin-top: 20px;
     padding: 8px;
     font-size: 0px;
     text-align: justify;
@@ -40,7 +40,7 @@
         .box-sizing(border-box);
         text-align: center;
         font-size: 18px;
-        color: #3e231f;
+        // color: #3e231f;
         border:1px solid fade(white, 50%);
         // background-color: @brand-primary;
         background-color: fade(white, 50%);
@@ -132,7 +132,7 @@
                 -webkit-appearance: none;
                 border: none;
                 // background-color: #d6b577;
-                background-color: fade(white, 50%);
+                background-color: transparent;
                 .box-shadow(none);
                 .box-sizing(border-box);
             }
@@ -247,7 +247,10 @@
         padding: 15px;
         left: 15px;
         right: 15px;
-        background-color: fade(white, 50%);
+        background-color: fade(@brand-primary, 50%);
+    }
+    p {
+        margin:0;
     }
 }
 
@@ -264,38 +267,38 @@
     // background-color: #cda462;
     background-color: fade(white, 50%);
     color: white;
-    border-top: 1px solid fade(white, 20%);
-    border-left: 1px solid fade(white, 20%);
+    // border-top: 1px solid fade(white, 20%);
+    // border-left: 1px solid fade(white, 20%);
     text-align: center;
     vertical-align: middle;
     .box-shadow(2px 2px 0px fade(black, 50%));
     .box-sizing(border-box);
-    &:before {
-        content:"";
-        position: absolute;
-        display: inline-block;
-        left: 2px;
-        top:2px;
-        width:5px;
-        height: 5px;
-        border-radius: 100%;
-        background-color: fade(white, 10%);
-        .box-shadow(2px 2px 0px fade(black, 10%));
-    }
-    &:after {
-        content:"";
-        position: absolute;
-        display: inline-block;
-        top:50%;
-        left: 50%;
-        margin-left: -5px;
-        margin-top: -5px;
-        width:12px;
-        height: 12px;
-        border-radius: 100%;
-        background-color: fade(white, 10%);
-        .box-shadow(2px 2px 0px fade(black, 10%));
-    }
+    // &:before {
+    //     content:"";
+    //     position: absolute;
+    //     display: inline-block;
+    //     left: 2px;
+    //     top:2px;
+    //     width:5px;
+    //     height: 5px;
+    //     border-radius: 100%;
+    //     background-color: fade(white, 10%);
+    //     .box-shadow(2px 2px 0px fade(black, 10%));
+    // }
+    // &:after {
+    //     content:"";
+    //     position: absolute;
+    //     display: inline-block;
+    //     top:50%;
+    //     left: 50%;
+    //     margin-left: -5px;
+    //     margin-top: -5px;
+    //     width:12px;
+    //     height: 12px;
+    //     border-radius: 100%;
+    //     background-color: fade(white, 10%);
+    //     .box-shadow(2px 2px 0px fade(black, 10%));
+    // }
     @media (min-width: 360px) {
         width: 28px;
         height: 28px;
@@ -310,14 +313,104 @@
         font-weight: bold;
     }
     .make-game-code();
+    &.feiting-code-01,&.saiche-code-01,&.feiting-code-1,&.saiche-code-1 {
+        border-radius: 5px;
+        text-indent: -10000px;
+        font-style: italic;
+        background-image: url("../images/1.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    &.feiting-code-02,&.saiche-code-02,&.feiting-code-2,&.saiche-code-2 {
+        border-radius: 5px;
+        text-indent: -10000px;
+        font-style: italic;
+        background-image: url("../images/2.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    &.feiting-code-03,&.saiche-code-03,&.feiting-code-3,&.saiche-code-3 {
+        border-radius: 5px;
+        text-indent: -10000px;
+        font-style: italic;
+        background-image: url("../images/3.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    &.feiting-code-04,&.saiche-code-04,&.feiting-code-4,&.saiche-code-4 {
+        border-radius: 5px;
+        text-indent: -10000px;
+        font-style: italic;
+        background-image: url("../images/4.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    &.feiting-code-05,&.saiche-code-05,&.feiting-code-5,&.saiche-code-5 {
+        border-radius: 5px;
+        text-indent: -10000px;
+        font-style: italic;
+        background-image: url("../images/5.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    &.feiting-code-06,&.saiche-code-06,&.feiting-code-6,&.saiche-code-6 {
+        border-radius: 5px;
+        text-indent: -10000px;
+        font-style: italic;
+        background-image: url("../images/6.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    &.feiting-code-07,&.saiche-code-07,&.feiting-code-7,&.saiche-code-7 {
+        border-radius: 5px;
+        text-indent: -10000px;
+        font-style: italic;
+        background-image: url("../images/7.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    &.feiting-code-08,&.saiche-code-08,&.feiting-code-8,&.saiche-code-8 {
+        border-radius: 5px;
+        text-indent: -10000px;
+        font-style: italic;
+        background-image: url("../images/8.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    &.feiting-code-09,&.saiche-code-09,&.feiting-code-9,&.saiche-code-9 {
+        border-radius: 5px;
+        text-indent: -10000px;
+        font-style: italic;
+        background-image: url("../images/9.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    &.feiting-code-10,&.saiche-code-10,&.feiting-code-10,&.saiche-code-10 {
+        border-radius: 5px;
+        text-indent: -10000px;
+        font-style: italic;
+        background-image: url("../images/10.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
 }
 .make-game-code() {
     // feiting code
-    @feiting-code-list:01,02,03,04,05,06,07,08,09,10;
-    .loop(feiting-code,@feiting-code-list,length(@feiting-code-list),red,true);
-    // saiche code
-    @saiche-code-list:01,02,03,04,05,06,07,08,09,10;
-    .loop(saiche-code,@saiche-code-list,length(@saiche-code-list),red,true);
+    // @feiting-code-list:01,02,03,04,05,06,07,08,09,10;
+    // .loop(feiting-code,@feiting-code-list,length(@feiting-code-list),red,true);
+    // // saiche code
+    // @saiche-code-list:01,02,03,04,05,06,07,08,09,10;
+    // .loop(saiche-code,@saiche-code-list,length(@saiche-code-list),red,true);
     // kuaile code
     @kuaile-code-list:01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20;
     .loop(kuaile-code,@kuaile-code-list,length(@kuaile-code-list),red,true);
@@ -336,7 +429,7 @@
             color:#3e231f;
             font-weight: bold;
             text-align: left;
-            text-indent: 4px;
+            text-indent: 6px;
             line-height: 30px;
             background-color: transparent;
             background-image: url(@bg_url);
@@ -357,7 +450,7 @@
             color:#3e231f;
             font-weight: bold;
             text-align: left;
-            text-indent: 4px;
+            text-indent: 6px;
             background-color: transparent;
             background-image: url(@bg_url);
             background-size: 100%;
@@ -383,7 +476,7 @@
             color:#3e231f;
             font-weight: bold;
             text-align: left;
-            text-indent: 4px;
+            text-indent: 6px;
             line-height: 30px;
             background-color: transparent;
             background-image: url(@bg_url);
@@ -448,7 +541,7 @@
         // background-color: @brand-primary;
         background-color: fade(white, 60%);
         padding: 10px;
-        border-top-left-radius: 5px;
+        // border-top-left-radius: 5px;
         border-top-right-radius: 5px;
         text-align: center;
         font-weight: bold;
@@ -487,12 +580,11 @@
                 }
                 &.selected {
                     position: relative;
-                    background-color: fade(white, 80%);
-                    color: #7b231f;
                     font-weight: bold;
-                    .game-code {
-                        opacity: 0.5;
-                    }
+                    color: white;
+                    background-color: fade(black, 40%);
+                    text-shadow: 0 0 0 rgba(255,255,255,.23);
+                    box-shadow: inset 0 1px 5px rgba(0,0,0,.3);
                 }
             }
             &.layout-2 {
@@ -515,9 +607,11 @@
                 }
                 &.selected {
                     position: relative;
-                    background-color: fade(white, 80%);
-                    color: #7b231f;
                     font-weight: bold;
+                    color: white;
+                    background-color: fade(black, 40%);
+                    text-shadow: 0 0 0 rgba(255,255,255,.23);
+                    box-shadow: inset 0 1px 5px rgba(0,0,0,.3);
                     >span:first-child{
                         position: absolute;
                         left: 2px;
@@ -547,9 +641,11 @@
                 }
                 &.selected {
                     position: relative;
-                    background-color: fade(white, 80%);
-                    color: #7b231f;
                     font-weight: bold;
+                    color: white;
+                    background-color: fade(black, 40%);
+                    text-shadow: 0 0 0 rgba(255,255,255,.23);
+                    box-shadow: inset 0 1px 5px rgba(0,0,0,.3);
                 }
             }
             &.layout-4 {
@@ -571,9 +667,11 @@
                 }
                 &.selected {
                     position: relative;
-                    background-color: fade(white, 80%);
-                    color: #7b231f;
                     font-weight: bold;
+                    color: white;
+                    background-color: fade(black, 40%);
+                    text-shadow: 0 0 0 rgba(255,255,255,.23);
+                    box-shadow: inset 0 1px 5px rgba(0,0,0,.3);
                 }
             }
             &.layout-5 {
@@ -632,7 +730,12 @@
                     border-bottom: 1px solid fade(white, 50%);
                     .box-sizing(border-box);
                     &.check {
-                        background-color: #42241f;
+                        position: relative;
+                        font-weight: bold;
+                        color: white;
+                        background-color: fade(black, 40%);
+                        text-shadow: 0 0 0 rgba(255,255,255,.23);
+                        box-shadow: inset 0 1px 5px rgba(0,0,0,.3);
                     }
                     &:last-child {
                         border-right: 1px solid fade(white, 50%);
@@ -682,7 +785,7 @@
     color:white;
     border-radius: 5px;
     // background-color:#f2385a;
-    background-color: fade(white, 50%);
+    background-color: fade(@brand-primary, 50%);
     // opacity: 0.5;
 }
 .opacity_05 {
@@ -1012,3 +1115,106 @@ iframe p {
     margin: 0 0 15px 0;
 }
 
+.scroll-view {
+    position: fixed;
+    top: 190px;
+    bottom: 57px;
+    right: 0;
+    left: 0;
+    overflow: hidden;
+    .left-panel {
+        width: 80px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 1;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch; /* lets it scroll lazy */
+        .box-shadow(1px 0 0 rgba(255,255,255,.48));
+        background-color: fade(black, 21%);
+        .game-type-item {
+            display: block;
+            padding: 8px 5px;
+            margin: 0;
+            font-weight: bold;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.2),0 -1px 0 rgba(0,0,0,.23);
+            background: rgba(250,250,250,.11);
+            &.active {
+                color: #fff;
+                background-color: fade(black, 23%);
+                .box-shadow(inset -1px 3px 7px rgba(0,0,0,.34));
+            }
+        }
+    }
+    .right-panel {
+        position: absolute;
+        left: 75px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0 5px;
+        z-index: 1;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch; /* lets it scroll lazy */
+    }
+}
+// ng view transition
+.page {
+    position:absolute; 
+    bottom:0; 
+    top:0;
+    left: 0;
+    right: 0;
+    width:100%;
+    z-index: 1;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch; /* lets it scroll lazy */
+    background-image: url(../images/bg2.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* ANIMATIONS
+============================================================================= */
+
+/* leaving animations ----------------------------------------- */
+/* rotate and fall */
+@keyframes rotateFall {
+    0%      { transform: rotateZ(0deg); }
+    20%     { transform: rotateZ(10deg); animation-timing-function: ease-out; }
+    40%     { transform: rotateZ(17deg); }
+    60%     { transform: rotateZ(16deg); }
+    100%    { transform: translateY(100%) rotateZ(17deg); }
+}
+
+/* slide in from the bottom */
+@keyframes slideOutLeft {
+    to      { transform: translateX(-100%); }
+}
+
+/* rotate out newspaper */
+@keyframes rotateOutNewspaper {
+    to      { transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
+}
+
+/* entering animations --------------------------------------- */
+/* scale up */
+@keyframes scaleUp {
+    from    { opacity: 0.5; -webkit-transform: scale(0.8); }
+}
+
+/* slide in from the right */
+@keyframes slideInRight {
+    from    { transform:translateX(50%); }
+    to      { transform: translateX(0); }
+}
+
+/* slide in from the bottom */
+@keyframes slideInUp {
+    from    { transform:translateY(100%); }
+    to      { transform: translateY(0); }
+}
+
+.page.ng-enter           { animation: slideInRight 0.3s both ease-in; z-index: 8888; }
+.page.ng-leave           { animation: slideOutLeft 0.15s 0.15s both ease-in; z-index: 9999; }

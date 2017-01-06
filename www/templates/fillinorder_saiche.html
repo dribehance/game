@@ -1,64 +1,69 @@
 <dribehance-header title="'北京赛车投注'" back-action="'on'"></dribehance-header>
-<div class="wrap">
-    <div class="game-header">
-        <div class="game-select">
-            <select name="game" ng-model="input.game_type" ng-options="type.label for type in game_type"></select>
-        </div>
-        <div class="game-balance">
-            <span class="balance">余额</span>
-            <span>{{saiche.balance_money|currency:"￥"}}</span>
-        </div>
-        <p>
-            <span ng-if="!saiche.day_seconds" class="block refresh-btn" ng-click="refresh()"><i class="fa fa-refresh" aria-hidden="true"></i> 点击刷新，看看开奖没有</span>
-            <span class="text-white">第 </span>
-            <span class="text-primary"> {{saiche.qishu_next}}</span>
-            <span class="text-white">期，距离开奖时间</span>
-            <span class="text-primary">
+<div class="game-header">
+    <!-- <div class="game-select">
+        <select name="game" ng-model="input.game_type" ng-options="type.label for type in game_type"></select>
+    </div> -->
+    <div class="game-balance">
+        <span class="balance">余额</span>
+        <span>{{saiche.balance_money|currency:"￥"}}</span>
+    </div>
+    <p>
+        <span ng-if="!saiche.day_seconds" class="block refresh-btn" ng-click="refresh()"><i class="fa fa-refresh" aria-hidden="true"></i> 点击刷新，看看开奖没有</span>
+        <span class="text-white">第 </span>
+        <span class="text-primary"> {{saiche.qishu_next}}</span>
+        <span class="text-white">期，距离开奖时间</span>
+        <span class="text-primary">
                 <timer ng-if="saiche.day_seconds" max-time-unit="'minute'" interval="1000" countdown="saiche.day_seconds" finish-callback="callbackTimer.finished()">
                     {{mminutes}}:{{sseconds}}
                 </timer>
                 <span ng-if="!saiche.day_seconds">--:--</span>
-            </span>
-        </p>
-        <p>
-            <span class="text-white">{{saiche.Result.BjpksData.datelinedate}} 第 {{saiche.Result.BjpksData.qishu}} 期开奖号码</span>
-        </p>
-        <p ng-if="saiche.waiting" class="waiting"><i class="fa fa-clock-o" aria-hidden="true"></i> 第 {{saiche.qishu_next}} 期正在开奖，请耐心等候...</p>
-        <p ng-if="!saiche.waiting">
-            <span class="game-code feiting-code-{{saiche.Result.BjpksData.n_01}}">{{saiche.Result.BjpksData.n_01}}</span>
-            <span class="game-code feiting-code-{{saiche.Result.BjpksData.n_02}}">{{saiche.Result.BjpksData.n_02}}</span>
-            <span class="game-code feiting-code-{{saiche.Result.BjpksData.n_03}}">{{saiche.Result.BjpksData.n_03}}</span>
-            <span class="game-code feiting-code-{{saiche.Result.BjpksData.n_04}}">{{saiche.Result.BjpksData.n_04}}</span>
-            <span class="game-code feiting-code-{{saiche.Result.BjpksData.n_05}}">{{saiche.Result.BjpksData.n_05}}</span>
-            <span class="game-code feiting-code-{{saiche.Result.BjpksData.n_06}}">{{saiche.Result.BjpksData.n_06}}</span>
-            <span class="game-code feiting-code-{{saiche.Result.BjpksData.n_07}}">{{saiche.Result.BjpksData.n_07}}</span>
-            <span class="game-code feiting-code-{{saiche.Result.BjpksData.n_08}}">{{saiche.Result.BjpksData.n_08}}</span>
-            <span class="game-code feiting-code-{{saiche.Result.BjpksData.n_09}}">{{saiche.Result.BjpksData.n_09}}</span>
-            <span class="game-code feiting-code-{{saiche.Result.BjpksData.n_10}}">{{saiche.Result.BjpksData.n_10}}</span>
-        </p>
+        </span>
+    </p>
+    <p>
+        <span class="text-white">{{saiche.Result.BjpksData.datelinedate}} 第 {{saiche.Result.BjpksData.qishu}} 期开奖号码</span>
+    </p>
+    <p ng-if="saiche.waiting" class="waiting"><i class="fa fa-clock-o" aria-hidden="true"></i> 第 {{saiche.qishu_next}} 期正在开奖，请耐心等候...</p>
+    <p ng-if="!saiche.waiting">
+        <span class="game-code feiting-code-{{saiche.Result.BjpksData.n_01}}">{{saiche.Result.BjpksData.n_01}}</span>
+        <span class="game-code feiting-code-{{saiche.Result.BjpksData.n_02}}">{{saiche.Result.BjpksData.n_02}}</span>
+        <span class="game-code feiting-code-{{saiche.Result.BjpksData.n_03}}">{{saiche.Result.BjpksData.n_03}}</span>
+        <span class="game-code feiting-code-{{saiche.Result.BjpksData.n_04}}">{{saiche.Result.BjpksData.n_04}}</span>
+        <span class="game-code feiting-code-{{saiche.Result.BjpksData.n_05}}">{{saiche.Result.BjpksData.n_05}}</span>
+        <span class="game-code feiting-code-{{saiche.Result.BjpksData.n_06}}">{{saiche.Result.BjpksData.n_06}}</span>
+        <span class="game-code feiting-code-{{saiche.Result.BjpksData.n_07}}">{{saiche.Result.BjpksData.n_07}}</span>
+        <span class="game-code feiting-code-{{saiche.Result.BjpksData.n_08}}">{{saiche.Result.BjpksData.n_08}}</span>
+        <span class="game-code feiting-code-{{saiche.Result.BjpksData.n_09}}">{{saiche.Result.BjpksData.n_09}}</span>
+        <span class="game-code feiting-code-{{saiche.Result.BjpksData.n_10}}">{{saiche.Result.BjpksData.n_10}}</span>
+    </p>
+</div>
+<div class="scroll-view">
+    <div class="left-panel">
+        <label class="game-type-item" for="game-{{type.value}}" ng-class="{'active':type.label == input.game_type.label}" ng-repeat="type in game_type">{{type.label}} <input type="radio" class="hidden" ng-model="input.game_type" id="game-{{type.value}}" name="game-{{type.value}}" ng-value="{{type}}"></label>
     </div>
-    <div class="game-section" ng-repeat="game in games">
-        <div class="game-section-header">
-            {{game.name}}
-        </div>
-        <div class="game-section-content" ng-class="{'opacity_05':feiting.waiting}">
-            <div ng-repeat="g in game.oIndexBeans track by $index" ng-click="show(g,game)" class="layout-2" ng-class="{'selected':g.betted}" ng-if="input.game_type.value == '1' && !($index+1 > 4 && $parent.$index+1 > 5)">
-                <span>{{g.name}} </span>
-                <span class="text-danger"> {{g.rate}}</span>
-                <span ng-if="g.betted">{{g.betting_money}}元</span>
+    <div class="right-panel">
+        <div class="game-section" ng-repeat="game in games">
+            <div class="game-section-header">
+                {{game.name}}
             </div>
-            <div ng-repeat="g in game.oIndexBeans" ng-click="show(g,game)" class="layout-1" ng-class="{'selected':g.betted}" ng-if="input.game_type.value == '2'">
-                <span class="game-code feiting-code-{{g.name}}">{{g.name}} </span>
-                <span class="text-danger"> {{g.rate}}</span>
-                <span ng-if="g.betted">{{g.betting_money}}元</span>
+            <div class="game-section-content" ng-class="{'opacity_05':feiting.waiting}">
+                <div ng-repeat="g in game.oIndexBeans track by $index" ng-click="show(g,game)" class="layout-2" ng-class="{'selected':g.betted}" ng-if="input.game_type.value == '1' && !($index+1 > 4 && $parent.$index+1 > 5)">
+                    <span>{{g.name}} </span>
+                    <span class="text-danger"> {{g.rate}}</span>
+                    <span ng-if="g.betted">{{g.betting_money}}元</span>
+                </div>
+                <div ng-repeat="g in game.oIndexBeans" ng-click="show(g,game)" class="layout-1" ng-class="{'selected':g.betted}" ng-if="input.game_type.value == '2'">
+                    <span class="game-code feiting-code-{{g.name}}">{{g.name}} </span>
+                    <span class="text-danger"> {{g.rate}}</span>
+                    <span ng-if="g.betted">{{g.betting_money}}元</span>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <div style="height:48px;"></div>
 <div class="detail-footer justified">
-    <span class="reset-btn" ng-click="resetForm()">重置</span>
-    <span class="submit-btn" ng-click="ajaxForm()">提交</span>
+    <div><span class="reset-btn" ng-click="resetForm()">重置</span></div>
+    <div><span class="submit-btn" ng-click="ajaxForm()">提交</span></div>
 </div>
 <div class="overlay" ng-if="popup_state == 'open'">
     <div class="popup">

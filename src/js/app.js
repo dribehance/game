@@ -1,6 +1,7 @@
 // by dribehance <dribehance.kksdapp.com>
 angular.module("Game", [
 		"ngRoute",
+		"ngAnimate",
 		"ngSanitize",
 		"LocalStorageModule",
 		// "flow",
@@ -19,7 +20,7 @@ angular.module("Game", [
 				controller: controllername,
 				resolve: {
 					user: function($q, $location, localStorageService) {
-						var resolve_path = ["account"],
+						var resolve_path = ["charge", "me", "feiting", "saiche", "liuhecai", "kuaile", "fillinorder_feiting", "fillinorder_saiche", "fillinorder_liuhecai", "fillinorder_kuaile"],
 							defer = $q.defer();
 						if (resolve_path.includes(path) && !localStorageService.get("token")) {
 							defer.reject();
