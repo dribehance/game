@@ -20,4 +20,7 @@ angular.module("Game").controller("signinController", function($scope, $rootScop
 			}
 		})
 	}
+	$scope.go = function(path) {
+		$location.path(path).replace();
+	}
 })
