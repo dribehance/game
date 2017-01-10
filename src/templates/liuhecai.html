@@ -1,66 +1,66 @@
 <dribehance-header title="'六合彩'" back-action="'on'"></dribehance-header>
-<div class="wrap">
-    <div class="game-header">
-        <div class="game-balance">
-            <span class="balance">余额</span>
-            <span>{{liuhecai.balance_money|currency:"￥"}}</span>
-        </div>
-        <p>
-            <span ng-if="!liuhecai.day_seconds" class="block refresh-btn" ng-click="refresh()"><i class="fa fa-refresh" aria-hidden="true"></i> 点击刷新，看看开奖没有</span>
-            <span class="text-white">第 </span>
-            <span class="text-primary"> {{liuhecai.qishu_next}}</span>
-            <span class="text-white">期，距离开奖时间</span>
-            <span class="text-primary">
+<div class="game-header">
+    <div class="game-balance">
+        <span class="balance">余额</span>
+        <span>{{liuhecai.balance_money|currency:"￥"}}</span>
+    </div>
+    <p>
+        <!-- <span ng-if="!liuhecai.day_seconds" class="block refresh-btn" ng-click="refresh()"><i class="fa fa-refresh" aria-hidden="true"></i> 点击刷新，看看开奖没有</span> -->
+        <span class="text-white">第 </span>
+        <span class="text-primary"> {{liuhecai.qishu_next}}</span>
+        <span class="text-white">期，距离开奖时间</span>
+        <span class="text-primary">
                 <timer ng-if="liuhecai.day_seconds" interval="1000" countdown="liuhecai.day_seconds" finish-callback="callbackTimer.finished()">
                     {{days}}天{{hhours}}:{{mminutes}}:{{sseconds}}
                 </timer>
                 <span ng-if="!liuhecai.day_seconds">--:--</span>
-            </span>
-        </p>
-        <p ng-if="!liuhecai.waiting">
-            <span class="text-white">{{liuhecai.Result.XglhcData.datelinedate}} 第 {{liuhecai.Result.XglhcData.qishu}} 期开奖号码</span>
-        </p>
-        <p ng-if="liuhecai.waiting">
-            <span class="text-white">{{liuhecai.datelinedate}} 第 {{liuhecai.qishu_next}} 期开奖号码</span>
-        </p>
-        <p ng-if="liuhecai.waiting" class="waiting"><i class="fa fa-clock-o" aria-hidden="true"></i> 第 {{liuhecai.qishu_next}} 期正在开奖，请耐心等候...</p>
-        <p ng-if="!liuhecai.waiting">
-            <div class="liuhecai-cell">
-                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_01}}">{{parse_code(liuhecai.Result.XglhcData.n_01)}}</span>
-                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_01_str)}}</span>
-            </div>
-            <div class="liuhecai-cell">
-                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_02}}">{{parse_code(liuhecai.Result.XglhcData.n_02)}}</span>
-                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_02_str)}}</span>
-            </div>
-            <div class="liuhecai-cell">
-                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_03}}">{{parse_code(liuhecai.Result.XglhcData.n_03)}}</span>
-                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_03_str)}}</span>
-            </div>
-            <div class="liuhecai-cell">
-                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_04}}">{{parse_code(liuhecai.Result.XglhcData.n_04)}}</span>
-                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_04_str)}}</span>
-            </div>
-            <div class="liuhecai-cell">
-                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_05}}">{{parse_code(liuhecai.Result.XglhcData.n_05)}}</span>
-                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_05_str)}}</span>
-            </div>
-            <div class="liuhecai-cell">
-                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_06}}">{{parse_code(liuhecai.Result.XglhcData.n_06)}}</span>
-                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_06_str)}}</span>
-            </div>
-            <div class="liuhecai-cell">
-                <span class="text-white"> + </span>
-            </div>
-            <div class="liuhecai-cell">
-                <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_07}}">{{parse_code(liuhecai.Result.XglhcData.n_07)}}</span>
-                <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_07_str)}}</span>
-            </div>
-        </p>
-    </div>
+        </span>
+    </p>
+    <p ng-if="!liuhecai.waiting">
+        <span class="text-white">{{liuhecai.Result.XglhcData.datelinedate}} 第 {{liuhecai.Result.XglhcData.qishu}} 期开奖号码</span>
+    </p>
+    <p ng-if="liuhecai.waiting">
+        <span class="text-white">{{liuhecai.datelinedate}} 第 {{liuhecai.qishu_next}} 期开奖号码</span>
+    </p>
+    <p ng-if="liuhecai.waiting" class="waiting"><i class="fa fa-clock-o" aria-hidden="true"></i> 第 {{liuhecai.qishu_next}} 期正在开奖，请耐心等候...</p>
+    <p ng-if="!liuhecai.waiting">
+        <div class="liuhecai-cell" ng-if="liuhecai.Result.XglhcData.n_01">
+            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_01}}">{{parse_code(liuhecai.Result.XglhcData.n_01)}}</span>
+            <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_01_str)}}</span>
+        </div>
+        <div class="liuhecai-cell" ng-if="liuhecai.Result.XglhcData.n_02">
+            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_02}}">{{parse_code(liuhecai.Result.XglhcData.n_02)}}</span>
+            <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_02_str)}}</span>
+        </div>
+        <div class="liuhecai-cell" ng-if="liuhecai.Result.XglhcData.n_03">
+            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_03}}">{{parse_code(liuhecai.Result.XglhcData.n_03)}}</span>
+            <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_03_str)}}</span>
+        </div>
+        <div class="liuhecai-cell" ng-if="liuhecai.Result.XglhcData.n_04">
+            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_04}}">{{parse_code(liuhecai.Result.XglhcData.n_04)}}</span>
+            <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_04_str)}}</span>
+        </div>
+        <div class="liuhecai-cell" ng-if="liuhecai.Result.XglhcData.n_05">
+            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_05}}">{{parse_code(liuhecai.Result.XglhcData.n_05)}}</span>
+            <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_05_str)}}</span>
+        </div>
+        <div class="liuhecai-cell" ng-if="liuhecai.Result.XglhcData.n_06">
+            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_06}}">{{parse_code(liuhecai.Result.XglhcData.n_06)}}</span>
+            <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_06_str)}}</span>
+        </div>
+        <div class="liuhecai-cell" ng-if="liuhecai.Result.XglhcData.n_07">
+            <span class="text-white"> + </span>
+        </div>
+        <div class="liuhecai-cell" ng-if="liuhecai.Result.XglhcData.n_07">
+            <span class="game-code liuhecai-code-{{liuhecai.Result.XglhcData.n_07}}">{{parse_code(liuhecai.Result.XglhcData.n_07)}}</span>
+            <span class="block">{{parse_code(liuhecai.Result.XglhcData.n_07_str)}}</span>
+        </div>
+    </p>
+</div>
+<div class="wrap">
     <div class="game-section">
         <div class="game-section-header" ng-if="liuhecai.Result.XyftBjpkLogs.length>0">
-            已投
+            已投 {{total_betting_money}} 元
         </div>
         <div class="game-section-content">
             <div ng-repeat="log in liuhecai.Result.XyftBjpkLogs" class="layout-2">
@@ -68,7 +68,7 @@
                 <span class="text-danger"> {{log.money}}</span>
             </div>
         </div>
-        <div class="buy-btn" ng-click="go('fillinorder_liuhecai')" ng-if="!liuhecai.waiting">我要投注</div>
+        <div class="buy-btn" ng-click="go('fillinorder_liuhecai')" ng-if="!liuhecai.waiting && charge_info.is_show_betting == '1'">我要投注</div>
     </div>
     <div class="trend-line">
         <span>近期走势</span>

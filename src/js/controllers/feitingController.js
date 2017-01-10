@@ -2,10 +2,22 @@
 angular.module("Game").controller("feitingController", function($scope, $route, $rootScope, $timeout, $interval, userServices, errorServices, toastServices, localStorageService, config) {
 	$scope.feiting = {}
 	$scope.feiting.waiting = false;
+	userServices.query_constant_info().then(function(data) {
+		toastServices.hide()
+		if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
+			$scope.charge_info = data.Constant;
+		} else {
+			errorServices.autoHide(data.message);
+		}
+	})
 	$scope.query_feiting = function() {
 		userServices.query_feiting().then(function(data) {
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
 				$scope.feiting = data;
+				$scope.total_betting_money = 0;
+				angular.forEach($scope.feiting.Result.XyftBjpkLogs, function(v, k) {
+					$scope.total_betting_money += parseFloat(v.money);
+				});
 			} else {
 				errorServices.autoHide(data.message);
 			}

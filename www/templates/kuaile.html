@@ -37,7 +37,7 @@
     </div>
     <div class="game-section">
     	<div class="game-section-header" ng-if="kuaile.Result.XyftBjpkLogs.length>0">
-    		已投
+    		已投 {{total_betting_money}} 元
     	</div>
     	<div class="game-section-content">
     		<div ng-repeat="log in kuaile.Result.XyftBjpkLogs" class="layout-2">
@@ -45,7 +45,7 @@
     			<span class="text-danger"> {{log.money}}</span>
     		</div>
     	</div>
-    	<div class="buy-btn" ng-click="go('fillinorder_kuaile')" ng-if="!kuaile.waiting">我要投注</div>
+    	<div class="buy-btn" ng-click="go('fillinorder_kuaile')" ng-if="!kuaile.waiting && charge_info.is_show_betting == '1'">我要投注</div>
     </div>
     <div class="trend-line">
     	<span>近期走势</span>

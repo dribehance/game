@@ -182,6 +182,8 @@
 .game-header {
     display: block;
     text-align: center;
+    line-height: 26px;
+    position: relative;
     .game-balance {
         // float: right;
         // width: 65px;
@@ -940,11 +942,15 @@
     width: 80%;
     margin: auto auto;
     border-radius: 5px;
-    background-color: @brand-primary;
+    // background-color: @brand-primary;
+    background-color: fade(white, 90%);
     .order-popup-header {
         padding: 15px;
         text-align: center;
-        background-color: #cda462;
+        color: white;
+        background-color: #5f9bc7;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
     }
     .order-popup-item {
         padding:10px;
@@ -1174,48 +1180,27 @@ iframe p {
     background-image: url(../images/bg2.jpg);
     background-size: cover;
     background-attachment: fixed;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    // transform: translate3d(0, 0, 0);
 }
 
 /* ANIMATIONS
 ============================================================================= */
 
-/* leaving animations ----------------------------------------- */
-/* rotate and fall */
-@keyframes rotateFall {
-    0%      { transform: rotateZ(0deg); }
-    20%     { transform: rotateZ(10deg); animation-timing-function: ease-out; }
-    40%     { transform: rotateZ(17deg); }
-    60%     { transform: rotateZ(16deg); }
-    100%    { transform: translateY(100%) rotateZ(17deg); }
-}
 
 /* slide in from the bottom */
 @keyframes slideOutLeft {
-    to      { transform: translateX(-100%); }
-}
-
-/* rotate out newspaper */
-@keyframes rotateOutNewspaper {
-    to      { transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
-}
-
-/* entering animations --------------------------------------- */
-/* scale up */
-@keyframes scaleUp {
-    from    { opacity: 0.5; -webkit-transform: scale(0.8); }
+    from {}
+    to      { transform: translateX(-100%) scale(0.95); opacity: 0.9; }
 }
 
 /* slide in from the right */
 @keyframes slideInRight {
-    from    { transform:translateX(50%); }
+    from    { transform:translateX(100%); }
     to      { transform: translateX(0); }
 }
 
-/* slide in from the bottom */
-@keyframes slideInUp {
-    from    { transform:translateY(100%); }
-    to      { transform: translateY(0); }
-}
 
-.page.ng-enter           { animation: slideInRight 0.3s both ease-in; z-index: 8888; }
-.page.ng-leave           { animation: slideOutLeft 0.15s 0.15s both ease-in; z-index: 9999; }
+.page.ng-enter           { animation: slideInRight 0.1s 0.2s both ease-in; z-index: 9999; .box-shadow(-1px 0 5px fade(black,10%))}
+.page.ng-leave           { animation: slideOutLeft 0.3s both ease-in; z-index: 8888; }

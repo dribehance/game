@@ -2,10 +2,22 @@
 angular.module("Game").controller("liuhecaiController", function($scope, $route, $rootScope, $timeout, $interval, userServices, errorServices, toastServices, localStorageService, config) {
 	$scope.liuhecai = {}
 	$scope.liuhecai.waiting = false;
+	userServices.query_constant_info().then(function(data) {
+		toastServices.hide()
+		if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
+			$scope.charge_info = data.Constant;
+		} else {
+			errorServices.autoHide(data.message);
+		}
+	})
 	$scope.query_liuhecai = function() {
 		userServices.query_liuhecai().then(function(data) {
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
 				$scope.liuhecai = data;
+				$scope.total_betting_money = 0;
+				angular.forEach($scope.liuhecai.Result.XyftBjpkLogs, function(v, k) {
+					$scope.total_betting_money += parseFloat(v.money);
+				});
 			} else {
 				errorServices.autoHide(data.message);
 			}

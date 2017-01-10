@@ -2,10 +2,22 @@
 angular.module("Game").controller("kuaileController", function($scope, $route, $rootScope, $timeout, $interval, userServices, errorServices, toastServices, localStorageService, config) {
 	$scope.kuaile = {}
 	$scope.kuaile.waiting = false;
+	userServices.query_constant_info().then(function(data) {
+		toastServices.hide()
+		if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
+			$scope.charge_info = data.Constant;
+		} else {
+			errorServices.autoHide(data.message);
+		}
+	})
 	$scope.query_kuaile = function() {
 		userServices.query_kuaile().then(function(data) {
 			if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
 				$scope.kuaile = data;
+				$scope.total_betting_money = 0;
+				angular.forEach($scope.kuaile.Result.XyftBjpkLogs, function(v, k) {
+					$scope.total_betting_money += parseFloat(v.money);
+				});
 			} else {
 				errorServices.autoHide(data.message);
 			}
