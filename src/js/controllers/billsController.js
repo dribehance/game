@@ -29,7 +29,7 @@ angular.module("Game").controller("billsController", function($scope, userServic
 
 	}
 	$scope.loadMore();
-	$scope.type = ["", "存款", "提现", "投注", "中奖", "推荐收入"];
+	$scope.type = ["", "存款", "提现", "投注", "中奖", "推荐收入", "现金"];
 	$scope.get_type = function(type) {
 		return $scope.type[type];
 	}

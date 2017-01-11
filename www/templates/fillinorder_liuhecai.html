@@ -70,7 +70,7 @@
                     <span class="text-danger"> {{g.rate}}</span>
                     <span ng-if="g.betted"> {{g.betting_money}}元</span>
                     <div ng-if="input.game_type.value == '3'||input.game_type.value == '4'||input.game_type.value == '5'">
-                        <span class="game-code liuhecai-code-{{code}}" ng-class="{'small-size':parse_code_1(g.number).length == 5}" ng-repeat="code in parse_code_1(g.number) track by $index">{{code}}</span>
+                        <span class="game-code liuhecai-code-{{code}}" ng-class="{'small-size':parse_code_1(g.number).length == 5}" ng-repeat="code in parse_code_1(g.number) track by $index">{{parse_code(code)}}</span>
                     </div>
                 </div>
             </div>
