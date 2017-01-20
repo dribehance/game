@@ -6,6 +6,7 @@
             <span class="balance">{{constant_info.balance_money|currency:"￥"||"0"}}</span>
             <span>提现的时候，请确提款账号正确无误，如果因账
 号填写错误导致的提现失败，平台不负任何责任。提现操作在半小时内到达指定账号。</span>
+            <span class="block text-danger">(100元起提)</span>
         </div>
         <div class="list-group">
             <div class="list-group-item">
@@ -29,7 +30,7 @@
             <div class="list-group-item">
                 
                 <div class="game-list-input">
-                    <input type="tel" name="money" ng-model="input.money" placeholder="提款金额">
+                    <input type="tel" name="money" ng-model="input.money" placeholder="提款金额，大于100">
                 </div>
             </div>
             <div class="list-group-item">

@@ -1,6 +1,6 @@
 angular.module("Game").constant("config", {
-	url: "http://120.76.41.192:8055",
-	imageUrl: "http://120.76.41.192:8055/files/image?name=",
+	url: "http://www.lczx1396.hk",
+	imageUrl: "http://www.lczx1396.hk/files/image?name=",
 	request: {
 		"SUCCESS": "200",
 		"TOKEN_INVALID": "405"
