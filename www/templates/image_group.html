@@ -1,15 +1,17 @@
 <dribehance-header title="'彩色图库'" back-action="'on'"></dribehance-header>
-<div class="wrap">
-	<div class="image-group">
-		<a class="image-group-item" ng-repeat="image in image_group" ng-href="#/image_preview?name={{image.image_01_big}}">
-			<div class="image">
-				<imageview data-rate="1" center-only src="staticImageUrl + image.image_01"></imageview>
-			</div>
-			<div class="summary">
-				<div class="title">{{image.title}}</div>
-				<div class="post-time">{{image.qishu}}</div>
-			</div>
-		</a>
-		<div class="wrap text-center" ng-click="loadMore()">{{page.message}}</div>
-	</div>
+<div class="scroll-view flex-item">
+    <div class="scroll-content wrap">
+        <div class="image-group">
+            <a class="image-group-item" ng-repeat="image in image_group" ng-href="#/image_preview?name={{image.image_01_big}}">
+                <div class="image">
+                    <imageview data-rate="1" center-only src="staticImageUrl + image.image_01"></imageview>
+                </div>
+                <div class="summary">
+                    <div class="title">{{image.title}}</div>
+                    <div class="post-time">{{image.qishu}}</div>
+                </div>
+            </a>
+            <div class="wrap text-center" ng-click="loadMore()">{{page.message}}</div>
+        </div>
+    </div>
 </div>

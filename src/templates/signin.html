@@ -4,25 +4,26 @@
     </span>
     <span class="heading">登录</span>
 </div>
-<div class="wrap">
-    <form class="me-section" name="signinForm" ng-submit="ajaxForm()">
-        
-        <div class="list-group">
-            <div class="list-group-item">
-                <div class="game-list-input">
-                    <input type="text" name="nickname" ng-model="input.nickname" placeholder="用户名">
+<div class="scroll-view flex-item">
+    <div class="scroll-content wrap">
+        <form class="me-section" name="signinForm" ng-submit="ajaxForm()">
+            <div class="list-group">
+                <div class="list-group-item">
+                    <div class="game-list-input">
+                        <input type="text" name="nickname" ng-model="input.nickname" placeholder="用户名">
+                    </div>
                 </div>
-            </div>
-            <div class="list-group-item">
-                <div class="game-list-input">
-                    <input type="password" name="password" ng-model="input.password" placeholder="密码">
+                <div class="list-group-item">
+                    <div class="game-list-input">
+                        <input type="password" name="password" ng-model="input.password" placeholder="密码">
+                    </div>
                 </div>
+                <p class="wrap">
+                    <a ng-href="#/forget" class="pull-left">忘记密码</a>
+                    <a ng-href="#/signup" class="pull-right">注册</a>
+                </p>
+                <button type="submit" class="logout-btn">登录</button>
             </div>
-            <p class="wrap">
-                <a ng-href="#/forget" class="pull-left">忘记密码</a>
-                <a ng-href="#/signup" class="pull-right">注册</a>
-            </p>
-            <button type="submit" class="logout-btn">登录</button>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>

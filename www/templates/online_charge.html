@@ -1,60 +1,62 @@
 <dribehance-header title="'充值'" back-action="'on'"></dribehance-header>
-<div class="wrap">
-    <div class="me-section">
-        <div class="me-section-header">
-            <span class="block">账号收款二维码</span>
-            <span class="block">长按保存图中二维码进行转账</span>
-            <p></p>
-            <span class="block">请先转账后提交</span>
-        </div>
-        <div class="payment-qrcode">
-            <div>
-                <div class="qrcode">
-                    <imageview data-rate="1" src="staticImageUrl + charge_info.getmoney_code" center-only></imageview>
-                </div>
+<div class="scroll-view flex-item">
+    <div class="scroll-content wrap">
+        <div class="me-section">
+            <div class="me-section-header">
+                <span class="block">账号收款二维码</span>
+                <span class="block">长按保存图中二维码进行转账</span>
                 <p></p>
-                <span class="block">支付宝：{{charge_info.getmoney_account_number}}</span>
-                <span class="block">账号名称：{{charge_info.getmoney_account_name}}</span>
+                <span class="block">请先转账后提交</span>
             </div>
-            <div>
-                <div class="qrcode">
-                    <imageview data-rate="1" src="staticImageUrl + charge_info.getmoney_weixincode" center-only></imageview>
+            <div class="payment-qrcode">
+                <div>
+                    <div class="qrcode">
+                        <imageview data-rate="1" src="staticImageUrl + charge_info.getmoney_code" center-only></imageview>
+                    </div>
+                    <p></p>
+                    <span class="block">支付宝：{{charge_info.getmoney_account_number}}</span>
+                    <span class="block">账号名称：{{charge_info.getmoney_account_name}}</span>
                 </div>
-                <p></p>
-                <span class="block">微信：{{charge_info.getmoney_weixin_account_number}}</span>
-                <span class="block">账号名称：{{charge_info.getmoney_weixin_account_name}}</span>
-            </div>
-        </div>
-        <div class="list-group">
-            <div class="list-group-item">
-                <div class="game-select">
-                    <select ng-model="input.type">
-                        <option value="1">支付宝</option>
-                        <option value="2">微信</option>
-                    </select>
-                </div>
-            </div>
-            <div class="list-group-item">
-                <div class="game-list-input">
-                    <input type="text" name="account" ng-model="input.account" placeholder="需充值账号">
+                <div>
+                    <div class="qrcode">
+                        <imageview data-rate="1" src="staticImageUrl + charge_info.getmoney_weixincode" center-only></imageview>
+                    </div>
+                    <p></p>
+                    <span class="block">微信：{{charge_info.getmoney_weixin_account_number}}</span>
+                    <span class="block">账号名称：{{charge_info.getmoney_weixin_account_name}}</span>
                 </div>
             </div>
-            <div class="list-group-item">
-                <div class="game-list-input">
-                    <input type="text" name="pay_account" ng-model="input.pay_account" placeholder="支付账号">
+            <div class="list-group">
+                <div class="list-group-item">
+                    <div class="game-select">
+                        <select ng-model="input.type">
+                            <option value="1">支付宝</option>
+                            <option value="2">微信</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="list-group-item">
-                <div class="game-list-input">
-                    <input type="tel" name="money" ng-model="input.money" placeholder="支付金额">
+                <div class="list-group-item">
+                    <div class="game-list-input">
+                        <input type="text" name="account" ng-model="input.account" placeholder="需充值账号">
+                    </div>
                 </div>
+                <div class="list-group-item">
+                    <div class="game-list-input">
+                        <input type="text" name="pay_account" ng-model="input.pay_account" placeholder="支付账号">
+                    </div>
+                </div>
+                <div class="list-group-item">
+                    <div class="game-list-input">
+                        <input type="tel" name="money" ng-model="input.money" placeholder="支付金额">
+                    </div>
+                </div>
+                <div class="logout-btn" ng-click="ajaxForm()">
+                    提交申请
+                </div>
+                <p style="padding:5px;">
+                    温馨提示：充值转账会在5分钟内到达账户，请注意到个人中心中查看；如果五分钟后仍未到账，请尽快联系客服。
+                </p>
             </div>
-            <div class="logout-btn" ng-click="ajaxForm()">
-                提交申请
-            </div>
-            <p style="padding:5px;">
-                温馨提示：充值转账会在5分钟内到达账户，请注意到个人中心中查看；如果五分钟后仍未到账，请尽快联系客服。
-            </p>
         </div>
     </div>
 </div>

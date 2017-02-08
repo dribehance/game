@@ -1,34 +1,41 @@
 <dribehance-header title="'娱乐中心'"></dribehance-header>
-<div>
-    <banner data-rate="375/169" class="banner">
-        <imageview data-rate="375/169" src="staticImageUrl + banner.image_01" ng-repeat="banner in banners track by $index" center-only on-repeat-done ng-click="preview_banner(banner.index_banner_id)"></imageview>
-    </banner>
+<div class="scroll-view flex-item">
+    <div class="scroll-content">
+        <div>
+            <banner data-rate="375/169" class="banner">
+                <imageview data-rate="375/169" src="staticImageUrl + banner.image_01" ng-repeat="banner in banners track by $index" center-only on-repeat-done ng-click="preview_banner(banner.index_banner_id)"></imageview>
+            </banner>
+        </div>
+        <div class="flex-box marquee">
+            <i class="fa fa-bullhorn" aria-hidden="true"></i>
+            <marquee class="flex-item" scrollamount="3">本平台采用官方数据，公平、公正、公开！提款3分钟火速到账，存款1分钟内办理，金牌信誉，值得信赖！  24小时电话:13823502620。</marquee>
+        </div>
+        <div class="three-grid">
+            <div ng-click="go('feiting')">
+                <span class="icon icon-ft"></span>
+                <span class="block">幸运飞艇</span>
+            </div>
+            <div ng-click="go('saiche')">
+                <span class="icon icon-bj"></span>
+                <span class="block">北京赛车</span>
+            </div>
+            <div ng-click="go('kuaile')">
+                <span class="icon icon-gd"></span>
+                <span class="block">快乐10分</span>
+            </div>
+            <div ng-click="go('liuhecai')">
+                <span class="icon icon-lhc"></span>
+                <span class="block">六合彩</span>
+            </div>
+            <a class="block" ng-href="#/image_group">
+                <span class="icon icon-jp"></span>
+                <span class="block">彩色图库</span>
+            </a>
+            <a class="block" ng-href="#/contact">
+                <span class="icon icon-kf"></span>
+                <span class="block">联系客服</span>
+            </a>
+        </div>
+    </div>
 </div>
-<div class="three-grid">
-    <div ng-click="go('feiting')">
-        <span class="icon icon-ft"></span>
-        <span class="block">幸运飞艇</span>
-    </div>
-    <div ng-click="go('saiche')">
-        <span class="icon icon-bj"></span>
-        <span class="block">北京赛车</span>
-    </div>
-    <div ng-click="go('kuaile')">
-        <span class="icon icon-gd"></span>
-        <span class="block">快乐10分</span>
-    </div>
-    <div ng-click="go('liuhecai')">
-        <span class="icon icon-lhc"></span>
-        <span class="block">六合彩</span>
-    </div>
-    <a class="block" ng-href="#/image_group">
-        <span class="icon icon-jp"></span>
-        <span class="block">彩色图库</span>
-    </a>
-    <a class="block" ng-href="#/contact">
-        <span class="icon icon-kf"></span>
-        <span class="block">联系客服</span>
-    </a>
-</div>
-<div style="height:48px;"></div>
 <dribehance-footer active="'index'"></dribehance-footer>

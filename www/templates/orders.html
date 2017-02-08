@@ -1,38 +1,41 @@
 <dribehance-header title="'我的注单'" back-action="'on'"></dribehance-header>
-<div class="bill-table">
-    <div class="table-header ">
-        <div class="table-cell">
-            彩种
-        </div>
-        <div class="table-cell">
-            类型
-        </div>
-        <div class="table-cell">
-            金额
-        </div>
-        <div class="table-cell">
-            结果
-        </div>
-    </div>
-    <div class="table-row" ng-repeat="order in orders">
-        <div class="table-cell">
-            {{order.game_name}}
-        </div>
-        <div class="table-cell">
-            {{order.type_name_01}}
-        </div>
-        <div class="table-cell">
-            {{order.money}}
-        </div>
-        <div class="table-cell" ng-click="show(order)" ng-class="{'text-success':order.backmoney<0}">
-            {{order.backmoney|currency:"￥"}}
-            <div>
-                <i class="fa fa-search" aria-hidden="true"></i>
-                查看详情
+<div class="scroll-view flex-item">
+    <div class="scroll-content">
+        <div class="bill-table">
+            <div class="table-header ">
+                <div class="table-cell">
+                    彩种
+                </div>
+                <div class="table-cell">
+                    类型
+                </div>
+                <div class="table-cell">
+                    金额
+                </div>
+                <div class="table-cell">
+                    结果
+                </div>
             </div>
+            <div class="table-row" ng-repeat="order in orders">
+                <div class="table-cell">
+                    {{order.game_name}}
+                </div>
+                <div class="table-cell">
+                    {{order.type_name_01}}
+                </div>
+                <div class="table-cell">
+                    {{order.money}}
+                </div>
+                <div class="table-cell" ng-click="show(order)" ng-class="{'text-success':order.backmoney<0}">
+                    {{order.backmoney|currency:"￥"}}
+                    <div>
+                        <i class="fa fa-search" aria-hidden="true"></i> 查看详情
+                    </div>
+                </div>
+            </div>
+            <div class="wrap text-center" ng-click="loadMore()">{{page.message}}</div>
         </div>
     </div>
-    <div class="wrap text-center" ng-click="loadMore()">{{page.message}}</div>
 </div>
 <div class="overlay" ng-if="popup_state == 'open'">
     <div class="order-popup">

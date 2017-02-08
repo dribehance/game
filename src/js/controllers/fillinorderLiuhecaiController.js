@@ -74,32 +74,23 @@ angular.module("Game").controller("fillinorderLiuhecaiController", function($sco
 			}
 		})
 	};
-	// open popup
+	// betted
 	$scope.show = function(cell, game) {
 		if ($scope.liuhecai.waiting) {
 			return;
 		}
-		if (cell.betted) {
-			cell.betting_money = 0;
-			cell.betted = false;
-			return
-		}
-		$scope.popup_state = "open";
-		$scope.input.selected_game_cell = cell;
-		$scope.input.selected_game = game;
+		cell.betted = !cell.betted;
 	}
-	$scope.close = function() {
-		$scope.popup_state = "close";
-	};
-	// betting
-	$scope.betting = function() {
-		var number_reg = /^[0-9]*$/;
-		if (!number_reg.test($scope.input.betting_money) || $scope.input.betting_money < 1) {
-			return;
-		}
-		$scope.input.selected_game_cell.betting_money = parseFloat($scope.input.betting_money);
-		$scope.input.selected_game_cell.betted = true;
-		$scope.popup_state = "close";
+	$scope.query_betted_count = function() {
+		var count = 0;
+		angular.forEach($scope.games, function(game, index) {
+			angular.forEach(game.oIndexBeans, function(g, i) {
+				if (g.betted) {
+					count++;
+				}
+			})
+		});
+		return count;
 	};
 	// timer callback
 	$scope.callbackTimer = {};
@@ -186,6 +177,11 @@ angular.module("Game").controller("fillinorderLiuhecaiController", function($sco
 		if ($scope.liuhecai.waiting) {
 			return;
 		}
+		var number_reg = /^[0-9]*$/;
+		if (!$scope.input.betting_money || !number_reg.test($scope.input.betting_money)) {
+			errorServices.autoHide("请输入正确的投注金额")
+			return;
+		}
 		var buy_infos = "",
 			total_money = 0;
 		if ($scope.input.game_type.value < 6) {
@@ -227,6 +223,7 @@ angular.module("Game").controller("fillinorderLiuhecaiController", function($sco
 			angular.forEach(game.oIndexBeans, function(g, i) {
 				if (g.betted) {
 					// var _index = index + 1;
+					g.betting_money = $scope.input.betting_money;
 					total_money += parseFloat(g.betting_money);
 					buy_infos += $scope.input.game_type.value + "A" + g.name + "A" + g.betting_money + "A" + g.rate + "#";
 				}
@@ -242,6 +239,7 @@ angular.module("Game").controller("fillinorderLiuhecaiController", function($sco
 		var buy_infos = "",
 			total_money = 0;
 		angular.forEach($scope.caroms, function(carom, index) {
+			g.betting_money = $scope.input.betting_money;
 			total_money += parseFloat(carom.money);
 			var carom_str = carom.numbers.map(function(c) {
 				if (c.number < 10) {

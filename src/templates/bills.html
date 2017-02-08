@@ -1,33 +1,37 @@
 <dribehance-header title="'资金流水'" back-action="'on'"></dribehance-header>
-<div class="bill-table">
-    <div class="table-header ">
-        <div class="table-cell">
-            时间
-        </div>
-        <div class="table-cell">
-            金额
-        </div>
-        <div class="table-cell">
-            余额
-        </div>
-        <div class="table-cell">
-            类型
+<div class="scroll-view flex-item">
+    <div class="scroll-content">
+        <div class="bill-table">
+            <div class="table-header ">
+                <div class="table-cell">
+                    时间
+                </div>
+                <div class="table-cell">
+                    金额
+                </div>
+                <div class="table-cell">
+                    余额
+                </div>
+                <div class="table-cell">
+                    类型
+                </div>
+            </div>
+            <div class="table-row" ng-repeat="bill in bills">
+                <div class="table-cell">
+                    {{bill.post_time}}
+                </div>
+                <div class="table-cell" ng-class="{'text-success':bill.type=='2' || bill.type == '3'}">
+                    {{bill.money|currency:"￥"||"0"}}
+                    <div>{{bill.c_mssage}}</div>
+                </div>
+                <div class="table-cell">
+                    {{bill.balance_money|currency:"￥"||"0"}}
+                </div>
+                <div class="table-cell">
+                    {{get_type(bill.type)}}
+                </div>
+            </div>
+            <div class="wrap text-center" ng-click="loadMore()">{{page.message}}</div>
         </div>
     </div>
-    <div class="table-row" ng-repeat="bill in bills">
-        <div class="table-cell">
-            {{bill.post_time}}
-        </div>
-        <div class="table-cell" ng-class="{'text-success':bill.type=='2' || bill.type == '3'}">
-            {{bill.money|currency:"￥"||"0"}}
-            <div>{{bill.c_mssage}}</div>
-        </div>
-        <div class="table-cell">
-            {{bill.balance_money|currency:"￥"||"0"}}
-        </div>
-        <div class="table-cell">
-            {{get_type(bill.type)}}
-        </div>
-    </div>
-    <div class="wrap text-center" ng-click="loadMore()">{{page.message}}</div>
 </div>

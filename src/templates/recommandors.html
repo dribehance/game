@@ -1,28 +1,30 @@
 <dribehance-header title="'推荐人信息列表'" back-action="'on'"></dribehance-header>
-<div class="wrap">
-    <div class="me-section">
-        <div class="me-section-header">
-            <span class="block">累计推荐</span>
-            <span class="balance">{{total_user}}位用户</span>
-        </div>
-        <div class="recommandors">
-            <div class="recommandor-header">
-                <div class="recommandor-cell">
-                    时间
-                </div>
-                <div class="recommandor-cell">
-                    推荐码
-                </div>
+<div class="scroll-view flex-item">
+    <div class="scroll-content wrap">
+        <div class="me-section">
+            <div class="me-section-header">
+                <span class="block">累计推荐</span>
+                <span class="balance">{{total_user}}位用户</span>
             </div>
-            <div class="recommandor-row" ng-repeat="recommandor in recommandors">
-                <div class="recommandor-cell">
-                    {{recommandor.post_time}}
+            <div class="recommandors">
+                <div class="recommandor-header">
+                    <div class="recommandor-cell">
+                        时间
+                    </div>
+                    <div class="recommandor-cell">
+                        推荐码
+                    </div>
                 </div>
-                <div class="recommandor-cell">
-                    {{recommandor.invite_code}}
+                <div class="recommandor-row" ng-repeat="recommandor in recommandors">
+                    <div class="recommandor-cell">
+                        {{recommandor.post_time}}
+                    </div>
+                    <div class="recommandor-cell">
+                        {{recommandor.invite_code}}
+                    </div>
                 </div>
+                <div class="wrap text-center" ng-click="loadMore()">{{page.message}}</div>
             </div>
-            <div class="wrap text-center" ng-click="loadMore()">{{page.message}}</div>
         </div>
     </div>
 </div>

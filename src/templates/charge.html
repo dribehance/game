@@ -1,28 +1,26 @@
 <dribehance-header title="'充值提现'"></dribehance-header>
-<div class="wrap">
-	<div class="me-section">
-		<div class="me-section-header">
-			<span class="block">账户余额</span>
-			<span class="balance">{{user.balance_money|currency:"￥"||"0"}}</span>
-		</div>
-		<div class="list-group">
-			<div class="list-group-item" ng-click="go('online_charge')">
-				<i class="icon icon-me-1"></i>
-				在线充值 - <small class="text-danger">支持微信、支付宝</small>
-				<i class="fa fa-angle-right pull-right" aria-hidden="true"></i>
-			</div>
-			<div class="list-group-item" ng-click="go('online_withdraw')">
-				<i class="icon icon-withdraw"></i>
-				在线取款 - <small class="text-danger">支持多家银行</small>
-				<i class="fa fa-angle-right pull-right" aria-hidden="true"></i>
-			</div>
-			<div class="list-group-item" ng-click="go('contact')">
-				<i class="icon icon-kf" style="width: 30px;height:30px;"></i>
-				在线客服 - <small class="text-danger">联系客服充值</small>
-				<i class="fa fa-angle-right pull-right" aria-hidden="true"></i>
-			</div>
-		</div>
-	</div>
+<div class="scroll-view flex-item">
+    <div class="scroll-content wrap">
+        <div class="me-section">
+            <div class="me-section-header">
+                <span class="block">账户余额</span>
+                <span class="balance">{{user.balance_money|currency:"￥"||"0"}}</span>
+            </div>
+            <div class="list-group">
+                <div class="list-group-item" ng-click="go('online_charge')">
+                    <i class="icon icon-me-1"></i> 在线充值 - <small class="text-danger">支持微信、支付宝</small>
+                    <i class="fa fa-angle-right pull-right" aria-hidden="true"></i>
+                </div>
+                <div class="list-group-item" ng-click="go('online_withdraw')">
+                    <i class="icon icon-withdraw"></i> 在线取款 - <small class="text-danger">支持多家银行</small>
+                    <i class="fa fa-angle-right pull-right" aria-hidden="true"></i>
+                </div>
+                <div class="list-group-item" ng-click="go('contact')">
+                    <i class="icon icon-kf" style="width: 30px;height:30px;"></i> 在线客服 - <small class="text-danger">联系客服充值</small>
+                    <i class="fa fa-angle-right pull-right" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div style="height:48px;"></div>
 <dribehance-footer active="'charge'"></dribehance-footer>

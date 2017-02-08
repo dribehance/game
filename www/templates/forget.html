@@ -1,30 +1,31 @@
 <dribehance-header title="'忘记密码'" back-action="'on'"></dribehance-header>
-<div class="wrap">
-    <div class="me-section">
-        
-        <div class="list-group">
-            <div class="list-group-item">
-                <div class="game-list-input">
-                    <input type="text" name="nickname" ng-model="input.nickname" placeholder="用户名">
+<div class="scroll-view flex-item">
+    <div class="scroll-content wrap">
+        <div class="me-section">
+            <div class="list-group">
+                <div class="list-group-item">
+                    <div class="game-list-input">
+                        <input type="text" name="nickname" ng-model="input.nickname" placeholder="用户名">
+                    </div>
                 </div>
-            </div>
-            <div class="list-group-item">
-                <div class="game-list-input">
-                    <input type="tel" name="telephone" ng-model="input.telephone" placeholder="手机号">
+                <div class="list-group-item">
+                    <div class="game-list-input">
+                        <input type="tel" name="telephone" ng-model="input.telephone" placeholder="手机号">
+                    </div>
                 </div>
-            </div>
-            <div class="list-group-item">
-                <div class="game-list-input">
-                    <input type="password" name="password_1" ng-model="input.password_1" placeholder="新密码">
+                <div class="list-group-item">
+                    <div class="game-list-input">
+                        <input type="password" name="password_1" ng-model="input.password_1" placeholder="新密码">
+                    </div>
                 </div>
-            </div>
-            <div class="list-group-item">
-                <div class="game-list-input">
-                    <input type="password" name="password_2" ng-model="input.password_2" placeholder="确认新密码">
+                <div class="list-group-item">
+                    <div class="game-list-input">
+                        <input type="password" name="password_2" ng-model="input.password_2" placeholder="确认新密码">
+                    </div>
                 </div>
-            </div>
-            <div class="logout-btn" ng-click="ajaxForm()">
-                重置密码
+                <div class="logout-btn" ng-click="ajaxForm()">
+                    重置密码
+                </div>
             </div>
         </div>
     </div>

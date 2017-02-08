@@ -54,78 +54,79 @@
         </div>
     </p>
 </div>
-<div class="scroll-view">
-    <div class="left-panel">
-        <label class="game-type-item" for="game-{{type.value}}" ng-class="{'active':type.label == input.game_type.label}" ng-repeat="type in game_type">{{type.label}} <input type="radio" class="hidden" ng-model="input.game_type" id="game-{{type.value}}" name="game-{{type.value}}" ng-value="{{type}}"></label>
-    </div>
-    <div class="right-panel">
-        <div class="game-section" ng-repeat="game in games" ng-if="input.game_type.value < 6">
-            <div class="game-section-header">
-                {{game.name}}
-            </div>
-            <div class="game-section-content" ng-class="{'opacity_05':liuhecai.waiting}">
-                <div ng-repeat="g in game.oIndexBeans|filter:{flag:'1'}" ng-click="show(g,game)" ng-class="{'selected':g.betted,'layout-1':input.game_type.value=='1'||input.game_type.value=='2','layout-3':input.game_type.value=='3','layout-4':input.game_type.value=='4'||input.game_type.value=='5'}">
-                    <span class="game-code liuhecai-code-{{g.name}}" ng-if="input.game_type.value == '1'||input.game_type.value == '2'">{{g.name}} </span>
-                    <span ng-if="input.game_type.value == '3' || input.game_type.value == '4'||input.game_type.value == '5'">{{g.name}}</span>
-                    <span class="text-danger"> {{g.rate}}</span>
-                    <span ng-if="g.betted"> {{g.betting_money}}元</span>
-                    <div ng-if="input.game_type.value == '3'||input.game_type.value == '4'||input.game_type.value == '5'">
-                        <span class="game-code liuhecai-code-{{code}}" ng-class="{'small-size':parse_code_1(g.number).length == 5}" ng-repeat="code in parse_code_1(g.number) track by $index">{{parse_code(code)}}</span>
-                    </div>
-                </div>
-            </div>
-            <p></p>
-            <div class="game-section-content" ng-class="{'opacity_05':liuhecai.waiting}">
-                <div ng-repeat="g in game.oIndexBeans|filter:{flag:'2'}" ng-click="show(g,game)" class="layout-2" ng-class="{'selected':g.betted}">
-                    <span>{{g.name}} </span>
-                    <span class="text-danger"> {{g.rate}}</span>
-                    <span ng-if="g.betted">{{g.betting_money}}元</span>
-                </div>
-            </div>
+<div class="flex-item flex-box">
+    <div class="left-panel scroll-view">
+        <div class="scroll-content">
+            <label class="game-type-item" for="game-{{type.value}}" ng-class="{'active':type.label == input.game_type.label}" ng-repeat="type in game_type">{{type.label}}
+                <input type="radio" class="hidden" ng-model="input.game_type" id="game-{{type.value}}" name="game-{{type.value}}" ng-value="{{type}}">
+            </label>
         </div>
-        <div class="game-section" ng-repeat="game in games" ng-if="input.game_type.value > 5">
-            <div class="game-section-header">
-                {{game.name}} (<span class="text-danger">赔率：{{game.oIndexBeans[0].rate}}</span>)
+    </div>
+    <div class="right-panel scroll-view flex-item">
+        <div class="scroll-content">
+            <div class="game-section" ng-repeat="game in games" ng-if="input.game_type.value < 6">
+                <div class="game-section-header">
+                    {{game.name}}
+                </div>
+                <div class="game-section-content" ng-class="{'opacity_05':liuhecai.waiting}">
+                    <div ng-repeat="g in game.oIndexBeans|filter:{flag:'1'}" ng-click="show(g,game)" ng-class="{'selected':g.betted,'layout-1':input.game_type.value=='1'||input.game_type.value=='2','layout-3':input.game_type.value=='3','layout-4':input.game_type.value=='4'||input.game_type.value=='5'}">
+                        <span class="game-code liuhecai-code-{{g.name}}" ng-if="input.game_type.value == '1'||input.game_type.value == '2'">{{g.name}} </span>
+                        <span ng-if="input.game_type.value == '3' || input.game_type.value == '4'||input.game_type.value == '5'">{{g.name}}</span>
+                        <span class="text-danger"> {{g.rate}}</span>
+                        <!-- <span ng-if="g.betted"> {{g.betting_money}}元</span> -->
+                        <div ng-if="input.game_type.value == '3'||input.game_type.value == '4'||input.game_type.value == '5'">
+                            <span class="game-code liuhecai-code-{{code}}" ng-class="{'small-size':parse_code_1(g.number).length == 5}" ng-repeat="code in parse_code_1(g.number) track by $index">{{parse_code(code)}}</span>
+                        </div>
+                    </div>
+                </div>
+                <p></p>
+                <div class="game-section-content" ng-class="{'opacity_05':liuhecai.waiting}">
+                    <div ng-repeat="g in game.oIndexBeans|filter:{flag:'2'}" ng-click="show(g,game)" class="layout-2" ng-class="{'selected':g.betted}">
+                        <span>{{g.name}} </span>
+                        <span class="text-danger"> {{g.rate}}</span>
+                        <!-- <span ng-if="g.betted">{{g.betting_money}}元</span> -->
+                    </div>
+                </div>
             </div>
-            <!-- ng-repeat="betted_game in betted_game_list" -->
-            <div class="game-section-content">
-                <div class="layout-5" ng-repeat="carom in caroms">
-                    <div class="remove-icon" ng-click="remove(carom)"></div>
-                    <div class="betting-number">
-                        <span class="game-code liuhecai-code-{{code.number}}" ng-repeat="code in carom.numbers">{{parse_code(code.number)}}</span>
-                    </div>
-                    <div class="betting-money">
-                        金额：
-                        <input type="tel" placeholder="金额" ng-model="carom.money">
-                    </div>
+            <div class="game-section" ng-repeat="game in games" ng-if="input.game_type.value > 5">
+                <div class="game-section-header">
+                    {{game.name}} (<span class="text-danger">赔率：{{game.oIndexBeans[0].rate}}</span>)
                 </div>
-                <div class="layout-6" ng-if="is_board_open">
-                    <div class="title" ng-click="toggle_board()">请选择连中号码</div>
-                    <div class="line"></div>
-                    <div class="code-item" ng-repeat="code in game_code" ng-click="check(code)" ng-class="{'check':code.check}">
-                        <span class="game-code liuhecai-code-{{code.number}}">{{parse_code(code.number)}}</span>
+                <!-- ng-repeat="betted_game in betted_game_list" -->
+                <div class="game-section-content">
+                    <div class="layout-5" ng-repeat="carom in caroms">
+                        <div class="remove-icon" ng-click="remove(carom)"></div>
+                        <div class="betting-number">
+                            <span class="game-code liuhecai-code-{{code.number}}" ng-repeat="code in carom.numbers">{{parse_code(code.number)}}</span>
+                        </div>
+                        <div class="betting-money">
+                            金额：
+                            <input type="tel" placeholder="金额" ng-model="carom.money">
+                        </div>
                     </div>
-                </div>
-                <div class="layout-5" ng-click="toggle_board()">
-                    <span ng-if="is_board_open">收起号码选择</span>
-                    <span ng-if="!is_board_open">点击选择连中号码</span>
+                    <div class="layout-6" ng-if="is_board_open">
+                        <div class="title" ng-click="toggle_board()">请选择连中号码</div>
+                        <div class="line"></div>
+                        <div class="code-item" ng-repeat="code in game_code" ng-click="check(code)" ng-class="{'check':code.check}">
+                            <span class="game-code liuhecai-code-{{code.number}}">{{parse_code(code.number)}}</span>
+                        </div>
+                    </div>
+                    <div class="layout-5" ng-click="toggle_board()">
+                        <span ng-if="is_board_open">收起号码选择</span>
+                        <span ng-if="!is_board_open">点击选择连中号码</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div style="height:48px;"></div>
-<div class="detail-footer justified" ng-if="!is_board_open">
-    <div><span class="reset-btn" ng-click="resetForm()">重置</span></div>
-    <div><span class="submit-btn" ng-click="ajaxForm()">提交</span></div>
-</div>
-<div class="overlay" ng-if="popup_state == 'open'">
-    <div class="popup">
-        <div class="close" ng-click="close()"></div>
-        <div class="popup-header">
-            <span>投注</span><span class="title">{{input.selected_game.name}} {{input.selected_game_cell.name}}</span>
-        </div>
-        <input type="tel" ng-model="input.betting_money" name="betting_money" placeholder="请输入投注金额">
-        <button ng-click="betting()">投注</button>
+<div class="detail-footer flex-box">
+    <div class="flex-box flex-column betting-area">
+        <div class="text-white">已投：<span class="text-danger">{{query_betted_count()}}</span>注</div>
+        <div><input type="tel" ng-model="input.betting_money" name="betting_money" placeholder="请输入下注金额"></div>
+    </div>
+    <div class="flex-box flex-item">
+        <span class="reset-btn flex-item" ng-click="resetForm()">重置</span>
+        <span class="submit-btn flex-item" ng-click="ajaxForm()">提交</span>
     </div>
 </div>

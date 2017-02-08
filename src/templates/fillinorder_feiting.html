@@ -1,8 +1,5 @@
 <dribehance-header title="'幸运飞艇投注'" back-action="'on'"></dribehance-header>
 <div class="game-header">
-    <!-- <div class="game-select">
-            <select name="game" ng-model="input.game_type" ng-options="type.label for type in game_type"></select>
-        </div> -->
     <div class="game-balance">
         <span class="balance">余额</span>
         <span>{{feiting.balance_money|currency:"￥"}}</span>
@@ -36,45 +33,43 @@
         <span class="game-code feiting-code-{{feiting.Result.XyftData.n_10}}">{{feiting.Result.XyftData.n_10}}</span>
     </p>
 </div>
-<!-- <div class="overlay" ng-if="feiting.waiting">
-        <div class="waiting-btn" ng-click="back()">当前正在开奖，请耐心等候...,点击返回</div>
-    </div> -->
-<div class="scroll-view">
-    <div class="left-panel">
-        <label class="game-type-item" for="game-{{type.value}}" ng-class="{'active':type.label == input.game_type.label}" ng-repeat="type in game_type">{{type.label}} <input type="radio" class="hidden" ng-model="input.game_type" id="game-{{type.value}}" name="game-{{type.value}}" ng-value="{{type}}"></label>
+<div class="flex-item flex-box">
+    <div class="left-panel scroll-view">
+        <div class="scroll-content">
+            <label class="game-type-item" for="game-{{type.value}}" ng-class="{'active':type.label == input.game_type.label}" ng-repeat="type in game_type">{{type.label}}
+                <input type="radio" class="hidden" ng-model="input.game_type" id="game-{{type.value}}" name="game-{{type.value}}" ng-value="{{type}}">
+            </label>
+        </div>
     </div>
-    <div class="right-panel">
-        <div class="game-section" ng-repeat="game in games">
-            <div class="game-section-header">
-                {{game.name}}
-            </div>
-            <div class="game-section-content" ng-class="{'opacity_05':feiting.waiting}">
-                <div ng-repeat="g in game.oIndexBeans track by $index" ng-click="show(g,game)" class="layout-2" ng-class="{'selected':g.betted}" ng-if="input.game_type.value == '1' && !($index+1 > 4 && $parent.$index+1 > 5)">
-                    <span>{{g.name}} </span>
-                    <span class="text-danger"> {{g.rate}}</span>
-                    <span ng-if="g.betted">{{g.betting_money}}元</span>
+    <div class="right-panel flex-item scroll-view">
+        <div class="scroll-content">
+            <div class="game-section" ng-repeat="game in games">
+                <div class="game-section-header">
+                    {{game.name}}
                 </div>
-                <div ng-repeat="g in game.oIndexBeans" ng-click="show(g,game)" class="layout-1" ng-class="{'selected':g.betted}" ng-if="input.game_type.value == '2'">
-                    <span class="game-code feiting-code-{{g.name}}">{{g.name}} </span>
-                    <span class="text-danger"> {{g.rate}}</span>
-                    <span ng-if="g.betted">{{g.betting_money}}元</span>
+                <div class="game-section-content" ng-class="{'opacity_05':feiting.waiting}">
+                    <div ng-repeat="g in game.oIndexBeans track by $index" ng-click="show(g,game)" class="layout-2" ng-class="{'selected':g.betted}" ng-if="input.game_type.value == '1' && !($index+1 > 4 && $parent.$index+1 > 5)">
+                        <span>{{g.name}} </span>
+                        <span class="text-danger"> {{g.rate}}</span>
+                        <!-- <span ng-if="g.betted">{{g.betting_money}}元</span> -->
+                    </div>
+                    <div ng-repeat="g in game.oIndexBeans" ng-click="show(g,game)" class="layout-1" ng-class="{'selected':g.betted}" ng-if="input.game_type.value == '2'">
+                        <span class="game-code feiting-code-{{g.name}}">{{g.name}} </span>
+                        <span class="text-danger"> {{g.rate}}</span>
+                        <!-- <span ng-if="g.betted">{{g.betting_money}}元</span> -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div style="height:48px;"></div>
-<div class="detail-footer justified">
-    <div><span class="reset-btn" ng-click="resetForm()">重置</span></div>
-    <div><span class="submit-btn" ng-click="ajaxForm()">提交</span></div>
-</div>
-<div class="overlay" ng-if="popup_state == 'open'">
-    <div class="popup">
-        <div class="close" ng-click="close()"></div>
-        <div class="popup-header">
-            <span>投注</span><span class="title">{{input.selected_game.name}} {{input.selected_game_cell.name}}</span>
-        </div>
-        <input type="tel" ng-model="input.betting_money" name="betting_money" placeholder="请输入投注金额">
-        <button ng-click="betting()">投注</button>
+<div class="detail-footer flex-box">
+    <div class="flex-box flex-column betting-area">
+        <div class="text-white">已投：<span class="text-danger">{{query_betted_count()}}</span>注</div>
+        <div><input type="tel" ng-model="input.betting_money" name="betting_money" placeholder="请输入下注金额"></div>
+    </div>
+    <div class="flex-box flex-item">
+        <span class="reset-btn flex-item" ng-click="resetForm()">重置</span>
+        <span class="submit-btn flex-item" ng-click="ajaxForm()">提交</span>
     </div>
 </div>
