@@ -66,7 +66,7 @@
             <div ng-repeat="log in liuhecai.Result.XyftBjpkLogs" class="layout-21">
                 <span>{{log.mingci}} </span>
                 <span class="text-danger"> {{log.money}}</span>
-                <div>{{log.haoma||"-"}} / {{log.t_one||"-"}} / {{log.t_two||"-"}} </div>
+                <div><span ng-if="log.t_two>0">{{log.t_two}}</span><span ng-if="log.t_two_two>0"> / {{log.t_two_two}}</span><span ng-if="log.t_two_three>0"> / {{log.t_two_three}}</span> </div>
             </div>
         </div>
         <div class="buy-btn" ng-click="go('fillinorder_liuhecai')" ng-if="!liuhecai.waiting && charge_info.is_show_betting == '1'">我要投注</div>
