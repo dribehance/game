@@ -56,14 +56,14 @@
 </div>
 <div class="flex-item flex-box">
     <div class="left-panel scroll-view">
-        <div class="scroll-content">
+        <div scroll class="scroll-content">
             <label class="game-type-item" for="game-{{type.value}}" ng-class="{'active':type.label == input.game_type.label}" ng-repeat="type in game_type">{{type.label}}
                 <input type="radio" class="hidden" ng-model="input.game_type" id="game-{{type.value}}" name="game-{{type.value}}" ng-value="{{type}}">
             </label>
         </div>
     </div>
     <div class="right-panel scroll-view flex-item">
-        <div class="scroll-content">
+        <div scroll class="scroll-content">
             <div class="game-section" ng-repeat="game in games" ng-if="input.game_type.value < 6">
                 <div class="game-section-header">
                     {{game.name}}
