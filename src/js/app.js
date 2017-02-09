@@ -6,7 +6,8 @@ angular.module("Game", [
 		"LocalStorageModule",
 		// "flow",
 		"timer",
-		"ngPinchZoom"
+		"ngPinchZoom",
+		// "ajoslin.scrolly"
 	])
 	.config(function($routeProvider, $httpProvider, $locationProvider, localStorageServiceProvider, config) {
 		angular.forEach(config.interceptor, function(path) {

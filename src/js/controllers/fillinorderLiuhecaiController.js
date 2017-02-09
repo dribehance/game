@@ -90,6 +90,9 @@ angular.module("Game").controller("fillinorderLiuhecaiController", function($sco
 				}
 			})
 		});
+		if ($scope.input.game_type.value > 5) {
+			count = $scope.caroms.length;
+		}
 		return count;
 	};
 	// timer callback
@@ -116,43 +119,31 @@ angular.module("Game").controller("fillinorderLiuhecaiController", function($sco
 			check: false
 		});
 	}
-	$scope.toggle_board = function() {
-		$scope.is_board_open = !$scope.is_board_open;
-	}
 	$scope.caroms = [];
 	$scope.check_list = [];
 	$scope.check = function(game) {
+		if ($scope.check_list.length > 9) {
+			errorServices.autoHide("一次最多10个号码");
+			return;
+		}
 		var size = 3;
 		if ($scope.input.game_type.value == 8) {
 			size = 2;
 		}
-		if (game.check) {
-			game.check = !game.check;
-			$scope.check_list = $scope.check_list.filter(function(g) {
-				return g != game;
-			})
-			return;
-		}
-		game.check = true;
-		$scope.check_list.push(game);
-		if ($scope.check_list.length > size - 1) {
+		game.check = !game.check;
+		$scope.check_list = $scope.game_code.filter(function(g) {
+			return g.check;
+		})
+		var combinations = k_combinations($scope.check_list, size);
+		// reset caroms
+		$scope.caroms = [];
+		angular.forEach(combinations, function(c, i) {
 			$scope.caroms.push({
 				id: new Date().getTime(),
-				numbers: $scope.check_list,
+				numbers: c,
 				money: ""
 			});
-			$scope.check_list = [];
-			$scope.game_code.map(function(code) {
-				code.check = false;
-				return code;
-			})
-			$scope.toggle_board();
-		}
-	}
-	$scope.remove = function(game) {
-		$scope.caroms = $scope.caroms.filter(function(g) {
-			return g.id != game.id;
-		})
+		});
 	};
 	// reset form
 	$scope.resetForm = function() {
@@ -168,7 +159,13 @@ angular.module("Game").controller("fillinorderLiuhecaiController", function($sco
 			});
 			return;
 		}
+		// 连码
 		if ($scope.input.game_type.value > 5) {
+			$scope.game_code.map(function(code) {
+				code.check = false;
+				return code;
+			});
+			$scope.check_list = [];
 			$scope.caroms = [];
 		}
 	};
@@ -239,7 +236,7 @@ angular.module("Game").controller("fillinorderLiuhecaiController", function($sco
 		var buy_infos = "",
 			total_money = 0;
 		angular.forEach($scope.caroms, function(carom, index) {
-			g.betting_money = $scope.input.betting_money;
+			carom.money = $scope.input.betting_money;
 			total_money += parseFloat(carom.money);
 			var carom_str = carom.numbers.map(function(c) {
 				if (c.number < 10) {
